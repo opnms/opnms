@@ -52,3 +52,4 @@ class SaltGroup(models.Model):
             ('edit_saltgroup',_('Salt Groups')),
             ('view_saltgroup',_('View SaltGroup'))
         )
+
