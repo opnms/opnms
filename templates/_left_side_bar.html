@@ -34,18 +34,18 @@
         <li class="xn-openable" id="assets" >
             <a href=""><span class="fa fa-indent"></span> <span class="xn-text">{% trans 'Assets' %}</span></a>
             <ul>
-                <li><a href="{% url 'assets:instance-list' %}"><span class="fa fa-image"></span> {% trans 'InsTances' %}</a></li>
-                <li><a href="{% url 'assets:server-list' %}"><span class="fa fa-home"></span> {% trans 'Servers' %}</a></li>
-                <li><a href="{% url 'assets:region-list' %}"><span class="fa fa-inbox"></span> {% trans 'Regions' %}</a></li>
+                <li><a href="{% url 'assets:instance-list' %}"><span class="fa fa-image text-green"></span> {% trans 'InsTances' %}</a></li>
+                <li><a href="{% url 'assets:server-list' %}"><span class="fa fa-home text-green"></span> {% trans 'Servers' %}</a></li>
+                <li><a href="{% url 'assets:region-list' %}"><span class="fa fa-inbox text-green"></span> {% trans 'Regions' %}</a></li>
             </ul>
         </li>
 
-        <!-- system manager -->
-        <li class="xn-openable" id="users">
-            <a href=""><span class="fa fa-share-alt-square"></span> <span class="xn-text">{% trans 'System Manger' %}</span></a>
+         <!-- deploy -->
+         <li class="xn-openable" id="deploys">
+            <a href=""><span class="fa fa-tasks"></span> <span class="xn-text">{% trans 'deploys' %}</span></a>
             <ul>
-                <li><a href="{% url 'users:user-list' %}"><span class="fa fa-user"></span> {% trans 'Users' %}</a></li>
-                <li><a href="#"><span class="fa fa-edit"></span> {% trans 'Perms' %}</a></li>
+                <li><a href="{% url 'deploys:salthost-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Salt Auth' %}</a></li>
+                <li><a href="{% url 'deploys:salthost-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Salt Module' %}</a></li>
             </ul>
         </li>
 
@@ -53,8 +53,18 @@
          <li class="xn-openable" id="crondtasks">
             <a href=""><span class="fa fa-tasks"></span> <span class="xn-text">{% trans 'Tasks' %}</span></a>
             <ul>
-                <li><a href="{% url 'crondtasks:periodic-list' %}"><span class="fa fa-clock-o"></span> {% trans 'Task List' %}</a></li>
-                <li><a href="{% url 'crondtasks:crontab-list' %}"><span class="fa fa-clock-o"></span> {% trans 'Crond List' %}</a></li>
+                <li><a href="{% url 'crondtasks:periodic-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Task List' %}</a></li>
+                <li><a href="{% url 'crondtasks:crontab-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Crond List' %}</a></li>
+            </ul>
+        </li>
+
+         <!-- system manager -->
+        <li class="xn-openable" id="users">
+            <a href=""><span class="fa fa-share-alt-square"></span> <span class="xn-text">{% trans 'System Manger' %}</span></a>
+            <ul>
+                <li><a href="{% url 'users:user-list' %}"><span class="fa fa-user text-green"></span> {% trans 'Users' %}</a></li>
+                <li><a href="#"><span class="fa fa-edit"></span> {% trans 'Perms' %}</a></li>
+                <li><a href="{% url 'users:saltapi-list' %}"><span class="fa fa-key text-green"></span> {% trans 'Perms' %}</a></li>
             </ul>
         </li>
     </ul>
