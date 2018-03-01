@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from ..models import SaltHost,SaltGroup
 from ..saltstack.saltapi import SalstStack
-from ..forms import SlatHostForm
+from ..forms import SaltGroupForm,SaltHostForm
 
 __all__ = ['SalstHostListView']
 
@@ -33,7 +33,38 @@ class SalstHostListView(LoginRequiredMixin,TemplateView):
         context['hostgroups'] = SaltGroup.objects.all()
         return context
 
-class SaltHostCreateView(LoginRequiredMixin,CreateView):
-    model = SaltHost
-    form_class = SlatHostForm
+class SaltGroupCreateView(LoginRequiredMixin,CreateView):
+    '''
+    salt group create.
+    '''
+    template_name = 'saltstack/saltgroup_create_update.html'
+    model = SaltGroup
+    form_class = SaltGroupForm
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = _('salt group create')
+        context['salthosts'] = SaltHost.objects.all()
+        return context
+
+    def get_success_url(self):
+        reverse_lazy('deploys:saltapi-list')
+
+
+class SaltGroupUpdateView(LoginRequiredMixin,UpdateView):
+    '''
+    salt group update
+    '''
+    template_name = 'saltstack/saltgroup_create_update.html'
+    model = SaltGroup
+    form_class = SaltGroupForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = _('salt group update')
+        context['salthosts'] = SaltHost.objects.all()
+        context['saltgroup'] = get_object_or_404(SaltGroup,pk=self.kwargs['pk'])
+        return context
+
+    def get_success_url(self):
+        reverse_lazy('deploys:saltapi-list')

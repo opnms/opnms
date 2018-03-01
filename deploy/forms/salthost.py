@@ -1,13 +1,13 @@
 from __future__ import unicode_literals
 
 from django import forms
-from ..models import SaltHost
+from ..models import SaltHost,SaltGroup
 
 
-__all__ = ['SlatHostForm']
+__all__ = ['SaltHostForm','SaltGroupForm']
 
 
-class SlatHostForm(forms.ModelForm):
+class SaltHostForm(forms.ModelForm):
     '''
     salt host form
     '''
@@ -15,3 +15,11 @@ class SlatHostForm(forms.ModelForm):
     class Meta:
         model = SaltHost
         fields = ['minion']
+
+class SaltGroupForm(forms.ModelForm):
+    '''
+    salt group forms
+    '''
+    class Meta:
+        model = SaltGroup
+        fields = ('minion')
