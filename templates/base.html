@@ -1,0 +1,15 @@
+{% load static i18n %}
+    {% include '_head_bar.html' %}
+    <body>
+        <div class="page-container">
+           {% include '_left_side_bar.html' %}
+             <div class="page-content">
+                {% include '_task_message.html' %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+       {% include '_head_logout.html' %}
+        <audio id="audio-alert" src="{% static 'audio/alert.mp3' %}" preload="auto"></audio>
+        <audio id="audio-fail" src="{% static 'audio/fail.mp3' %}" preload="auto"></audio>
+    </body>
+</html>

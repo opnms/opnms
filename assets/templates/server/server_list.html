@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'assets:server-list' %}">{{ action }}</a></li>
+</ul>
+
+ <div class="page-content-wrap pull-right">
+     <div class="col-md-12">
+         <div class="col-md-12">
+             <div class="panel panel-default">
+                 <div class="panel-body">
+                     <table class="table datatable">
+                         <thead>
+                         <tr>
+                             <th>{% trans 'HostName' %}</th>
+                             <th>{% trans 'PublicIpAddress' %}</th>
+                             <th>{% trans 'InnerIpAddress' %}</th>
+                             <th>{% trans 'Cpu' %}</th>
+                             <th>{% trans 'Memory' %}(Mb)</th>
+                             <th>{% trans 'os' %}</th>
+                             <th>{% trans 'LastUpdat_time' %}</th>
+                             <th>{% trans 'Actions' %}</th>
+                         </tr>
+                         </thead>
+                     <tbody>
+                     {% for server in servers %}
+                         <tr id="{{ server.id }}">
+                             <td>{{ server.hostname }}</td>
+                             <td>{{ server.publicipaddress }}</td>
+                             <td>{{ server.inneripaddress }}</td>
+                             <td>{{ server.cpu_nums }}</td>
+                             <td>{{ server.memory }}</td>
+                             <td>{{ server.os }}</td>
+                             <td>{{ server.lastupdate }}</td>
+                             <td>
+                                 <a href="{% url 'assets:server-detail' server.pk %}"><i class="fa fa-envelope-o text-green"></i></a>
+                             </td>
+                         </tr>
+                     {% endfor %}
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock %}
+
+
+

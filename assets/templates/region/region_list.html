@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'assets:region-list' %}">{{ action }}</a></li>
+</ul>
+ <div class="page-content-wrap pull-right">
+     <div class="col-md-12">
+         <div class="col-md-9">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                         <a href="{% url 'assets:cloud-create' %}">
+                             <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                         </a>
+                     </div>
+                     <div class="panel-body">
+                         <table class="table datatable">
+                             <thead>
+                             <tr>
+                                <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                                <th>{% trans 'IDC Name' %}</th>
+                                <th>{% trans 'Abbr Slug' %}</th>
+                                <th>{% trans 'Key Id' %}</th>
+                                <th>{% trans 'secret' %}</th>
+                                <th>{% trans 'Country' %}</th>
+                                <th>{% trans 'Create at' %}</th>
+                                <th>{% trans 'Create by' %}</th>
+                                <th>{% trans 'Actions' %}</th>
+                            </tr>
+                            </thead>
+                             <tbody>
+                             {% for cloud in Cloudproviders %}
+                             <tr id="{{ cloud.id }}">
+                                 <td><input class="icheck" type="checkbox" value="{{ cloud.pk }}" name="id"></td>
+                                 <td>{{ cloud.name }}</td>
+                                 <td>{{ cloud.abbr_name }}</td>
+                                 <td>{{ cloud.keyid }}</td>
+                                 <td>{{ cloud.keysecret }}</td>
+                                 <td>{{ cloud.country }}</td>
+                                 <td>{{ cloud.create_at }}</td>
+                                 <td>{{ cloud.create_by }}</td>
+                                 <td>
+                                    <a href="{% url 'assets:cloud-update' cloud.pk %}"><i class="fa fa-edit text-green"></i></a>
+                                    <a onclick="delete_cloud({{ cloud.id }})"><i class="fa fa-recycle text-red"></i></a>
+                                  </td>
+                             </tr>
+                             {% endfor %}
+                         </table>
+                     </div>
+                 </div>
+         </div>
+         <div class="col-md-8">
+                 <div class="panel panel-default">
+                   <div class="panel-heading">
+                       <a href="{% url 'assets:region-create' %}">
+                           <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                       </a>
+                   </div>
+                     <div class="panel-body">
+                         <table class="table datatable">
+                             <thead>
+                             <tr>
+                                <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                                <th>{% trans 'Name' %}</th>
+                                <th>{% trans 'Cloud Provider' %}</th>
+                                <th>{% trans 'City' %}</th>
+                                <th>{% trans 'Create at' %}</th>
+                                <th>{% trans 'Create by' %}</th>
+                                <th>{% trans 'Actions' %}</th>
+                            </tr>
+                            </thead>
+                             <tbody>
+                             {% for region in regions %}
+                             <tr id="{{ region.id }}">
+                                 <td><input class="icheck" type="checkbox" value="{{ user.pk }}" name="id"></td>
+                                 <td>{{ region.name }}</td>
+                                 <td>{{ region.provider.name }}</td>
+                                 <td>{{ region.city}}</td>
+                                 <td>{{ region.create_at }}</td>
+                                 <td>{{ region.create_by }}</td>
+                                 <td>
+                                    <a href="{% url 'assets:region-update' region.pk %}"><i class="fa fa-edit text-green"></i></a>
+                                    <a onclick="delete_region({{ region.id }})" ><i class="fa fa-recycle text-red"></i></a>
+                                  </td>
+                             </tr>
+                             {% endfor %}
+                         </table>
+                     </div>
+                 </div>
+         </div>
+     </div>
+ </div>
+ <script src="{% static 'login/js/jquery-3.2.1.min.js' %}"></script>
+ <script>
+    function delete_cloud(id) {
+        var the_url = "{% url 'api-assets:cloud-list' %}";
+            swal({
+                title: "确认删除此条记录吗?",
+                text: "删除后将无法恢复",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "删除",
+                closeOnConfirm: false
+            }, function (isConfirm) {
+                if (isConfirm){
+                    $.ajax({
+                        url: the_url + id,
+                        type: "POST",
+                        method: "DELETE",
+                        success: function () {
+                            swal("Clouder删除!","Clouder删除成功！","success");
+                            window.location.reload();
+                        }
+                    });
+            }
+            })
+    }
+    function delete_region(id) {
+        var the_url = "{% url 'api-assets:region-list' %}";
+            swal({
+                title: "确认删除此条记录吗?",
+                text: "删除后将无法恢复",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "删除",
+                closeOnConfirm: false
+            }, function (isConfirm) {
+                if (isConfirm){
+                    $.ajax({
+                        url: the_url + id,
+                        type: "POST",
+                        method: "DELETE",
+                        success: function () {
+                            swal("Region删除!","Region删除成功！","success");
+                            window.location.reload();
+                        }
+                    });
+            }
+            })
+    }
+
+    </script>
+{% endblock %}

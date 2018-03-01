@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'assets:instance-list' %}">{{ action }}</a></li>
+</ul>
+
+ <div class="page-content-wrap pull-right">
+     <div class="col-md-12">
+         <div class="col-md-12">
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'Salt Host List' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="{% url 'assets:instance-refresh' %}" class=""><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+              </div>
+                 <div class="panel-body">
+                     <table class="table datatable">
+                         <thead>
+                         <tr>
+                             <th>{% trans 'InstanceName' %}</th>
+                             <th>{% trans 'PublicIpAddress' %}</th>
+                             <th>{% trans 'InnerIpAddress' %}</th>
+                             <th>{% trans 'Zone' %}</th>
+                             <th>{% trans 'Cpu' %}</th>
+                             <th>{% trans 'Memory' %}(Mb)</th>
+                             <th>{% trans 'Status' %}</th>
+                             <th>{% trans 'InternetMaxBandwidthIn' %}</th>
+                             <th>{% trans 'ExpiredTime' %}</th>
+                             <th>{% trans 'Actions' %}</th>
+                         </tr>
+                         </thead>
+                     <tbody>
+                     {% for instance in instances %}
+                         <tr id="{{ instance.id }}">
+                             <td>{{ instance.InstanceName }}</td>
+                             <td>{{ instance.PublicIpAddress|first }}</td>
+                             <td>{{ instance.InnerIpAddress|first }}</td>
+                             <td>{{ instance.ZoneId }}</td>
+                             <td>{{ instance.Cpu }}</td>
+                             <td>{{ instance.Memory }}</td>
+                             <td>{{ instance.Status }}</td>
+                             <td>{{ instance.InternetMaxBandwidthIn }}</td>
+                             <td>{{ instance.ExpiredTime }}</td>
+                             <td>
+                                 <a href="{% url 'assets:instance-detail' instance.pk %}"><i class="fa fa-envelope-o text-green"></i></a>
+                             </td>
+                         </tr>
+                     {% endfor %}
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock %}
+
+
+

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'assets:region-list' %}">{% trans 'RegionList' %}</a></li>
+    <li><a href="{% url 'assets:region-create' %}">{{ action }}</a></li>
+</ul>
+
+  <div class="page-content-wrap">
+      <div class="col-md-12">
+          <div class="col-md-12">
+
+              <form class="form-horizontal" method="post" action="">
+                  {% csrf_token %}
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h3 class="panel-title"><strong>{% trans 'Create Group' %}</strong></h3>
+                      </div>
+                      <div class="panel-body">
+                          <p>{% trans 'note' %} <code>[*] and Required</code>{% trans 'Please follow the prompts to improve the form' %}</p>
+                      </div>
+                      <div class="panel-body form-group-separated">
+                          <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Region' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><span class="fa fa-map-marker"></span></span>
+                                      <input type="text" name="name" value="{{ regions.name }}" placeholder="{% trans 'Region' %}" class="form-control"/>
+                                  </div>
+                                  <span class="help-block">{% trans 'Required' %}</span>
+                              </div>
+                          </div>
+
+                       <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'City' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><span class="fa fa-cloud"></span></span>
+                                      <input type="text" name="city" value="{{ regions.city }}" placeholder="{% trans 'Cloud Provider' %}" class="form-control"/>
+                                  </div>
+                                  <span class="help-block">{% trans 'Required' %}</span>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Cloud Provider' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <select name="provider"  class="form-control select">
+                                  {% if regions.provider.name %}
+                                      <option value="{{ regions.provider.pk }}" selected="selected">{{ regions.provider.name }}</option>
+                                  {% else %}
+                                      <option value="" selected="selected">{% trans 'Please Choice' %}</option>
+                                  {% endif %}
+                                  {% for cloud in Cloudproviders  %}
+                                      <option value="{{ cloud.pk }}">{{ cloud.name }}</option>
+                                  {% endfor %}
+                                  </select>
+                                  <span class="help-block">{% trans 'Required' %}</span>
+                              </div>
+                          </div>
+
+
+                      </div>
+                      <div class="panel-footer">
+                          <button class="btn btn-default">Clear Form</button>
+                          <button class="btn btn-primary pull-right">Submit</button>
+                      </div>
+                  </div>
+              </form>
+
+          </div>
+      </div>
+  </div>
+
+{% endblock %}

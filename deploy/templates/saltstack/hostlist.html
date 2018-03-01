@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'assets:server-list' %}">{{ action }}</a></li>
+</ul>
+
+  <div class="page-content-wrap">
+      <div class="col-md-12">
+      <div class="col-md-12">
+          <!-- START DEFAULT DATATABLE -->
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'Salt Host List' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+              </div>
+              <div class="panel-body">
+                  <table class="table datatable">
+                      <thead>
+                      <tr>
+                          <th>{% trans 'HostName' %}</th>
+                          <th>{% trans 'Online status' %}</th>
+                          <th>{% trans 'Alive Last Time' %}</th>
+                          <th>{% trans 'Join saltstack' %}</th>
+                          <th>{% trans 'Actions' %}</th>
+                      </tr>
+                      </thead>
+                      {% for host in hostlist %}
+                         <tr id="{{ host.minion }}">
+                             <td>{{ host.alive }}</td>
+                             <td>{{ host.alive_last_time }}</td>
+                             <td>{{ host.status }}</td>
+                             <td>
+                                 <a href="{% url 'assets:server-detail' server.pk %}"><i class="fa fa-envelope-o text-green"></i></a>
+                             </td>
+                         </tr>
+                     {% endfor %}
+                  </table>
+              </div>
+          </div>
+      </div>
+          <!-- END DEFAULT DATATABLE -->
+
+       <!-- START DEFAULT DATATABLE -->
+      <div class="col-md-12">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'Salt Group List' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+              </div>
+              <div class="panel-body">
+                  <table class="table datatable">
+                      <thead>
+                      <tr>
+                          <th>{% trans 'Salt Group' %}</th>
+                          <th>{% trans 'Salt Group Abbrname' %}</th>
+                          <th>{% trans 'Salt Host' %}</th>
+                          <th>{% trans 'Actions' %}</th>
+                      </tr>
+                      </thead>
+                      {% for group in hostgroups %}
+                         <tr id="{{ group.name }}">
+                             <td>{{ group.abbr_name }}</td>
+                             <td>{{ group.minions.count }}</td>
+                             <td>
+                                 <a href="{% url 'assets:server-detail' server.pk %}"><i class="fa fa-envelope-o text-green"></i></a>
+                             </td>
+                         </tr>
+                     {% endfor %}
+                  </table>
+              </div>
+          </div>
+      </div>
+          <!-- END DEFAULT DATATABLE -->
+      </div>
+  </div>
+
+
+{% endblock %}
+
+
+

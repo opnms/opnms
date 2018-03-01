@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+{#    <li class="active">Dashboard</li>#}
+    <li><a href="{% url 'users:user-list' %}">{{ action }}</a></li>
+</ul>
+ <div class="page-content-wrap">
+     <div class="row">
+         <div class="col-md-6">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                     <button class="btn btn-default"><i class="glyphicon glyphicon-home"></i></button>
+                     <a href="{% url 'users:department-add' %}">
+                       <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                     </a>
+                 </div>
+                 <div class="panel-body">
+                     <table class="table datatable">
+                        <thead>
+                                <tr>
+                                    <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                                    <th>{% trans 'Department' %}</th>
+                                    <th>{% trans 'Comment' %}</th>
+                                    <th>{% trans 'Create at' %}</th>
+                                    <th>{% trans 'Creat by' %}</th>
+                                    <th>{% trans 'Deatil' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 {% for department in deaprtments %}
+                                <tr id="{{ department.pk }}">
+                                    <td><input class="icheck" type="checkbox" value="{{ department.pk }}" name="id"></td>
+                                    <td>{{ department.name }}</td>
+                                    <td>{{ department.comment }}</td>
+                                    <td>{{ department.create_at }}</td>
+                                    <td>{{ department.create_by }}</td>
+                                    <td><a href="{% url 'users:department-update' department.pk %}"><i class="fa fa-envelope"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                     </table>
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-6">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                     <button class="btn btn-default"><i class="glyphicon glyphicon-home"></i></button>
+                     <a href="{% url 'users:group-add' %}">
+                         <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                     </a>
+                 </div>
+                 <div class="panel-body">
+                     <table class="table datatable">
+                         <thead>
+                         <tr>
+                             <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                             <th>{% trans 'Group' %}</th>
+                             <th>{% trans 'Comment' %}</th>
+                             <th>{% trans 'Creat at' %}</th>
+                             <th>{% trans 'Create by' %}</th>
+                             <th>{% trans 'Deatil' %}</th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                         {% for group in groups %}
+                             <tr id="{{ group.pk }}">
+                                 <td><input class="icheck" type="checkbox" value="{{ group.pk }}" name="id"></td>
+                                 <td>{{ group.name }}</td>
+                                 <td>{{ group.comment }}</td>
+                                 <td>{{ group.create_at }}</td>
+                                 <td>{{ group.create_by }}</td>
+                                 <td><a href="#"><i class="fa fa-envelope"></i></a></td>
+                             </tr>
+                         {% endfor %}
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+
+ <div class="page-content-wrap pull-right">
+     <div class="row">
+         <div class="col-md-12">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                         <button class="btn btn-default"><i class="glyphicon glyphicon-home"></i></button>
+                         <a href="{% url 'users:user-add' %}">
+                           <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                         </a>
+                     </div>
+                     <div class="panel-body">
+                         <table class="table datatable">
+                            <thead>
+                                    <tr>
+                                        <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                                        <th>{% trans 'Username' %}</th>
+                                        <th>{% trans 'Department' %}</th>
+                                        <th>{% trans 'Group' %}</th>
+                                        <th>{% trans 'Email' %}</th>
+                                        <th>{% trans 'Phone' %}</th>
+                                        <th>{% trans 'Superuser' %}</th>
+                                        <th>{% trans 'Last Login' %}</th>
+                                        <th>{% trans 'Deatil' %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     {% for user in users %}
+                                    <tr id="{{ user.pk }}">
+                                        <td><input class="icheck" type="checkbox" value="{{ user.pk }}" name="id"></td>
+                                        <td>{{ user.username }}</td>
+                                        <td>{{ user.department.get.name}}</td>
+                                        <td>{{ user.groups.get.name }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.phone }}</td>
+                                        <td>{{ user.is_superuser }}</td>
+                                        <td>{{ user.last_login }}</td>
+                                        <td><a href="{% url 'users:user-update' user.pk %}"><i class="fa fa-envelope"></i></a></td>
+                                    </tr>
+                                    {% endfor %}
+                         </table>
+                     </div>
+
+                 </div>
+             </div>
+         </div>
+ </div>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+{#    <li class="active">Dashboard</li>#}
+    <li><a href="{% url 'users:user-list' %}">{% trans 'user list' %}</a></li>
+    <li><a href="{% url 'users:user-add' %}">{{ action }}</a></li>
+</ul>
+
+  <div class="page-content-wrap">
+
+      <div class="col-md-12">
+          <div class="col-md-12">
+
+              <form class="form-horizontal" method="post" action="">
+              {% csrf_token %}
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h3 class="panel-title"><strong>{% trans 'Create User' %}</strong></h3>
+                      </div>
+                      <div class="panel-body">
+                          <p>{% trans 'note' %} <code>[*] and Required</code>{% trans 'Please follow the prompts to improve the form' %}</p>
+                      </div>
+                      <div class="panel-body form-group-separated">
+
+                          <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Username' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                      <input type="text" name="username" value="{{ users }}" placeholder="{{ users.username }}" class="form-control" readonly="true" />
+                                  </div>
+                                  <span class="help-block">{% trans 'Required' %}</span>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Email' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+                                      <input type="email" name="email" value="{{ users.email }}" placeholder="join@exsample.com" class="form-control"/>
+                                  </div>
+                                  <span class="help-block">{% trans 'Required' %}</span>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Department' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <select name="department"  class="form-control select">
+
+                                  {% if users.department.all.get.name %}
+                                      <option value="{{ users.department.get.pk }}">{{ users.department.get.name }}</option>
+                                  {% else %}
+                                      <option value="" selected="selected">{% trans 'None' %}</option>
+                                  {% endif %}
+
+                                  {% for department in departments %}
+                                      <option value="{{ department.pk }}">{{ department.name }}</option>
+                                  {% endfor %}
+                                  </select>
+                                  <span class="help-block">{% trans 'Required' %}</span>
+                              </div>
+                          </div>
+
+                       <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Group' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <select  name="groups" class="form-control select">
+                                  {% if users.groups.all.get.name %}
+                                      <option value="{{ users.groups.get.pk }}">{{ users.groups.get.name }}</option>
+                                  {% else %}
+                                      <option value="">{% trans 'None' %}</option>
+                                  {% endif %}
+
+                                  {% for group in groups %}
+                                      <option value="{{ group.pk }}">{{ group.name }}</option>
+                                  {% endfor %}
+                                  </select>
+                                  <span class="help-block">{% trans 'Required' %}</span>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Phone' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+                                      <input type="tel" name="phone" value="{{ users.phone }}" class="form-control">
+                                  </div>
+                                  <span class="help-block">Click on input field to get datepicker</span>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Wechat' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><span class="fa fa-wechat"></span></span>
+                                      <input type="text" name="wechat" value="{{ users.wechat }}" placeholder="{% trans 'wechat' %}" class="form-control">
+                                  </div>
+                                  <span class="help-block">Click on input field to get datepicker</span>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'dingding' %}</label>
+                              <div class="col-md-6 col-xs-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><span class="fa fa-digg"></span></span>
+                                      <input type="text" name="dingding" value="{{ users.dingding }}" placeholder="{% trans 'dingding' %}" class="form-control">
+                                  </div>
+                                  <span class="help-block">Click on input field to get datepicker</span>
+                              </div>
+                          </div>
+
+                      </div>
+                      <div class="panel-footer">
+                          <button class="btn btn-default">Clear Form</button>
+                          <button class="btn btn-primary pull-right">Submit</button>
+                      </div>
+                  </div>
+              </form>
+
+          </div>
+      </div>
+
+  </div>
+
+{% endblock %}

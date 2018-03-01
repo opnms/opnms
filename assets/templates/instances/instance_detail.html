@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'assets:instance-list'%}">{% trans 'InstanceList' %}</a></li>
+    <li><a href="{% url 'assets:instance-detail' instance.pk  %}">{{ action }}</a></li>
+</ul>
+
+<div class="col-xs-7">
+      <div class="box">
+          <div class="box-header">
+              <h3 class="box-title">{% trans 'Base Info' %}</h3>
+          </div>
+          <div class="box-body box-padding">
+              <table class="table table-striped">
+                  <tr class="hide">
+                      <th>key</th>
+                      <th>value</th>
+                  </tr>
+                    <tr>
+                      <td>{% trans 'InstanceName' %}</td>
+                      <td>{{ instances.InstanceName }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'HostName' %}</td>
+                      <td>{{ instances.HostName }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'InstanceType' %}</td>
+                      <td>{{ instances.InstanceType }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'InstanceTypeFamily' %}</td>
+                      <td>{{ instances.InstanceTypeFamily }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'SerialNumber' %}</td>
+                      <td>{{ instances.SerialNumber }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'OSName' %}</td>
+                      <td>{{ instances.OSName }}</td>
+                  </tr>
+{#                  <tr>#}
+{#                      <td>{% trans 'OSType' %}</td>#}
+{#                      <td>{{ instances.OSType }}</td>#}
+{#                  </tr>#}
+                  <tr>
+                      <td>{% trans 'CreationTime' %}/{% trans 'ExpiredTime' %}</td>
+                      <td>{{ instances.CreationTime }}&nbsp--&nbsp;{{ instances.ExpiredTime }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'RegionId' %}</td>
+                      <td>{{ instances.RegionId }}</td>
+                  </tr>
+                   <tr>
+                      <td>{% trans 'ZoneId' %}</td>
+                      <td>{{ instances.ZoneId }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'ImageId' %}</td>
+                      <td>{{ instances.ImageId }}</td>
+                  </tr>
+                   <tr>
+                      <td>{% trans 'LastUpdate' %}</td>
+                      <td>{{ instances.LastUpdate }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'Status' %}</td>
+                      <td>{{ instances.Status }}</td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+  </div>
+
+<div class="col-xs-5">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{% trans 'VpcAttributes' %}</h3>
+        </div>
+        <div class="box-body box-padding">
+            <table class="table table-bordered">
+                <tr>
+                    <th>NatIpAddress</th>
+                    <th>PrivateIpAddress</th>
+                    <th>VSwitchId</th>
+                    <th>VpcId</th>
+                </tr>
+                {% for vpca in instances.VpcAttributes %}
+                <tr>
+                    <td>{{ vpca.NatIpAddress }}</td>
+                    <td>{{ vpca.PrivateIpAddress.IpAddress|first }}</td>
+                    <td>{{ vpca.VSwitchId }}</td>
+                    <td>{{ vpca.VpcId }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+    <!-- Device Info -->
+<div class="col-xs-12 col-lg-6">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{% trans 'Configure' %}</h3>
+        </div>
+        <div class="box-body box-padding">
+            <table class="table table-striped">
+                <tr class="hide">
+                    <th>key</th>
+                    <th>value</th>
+                </tr>
+                <tr class="hide">
+                    <th>key</th>
+                    <th>value</th>
+
+                </tr>
+                <tr>
+                    <td>{% trans 'Cpu' %}</td>
+                    <td>{{ instances.Cpu }}核</td>
+                </tr>
+                <tr>
+                    <td>{% trans 'Memory' %}</td>
+                    <td>{{ instances.Memory }}Mb</td>
+                </tr>
+                <tr>
+                    <td>{% trans 'Disk' %}</td>
+                    <td></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 col-lg-6">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{% trans 'Network Info' %}</h3>
+        </div>
+        <div class="box-body box-padding">
+            <table class="table table-striped">
+                <tr class="hide">
+                    <th>key</th>
+                    <th>value</th>
+                </tr>
+                <tr>
+                    <td>{% trans 'PublicIpAddress' %}</td>
+                    <td>{{ instances.PublicIpAddress|first }}</td>
+                </tr>
+                <tr>
+                    <td>{% trans 'InnerIpAddress' %}</td>
+                    <td>{{ instances.InnerIpAddress|first }}</td>
+                </tr>
+                <tr>
+                    <td>{% trans 'InternetBandwidth' %}</td>
+                    <td>{% trans 'InternetMaxBandwidthOut' %}:({{ instances.InternetMaxBandwidthOut }}){% trans 'InternetMaxBandwidthIn' %}:({{ instances.InternetMaxBandwidthIn }})</td>
+                </tr>
+{#                 <tr>#}
+{#                    <td>{% trans 'VlanId' %}</td>#}
+{#                    <td>{{ instances.VlanId }}</td>#}
+{#                </tr>#}
+
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 col-lg-6">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{% trans 'SecurityGroupIds' %}</h3>
+        </div>
+        <div class="box-body box-padding">
+            <table class="table table-striped">
+                <tr class="hide">
+                    <th>key</th>
+                    <th>value</th>
+                </tr>
+                <tr>
+                    <td>{% trans 'SecurityGroupIds' %}</td>
+                    {% for security in instances.SecurityGroupIds %}
+                    <td>{{ security }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 col-lg-6">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{% trans 'Vlan Info' %}</h3>
+        </div>
+        <div class="box-body box-padding">
+            <table class="table table-striped">
+                <tr class="hide">
+                    <th>key</th>
+                    <th>value</th>
+                </tr>
+                <tr>
+                    <td>{% trans 'VlanId' %}</td>
+                    <td>{{ instances.VlanId }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+

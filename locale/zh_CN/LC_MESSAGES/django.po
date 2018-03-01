@@ -1,0 +1,1085 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-10 17:50+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: assets/models/instances.py:9
+#: assets/templates/instances/instance_detail.html:30
+#: assets/templates/server/server_detail.html:30
+msgid "InstanceType"
+msgstr "实例类型"
+
+#: assets/models/instances.py:10
+msgid "InstanceID"
+msgstr "实例ID"
+
+#: assets/models/instances.py:11 assets/models/server.py:11
+#: assets/templates/instances/instance_detail.html:38
+#: assets/templates/server/server_detail.html:38
+msgid "SerialNumber"
+msgstr "序列号"
+
+#: assets/models/instances.py:12
+msgid "Image ID"
+msgstr "镜像ID"
+
+#: assets/models/instances.py:13
+#: assets/templates/instances/instance_detail.html:34
+#: assets/templates/server/server_detail.html:34
+msgid "InstanceTypeFamily"
+msgstr ""
+
+#: assets/models/instances.py:14
+#: assets/templates/instances/instance_detail.html:203
+#: assets/templates/server/server_detail.html:203
+msgid "VlanId"
+msgstr "VLAN"
+
+#: assets/models/instances.py:15
+#: assets/templates/instances/instance_detail.html:158
+#: assets/templates/instances/instance_list.html:24
+#: assets/templates/server/server_create_update.html:24
+#: assets/templates/server/server_detail.html:158
+msgid "InternetMaxBandwidthIn"
+msgstr "最大带宽"
+
+#: assets/models/instances.py:16
+#: assets/templates/instances/instance_list.html:20
+#: assets/templates/server/server_create_update.html:20
+msgid "Zone"
+msgstr "zone区域"
+
+#: assets/models/instances.py:17
+msgid "InternetChargeType"
+msgstr ""
+
+#: assets/models/instances.py:18
+msgid "SpotStrategy"
+msgstr ""
+
+#: assets/models/instances.py:19
+msgid "StoppedMode"
+msgstr ""
+
+#: assets/models/instances.py:20
+msgid "IoOptimized"
+msgstr ""
+
+#: assets/models/instances.py:21 assets/models/server.py:20
+#: assets/templates/instances/instance_detail.html:125
+#: assets/templates/instances/instance_list.html:22
+#: assets/templates/server/server_create_update.html:22
+#: assets/templates/server/server_detail.html:125
+#: assets/templates/server/server_list.html:21
+msgid "Memory"
+msgstr "内存"
+
+#: assets/models/instances.py:22
+#: assets/templates/instances/instance_detail.html:121
+#: assets/templates/instances/instance_list.html:21
+#: assets/templates/server/server_create_update.html:21
+#: assets/templates/server/server_detail.html:121
+#: assets/templates/server/server_list.html:20
+msgid "Cpu"
+msgstr "cpu"
+
+#: assets/models/instances.py:23
+msgid "DeviceAvailable"
+msgstr ""
+
+#: assets/models/instances.py:24
+msgid "SaleCycle"
+msgstr ""
+
+#: assets/models/instances.py:25
+msgid "SpotPriceLimit"
+msgstr ""
+
+#: assets/models/instances.py:26
+msgid "AutoReleaseTime"
+msgstr ""
+
+#: assets/models/instances.py:27
+msgid "StartTime"
+msgstr "开始时间"
+
+#: assets/models/instances.py:28
+#: assets/templates/instances/instance_detail.html:22
+#: assets/templates/instances/instance_list.html:17
+#: assets/templates/server/server_create_update.html:17
+#: assets/templates/server/server_detail.html:22
+msgid "InstanceName"
+msgstr "实例名称"
+
+#: assets/models/instances.py:29
+#: crondtask/templates/periodic/periodictask_list.html:23
+msgid "Description"
+msgstr "描述"
+
+#: assets/models/instances.py:30
+msgid "ResourceGroupId"
+msgstr "资源组"
+
+#: assets/models/instances.py:31
+msgid "OSType"
+msgstr "系统类型"
+
+#: assets/models/instances.py:32
+#: assets/templates/instances/instance_detail.html:42
+#: assets/templates/server/server_detail.html:42
+msgid "OSName"
+msgstr "系统名称"
+
+#: assets/models/instances.py:33
+msgid "InstanceNetworkType"
+msgstr "实例网络类型"
+
+#: assets/models/instances.py:34 assets/models/server.py:8
+#: assets/templates/server/server_list.html:17
+msgid "HostName"
+msgstr "主机名"
+
+#: assets/models/instances.py:35
+#: assets/templates/instances/instance_detail.html:50
+#: assets/templates/server/server_detail.html:50
+msgid "CreationTime"
+msgstr "创建时间"
+
+#: assets/models/instances.py:36
+#: assets/templates/instances/instance_detail.html:70
+#: assets/templates/instances/instance_list.html:23
+#: assets/templates/server/server_create_update.html:23
+#: assets/templates/server/server_detail.html:70
+msgid "Status"
+msgstr "状态"
+
+#: assets/models/instances.py:37
+msgid "ClusterId"
+msgstr "集群"
+
+#: assets/models/instances.py:38
+msgid "GPUSpec"
+msgstr ""
+
+#: assets/models/instances.py:39 assets/models/server.py:9
+#: assets/templates/instances/instance_detail.html:153
+#: assets/templates/instances/instance_list.html:19
+#: assets/templates/server/server_create_update.html:19
+#: assets/templates/server/server_detail.html:153
+#: assets/templates/server/server_list.html:19
+msgid "InnerIpAddress"
+msgstr "内网IP地址"
+
+#: assets/models/instances.py:40 assets/models/server.py:10
+#: assets/templates/instances/instance_detail.html:149
+#: assets/templates/instances/instance_list.html:18
+#: assets/templates/server/server_create_update.html:18
+#: assets/templates/server/server_detail.html:149
+#: assets/templates/server/server_list.html:18
+msgid "PublicIpAddress"
+msgstr "公网IP地址"
+
+#: assets/models/instances.py:41
+#: assets/templates/instances/instance_detail.html:172
+#: assets/templates/instances/instance_detail.html:181
+#: assets/templates/server/server_detail.html:172
+#: assets/templates/server/server_detail.html:181
+msgid "SecurityGroupIds"
+msgstr "安全组"
+
+#: assets/models/instances.py:42
+#: assets/templates/instances/instance_detail.html:50
+#: assets/templates/instances/instance_list.html:25
+#: assets/templates/server/server_create_update.html:25
+#: assets/templates/server/server_detail.html:50
+msgid "ExpiredTime"
+msgstr "过期时间"
+
+#: assets/models/instances.py:43
+msgid "EipAddress"
+msgstr ""
+
+#: assets/models/instances.py:44
+#: assets/templates/instances/instance_detail.html:81
+#: assets/templates/server/server_detail.html:81
+msgid "VpcAttributes"
+msgstr ""
+
+#: assets/models/instances.py:45
+#: assets/templates/instances/instance_detail.html:158
+#: assets/templates/server/server_detail.html:158
+msgid "InternetMaxBandwidthOut"
+msgstr "最大出带宽"
+
+#: assets/models/instances.py:46
+msgid "Recyclable"
+msgstr ""
+
+#: assets/models/instances.py:47
+#: assets/templates/instances/instance_detail.html:54
+#: assets/templates/server/server_detail.html:54
+msgid "RegionId"
+msgstr "区域 ID"
+
+#: assets/models/instances.py:48
+msgid "OperationLocks"
+msgstr ""
+
+#: assets/models/instances.py:49
+msgid "InstanceChargeType"
+msgstr ""
+
+#: assets/models/instances.py:50
+msgid "GPUAmount"
+msgstr ""
+
+#: assets/models/instances.py:51 assets/models/server.py:29
+#: assets/templates/server/server_list.html:23
+msgid "LastUpdat_time"
+msgstr "最后更新时间"
+
+#: assets/models/region.py:12
+#: assets/templates/cloudprovider/cloud_create_update.html:26
+#: assets/templates/region/region_list.html:22
+msgid "IDC Name"
+msgstr ""
+
+#: assets/models/region.py:13
+#: assets/templates/cloudprovider/cloud_create_update.html:48
+#: assets/templates/cloudprovider/cloud_create_update.html:52
+msgid "Key ID"
+msgstr ""
+
+#: assets/models/region.py:14
+#: assets/templates/cloudprovider/cloud_create_update.html:59
+#: assets/templates/cloudprovider/cloud_create_update.html:63
+msgid "Secret"
+msgstr ""
+
+#: assets/models/region.py:15
+#: assets/templates/cloudprovider/cloud_create_update.html:37
+#: assets/templates/cloudprovider/cloud_create_update.html:41
+#: assets/templates/region/region_list.html:23
+msgid "Abbr Slug"
+msgstr ""
+
+#: assets/models/region.py:16
+#: assets/templates/cloudprovider/cloud_create_update.html:70
+#: assets/templates/cloudprovider/cloud_create_update.html:74
+#: assets/templates/region/region_list.html:26
+msgid "Country"
+msgstr ""
+
+#: assets/models/region.py:17 assets/models/region.py:31
+#: assets/models/server.py:31 assets/templates/region/region_list.html:27
+#: assets/templates/region/region_list.html:68 perms/models/perm.py:10
+#: users/models/department.py:12 users/models/group.py:14
+#: users/templates/users/user_list-table.html:26
+#: users/templates/users/user_list.html:74
+#: users/templates/users/user_list.html:110
+msgid "Create at"
+msgstr "创建时间"
+
+#: assets/models/region.py:18 assets/models/region.py:32
+#: assets/models/server.py:30 assets/templates/region/region_list.html:28
+#: assets/templates/region/region_list.html:69 perms/models/perm.py:9
+#: users/models/user.py:28 users/templates/users/user_list-table.html:62
+#: users/templates/users/user_list.html:75
+msgid "Create by"
+msgstr "创建人"
+
+#: assets/models/region.py:28
+#: assets/templates/cloudprovider/cloud_create_update.html:30
+#: assets/templates/region/create_update.html:26
+#: assets/templates/region/create_update.html:30
+msgid "Region"
+msgstr "区域"
+
+#: assets/models/region.py:29 assets/templates/region/create_update.html:41
+#: assets/templates/region/create_update.html:48
+#: assets/templates/region/region_list.html:66
+msgid "Cloud Provider"
+msgstr "云服务商"
+
+#: assets/models/region.py:30 assets/templates/region/create_update.html:37
+#: assets/templates/region/region_list.html:67
+msgid "City"
+msgstr "城市"
+
+#: assets/models/server.py:12
+msgid "manufacturer"
+msgstr "商场"
+
+#: assets/models/server.py:13
+msgid "productname"
+msgstr "型号"
+
+#: assets/models/server.py:14
+msgid "esc"
+msgstr ""
+
+#: assets/models/server.py:15 assets/templates/server/server_list.html:22
+msgid "os"
+msgstr ""
+
+#: assets/models/server.py:16
+msgid "purchase_date"
+msgstr ""
+
+#: assets/models/server.py:17
+msgid "maintain"
+msgstr ""
+
+#: assets/models/server.py:18
+msgid "cpu_model"
+msgstr ""
+
+#: assets/models/server.py:19
+msgid "cpu_nums"
+msgstr ""
+
+#: assets/models/server.py:21
+msgid "hd"
+msgstr ""
+
+#: assets/models/server.py:22
+msgid "nic"
+msgstr ""
+
+#: assets/models/server.py:23
+msgid "virtual"
+msgstr ""
+
+#: assets/models/server.py:24
+msgid "kernel"
+msgstr ""
+
+#: assets/models/server.py:25
+msgid "shell"
+msgstr ""
+
+#: assets/models/server.py:26
+msgid "saltversion"
+msgstr ""
+
+#: assets/models/server.py:27
+msgid "locale"
+msgstr ""
+
+#: assets/models/server.py:28
+msgid "selinux"
+msgstr ""
+
+#: assets/templates/cloudprovider/cloud_create_update.html:7
+#: assets/templates/region/create_update.html:7 assets/views/region.py:21
+msgid "RegionList"
+msgstr "区域列表"
+
+#: assets/templates/cloudprovider/cloud_create_update.html:19
+#: assets/templates/region/create_update.html:19
+#: users/templates/groups/create_group.html:20
+#: users/templates/groups/update_group.html:20 users/views/group.py:35
+msgid "Create Group"
+msgstr "创建组"
+
+#: assets/templates/cloudprovider/cloud_create_update.html:22
+#: assets/templates/region/create_update.html:22
+#: crondtask/templates/crond/crontab_create_update.html:22
+#: crondtask/templates/interval/interval_create_update.html:22
+#: crondtask/templates/solar/solar_create_update.html:22
+#: users/templates/department/create_department.html:23
+#: users/templates/department/update_department.html:23
+#: users/templates/groups/create_group.html:23
+#: users/templates/groups/update_group.html:23
+#: users/templates/users/create_update_user.html:23
+#: users/templates/users/update_user.html:23
+msgid "note"
+msgstr "注意"
+
+#: assets/templates/cloudprovider/cloud_create_update.html:22
+#: assets/templates/region/create_update.html:22
+#: crondtask/templates/crond/crontab_create_update.html:22
+#: crondtask/templates/interval/interval_create_update.html:22
+#: crondtask/templates/solar/solar_create_update.html:22
+#: users/templates/department/create_department.html:23
+#: users/templates/department/update_department.html:23
+#: users/templates/groups/create_group.html:23
+#: users/templates/groups/update_group.html:23
+#: users/templates/users/create_update_user.html:23
+#: users/templates/users/update_user.html:23
+msgid "Please follow the prompts to improve the form"
+msgstr "请按提示完善表单"
+
+#: assets/templates/cloudprovider/cloud_create_update.html:32
+#: assets/templates/cloudprovider/cloud_create_update.html:43
+#: assets/templates/cloudprovider/cloud_create_update.html:54
+#: assets/templates/cloudprovider/cloud_create_update.html:65
+#: assets/templates/cloudprovider/cloud_create_update.html:76
+#: assets/templates/region/create_update.html:32
+#: assets/templates/region/create_update.html:43
+#: assets/templates/region/create_update.html:60
+#: users/templates/department/create_department.html:33
+#: users/templates/groups/create_group.html:33
+#: users/templates/groups/update_group.html:33
+#: users/templates/users/create_update_user.html:34
+#: users/templates/users/create_update_user.html:55
+#: users/templates/users/create_update_user.html:67
+#: users/templates/users/create_update_user.html:79
+#: users/templates/users/update_user.html:34
+#: users/templates/users/update_user.html:45
+#: users/templates/users/update_user.html:64
+#: users/templates/users/update_user.html:82
+msgid "Required"
+msgstr "必填项"
+
+#: assets/templates/cloudprovider/delete.html:6
+msgid "Confirm delete"
+msgstr ""
+
+#: assets/templates/cloudprovider/delete.html:11
+msgid "Are you sure delete"
+msgstr ""
+
+#: assets/templates/instances/instance_detail.html:6
+#: assets/templates/server/server_detail.html:6 assets/views/instances.py:24
+msgid "InstanceList"
+msgstr "实例列表"
+
+#: assets/templates/instances/instance_detail.html:13
+#: assets/templates/server/server_detail.html:13
+msgid "Base Info"
+msgstr ""
+
+#: assets/templates/instances/instance_detail.html:26
+#: assets/templates/server/server_detail.html:26
+#, fuzzy
+#| msgid "HostName"
+msgid "Hostname"
+msgstr "主机名"
+
+#: assets/templates/instances/instance_detail.html:58
+#: assets/templates/server/server_detail.html:58
+#, fuzzy
+#| msgid "Zone"
+msgid "ZoneId"
+msgstr "zone区域"
+
+#: assets/templates/instances/instance_detail.html:62
+#: assets/templates/server/server_detail.html:62
+#, fuzzy
+#| msgid "Image ID"
+msgid "ImageId"
+msgstr "镜像ID"
+
+#: assets/templates/instances/instance_detail.html:66
+#: assets/templates/server/server_detail.html:66
+msgid "LastUpdate"
+msgstr "最后更新时间"
+
+#: assets/templates/instances/instance_detail.html:107
+#: assets/templates/server/server_detail.html:107
+msgid "Configure"
+msgstr "确认"
+
+#: assets/templates/instances/instance_detail.html:129
+#: assets/templates/server/server_detail.html:129
+msgid "Disk"
+msgstr "磁盘"
+
+#: assets/templates/instances/instance_detail.html:140
+#: assets/templates/server/server_detail.html:140
+msgid "Network Info"
+msgstr "网络信息"
+
+#: assets/templates/instances/instance_detail.html:157
+#: assets/templates/server/server_detail.html:157
+#, fuzzy
+#| msgid "InternetMaxBandwidthIn"
+msgid "InternetBandwidth"
+msgstr "最大带宽"
+
+#: assets/templates/instances/instance_detail.html:194
+#: assets/templates/server/server_detail.html:194
+msgid "Vlan Info"
+msgstr "VLAN信息"
+
+#: assets/templates/instances/instance_list.html:26
+#: assets/templates/region/region_list.html:29
+#: assets/templates/region/region_list.html:70
+#: assets/templates/server/server_create_update.html:26
+#: assets/templates/server/server_list.html:24
+#: crondtask/templates/periodic/periodictask_list.html:27
+#: users/templates/users/user_list.html:37
+#: users/templates/users/user_list.html:76
+#: users/templates/users/user_list.html:112
+msgid "Actions"
+msgstr "操作"
+
+#: assets/templates/region/create_update.html:54
+msgid "Please Choice"
+msgstr ""
+
+#: assets/templates/region/region_list.html:24
+msgid "Key Id"
+msgstr ""
+
+#: assets/templates/region/region_list.html:25
+msgid "secret"
+msgstr ""
+
+#: assets/templates/region/region_list.html:65
+#: crondtask/templates/periodic/periodictask_list.html:17
+msgid "Name"
+msgstr "名称"
+
+#: assets/views/clouder.py:28
+msgid "Create Cloudprovider"
+msgstr "创建云服务商"
+
+#: assets/views/clouder.py:61
+msgid "Update Cloudprovider"
+msgstr "更新云服务商"
+
+#: assets/views/clouder.py:78
+msgid "Delete Provider"
+msgstr "云服务商"
+
+#: assets/views/instances.py:35
+msgid "Instance Detail"
+msgstr "实例ID"
+
+#: assets/views/region.py:33
+msgid "Create Region"
+msgstr "创建区域"
+
+#: assets/views/region.py:58
+msgid "Update Region"
+msgstr "更新组"
+
+#: assets/views/servers.py:22
+#, fuzzy
+#| msgid "Servers"
+msgid "Server List"
+msgstr "服务器管理"
+
+#: assets/views/servers.py:32
+#, fuzzy
+#| msgid "User detail"
+msgid "Server Detail"
+msgstr "用户详情"
+
+#: assets/views/servers.py:43
+#, fuzzy
+#| msgid "Servers"
+msgid "Server Create"
+msgstr "服务器管理"
+
+#: assets/views/servers.py:62
+#, fuzzy
+#| msgid "Servers"
+msgid "Server Update"
+msgstr "服务器管理"
+
+#: crondtask/templates/crond/crontab_create_update.html:6
+#: crondtask/templates/interval/interval_create_update.html:6
+#: crondtask/templates/solar/solar_create_update.html:6
+#: crondtask/views/crond.py:24
+#, fuzzy
+#| msgid "crontab"
+msgid "Crontab List"
+msgstr "计划表"
+
+#: crondtask/templates/crond/crontab_create_update.html:19
+#, fuzzy
+#| msgid "Create Department"
+msgid "Create or Update crontab"
+msgstr "添加部门"
+
+#: crondtask/templates/crond/crontab_create_update.html:27
+#: crondtask/templates/crond/crontab_create_update.html:31
+#: crondtask/templates/crond/crontab_list.html:23
+msgid "minute"
+msgstr "分"
+
+#: crondtask/templates/crond/crontab_create_update.html:38
+#: crondtask/templates/crond/crontab_create_update.html:42
+#: crondtask/templates/crond/crontab_list.html:24
+msgid "hour"
+msgstr "时"
+
+#: crondtask/templates/crond/crontab_create_update.html:49
+#: crondtask/templates/crond/crontab_create_update.html:53
+#: crondtask/templates/crond/crontab_list.html:25
+msgid "week"
+msgstr "周"
+
+#: crondtask/templates/crond/crontab_create_update.html:60
+#: crondtask/templates/crond/crontab_create_update.html:64
+#: crondtask/templates/crond/crontab_list.html:27
+msgid "day"
+msgstr "日"
+
+#: crondtask/templates/crond/crontab_create_update.html:71
+#: crondtask/templates/crond/crontab_create_update.html:75
+#: crondtask/templates/crond/crontab_list.html:26
+msgid "month"
+msgstr "月"
+
+#: crondtask/templates/crond/crontab_list.html:28
+#: crondtask/templates/crond/crontab_list.html:66
+#: crondtask/templates/crond/crontab_list.html:102
+#, fuzzy
+#| msgid "Actions"
+msgid "actions"
+msgstr "操作"
+
+#: crondtask/templates/crond/crontab_list.html:64
+#: crondtask/templates/interval/interval_create_update.html:27
+#: crondtask/templates/interval/interval_create_update.html:31
+msgid "every"
+msgstr ""
+
+#: crondtask/templates/crond/crontab_list.html:65
+#: crondtask/templates/interval/interval_create_update.html:37
+msgid "period"
+msgstr ""
+
+#: crondtask/templates/crond/crontab_list.html:99
+#: crondtask/templates/solar/solar_create_update.html:27
+msgid "event"
+msgstr ""
+
+#: crondtask/templates/crond/crontab_list.html:100
+#: crondtask/templates/solar/solar_create_update.html:47
+#: crondtask/templates/solar/solar_create_update.html:51
+msgid "latitude"
+msgstr ""
+
+#: crondtask/templates/crond/crontab_list.html:101
+#: crondtask/templates/solar/solar_create_update.html:57
+#: crondtask/templates/solar/solar_create_update.html:61
+msgid "longitude"
+msgstr ""
+
+#: crondtask/templates/interval/interval_create_update.html:19
+#, fuzzy
+#| msgid "Create Department"
+msgid "Create or Update interval"
+msgstr "添加部门"
+
+#: crondtask/templates/periodic/periodictask_list.html:18
+msgid "task"
+msgstr "任务"
+
+#: crondtask/templates/periodic/periodictask_list.html:19
+msgid "enabled status"
+msgstr "开启状态"
+
+#: crondtask/templates/periodic/periodictask_list.html:20
+msgid "last_run_at"
+msgstr "最后执行时间"
+
+#: crondtask/templates/periodic/periodictask_list.html:21
+msgid "total_run_count"
+msgstr "执行次数"
+
+#: crondtask/templates/periodic/periodictask_list.html:22
+msgid "date_changed"
+msgstr "更新时间"
+
+#: crondtask/templates/periodic/periodictask_list.html:24
+msgid "crontab"
+msgstr "计划表"
+
+#: crondtask/templates/periodic/periodictask_list.html:25
+msgid "interval"
+msgstr ""
+
+#: crondtask/templates/periodic/periodictask_list.html:26
+msgid "solar"
+msgstr ""
+
+#: crondtask/templates/solar/solar_create_update.html:19
+#, fuzzy
+#| msgid "Create Department"
+msgid "Create or Update solar"
+msgstr "添加部门"
+
+#: crondtask/views/crond.py:37
+msgid "Crontab Create"
+msgstr ""
+
+#: crondtask/views/crond.py:54
+msgid "Crontab Update"
+msgstr ""
+
+#: crondtask/views/interval.py:29
+msgid "Interval Create"
+msgstr ""
+
+#: crondtask/views/interval.py:45
+msgid "Interval Update"
+msgstr ""
+
+#: crondtask/views/periodic.py:29 templates/_left_side_bar.html:56
+msgid "Task List"
+msgstr "任务列表"
+
+#: crondtask/views/periodic.py:42
+msgid "PeriodicTasks Detail"
+msgstr ""
+
+#: crondtask/views/solar.py:29
+msgid "Solar Create"
+msgstr ""
+
+#: crondtask/views/solar.py:45
+msgid "Solar Update"
+msgstr ""
+
+#: templates/_head_logout.html:7
+msgid "Are you sure you want to log out?"
+msgstr ""
+
+#: templates/_head_logout.html:8
+msgid "Press No if youwant to continue work. Press Yes to logout current user."
+msgstr ""
+
+#: templates/_left_side_bar.html:35
+msgid "Assets"
+msgstr "资源管理"
+
+#: templates/_left_side_bar.html:37
+msgid "InsTances"
+msgstr "实例管理"
+
+#: templates/_left_side_bar.html:38
+msgid "Servers"
+msgstr "服务器管理"
+
+#: templates/_left_side_bar.html:39
+msgid "Regions"
+msgstr "区域管理"
+
+#: templates/_left_side_bar.html:45
+msgid "System Manger"
+msgstr "系统管理"
+
+#: templates/_left_side_bar.html:47 templates/back.html:32
+#: templates/back.html:38 users/views/user.py:31
+msgid "Users"
+msgstr "用户管理"
+
+#: templates/_left_side_bar.html:48
+msgid "Perms"
+msgstr "权限管理"
+
+#: templates/_left_side_bar.html:54
+msgid "Tasks"
+msgstr "任务管理"
+
+#: templates/_left_side_bar.html:57
+#, fuzzy
+#| msgid "RegionList"
+msgid "Crond List"
+msgstr "区域列表"
+
+#: templates/captcha/image.html:3
+msgid "Play CAPTCHA as audio file"
+msgstr ""
+
+#: templates/captcha/text_field.html:4
+msgid "captcha"
+msgstr "验证码"
+
+#: templates/dashboard.html:23
+msgid "Instances"
+msgstr "实例管理"
+
+#: templates/dashboard.html:60
+msgid "Registred users"
+msgstr "注册用户数"
+
+#: users/forms/login.py:15 users/templates/users/create_update_user.html:28
+#: users/templates/users/login.html:41 users/templates/users/login.html:67
+#: users/templates/users/login.html:68
+#: users/templates/users/update_user.html:28
+#: users/templates/users/user_list-table.html:99
+#: users/templates/users/user_list.html:30
+msgid "Username"
+msgstr "用户名"
+
+#: users/forms/login.py:16 users/templates/users/create_update_user.html:39
+msgid "Password"
+msgstr "密码"
+
+#: users/forms/login.py:17
+msgid "Please enter a correct username and password."
+msgstr "请输入正确的用户名和密码;注意区分大小写."
+
+#: users/forms/login.py:18
+msgid "This account is inactive."
+msgstr "帐号无效"
+
+#: users/models/department.py:9 users/models/user.py:26
+#: users/templates/department/create_department.html:27
+#: users/templates/department/create_department.html:31
+#: users/templates/users/create_update_user.html:60
+#: users/templates/users/update_user.html:50
+#: users/templates/users/user_list-table.html:24
+#: users/templates/users/user_list-table.html:100
+#: users/templates/users/user_list.html:16
+#: users/templates/users/user_list.html:31
+#: users/templates/users/user_list.html:108
+#: users/templates/users/user_profile.html:22
+#: users/templates/users/user_profile.html:62
+#: users/templates/users/user_profile.html:102
+msgid "Department"
+msgstr "部门"
+
+#: users/models/department.py:11 users/models/group.py:13
+#: users/templates/department/create_department.html:38
+#: users/templates/groups/create_group.html:38
+#: users/templates/groups/update_group.html:38
+#: users/templates/users/user_list-table.html:25
+#: users/templates/users/user_list-table.html:60
+#: users/templates/users/user_list.html:109
+msgid "Comment"
+msgstr "备注"
+
+#: users/models/group.py:12
+msgid "GroupName"
+msgstr "组名"
+
+#: users/models/organization.py:7
+msgid "Company Limited"
+msgstr "公司"
+
+#: users/models/organization.py:8
+msgid "Address"
+msgstr "地址"
+
+#: users/models/organization.py:9 users/models/user.py:22
+#: users/templates/users/create_update_user.html:84
+#: users/templates/users/update_user.html:87
+#: users/templates/users/user_list-table.html:103
+#: users/templates/users/user_list.html:34
+msgid "Phone"
+msgstr "电话"
+
+#: users/models/user.py:21
+msgid "User Group"
+msgstr "用户组"
+
+#: users/models/user.py:23 users/templates/users/create_update_user.html:95
+#: users/templates/users/update_user.html:98
+msgid "Wechat"
+msgstr "微信"
+
+#: users/models/user.py:24 users/templates/users/create_update_user.html:106
+#: users/templates/users/create_update_user.html:110
+#: users/templates/users/update_user.html:109
+#: users/templates/users/update_user.html:113
+#: users/templates/users/user_profile.html:42
+#: users/templates/users/user_profile.html:82
+#: users/templates/users/user_profile.html:122
+msgid "dingding"
+msgstr "钉钉"
+
+#: users/models/user.py:25 users/templates/users/create_update_user.html:117
+msgid "Job number"
+msgstr "工号"
+
+#: users/models/user.py:27
+msgid "Create time"
+msgstr "创建时间"
+
+#: users/templates/department/create_department.html:8
+#: users/templates/department/update_department.html:8
+#: users/templates/groups/create_group.html:8
+#: users/templates/groups/update_group.html:8
+#: users/templates/users/create_update_user.html:7
+#: users/templates/users/update_user.html:7 users/views/user.py:32
+msgid "user list"
+msgstr "用户列表"
+
+#: users/templates/department/create_department.html:20
+#: users/views/department.py:46
+msgid "Create Department"
+msgstr "添加部门"
+
+#: users/templates/department/create_department.html:40
+#: users/templates/groups/create_group.html:40
+#: users/templates/groups/update_group.html:40
+msgid "Comment ..."
+msgstr "备注"
+
+#: users/templates/department/update_department.html:20
+msgid "Update Department"
+msgstr "修改部门"
+
+#: users/templates/groups/create_group.html:27
+#: users/templates/groups/create_group.html:31
+#: users/templates/groups/update_group.html:27
+#: users/templates/groups/update_group.html:31
+#: users/templates/users/create_update_user.html:72
+#: users/templates/users/update_user.html:69
+#: users/templates/users/user_list-table.html:59
+#: users/templates/users/user_list-table.html:101
+#: users/templates/users/user_list.html:32
+#: users/templates/users/user_list.html:72
+#: users/templates/users/user_profile.html:26
+#: users/templates/users/user_profile.html:66
+#: users/templates/users/user_profile.html:106
+msgid "Group"
+msgstr "组"
+
+#: users/templates/users/create_update_user.html:20
+#: users/templates/users/update_user.html:20 users/views/user.py:60
+msgid "Create User"
+msgstr "创建用户"
+
+#: users/templates/users/create_update_user.html:32
+msgid "uername"
+msgstr "用户名"
+
+#: users/templates/users/create_update_user.html:49
+#: users/templates/users/login.html:72
+#: users/templates/users/update_user.html:39
+#: users/templates/users/user_list-table.html:102
+#: users/templates/users/user_list.html:33
+msgid "Email"
+msgstr "邮箱"
+
+#: users/templates/users/create_update_user.html:99
+#: users/templates/users/update_user.html:102
+#: users/templates/users/user_profile.html:38
+#: users/templates/users/user_profile.html:78
+#: users/templates/users/user_profile.html:118
+msgid "wechat"
+msgstr "微信"
+
+#: users/templates/users/create_update_user.html:121
+msgid "Job ID"
+msgstr "工号"
+
+#: users/templates/users/create_update_user.html:128
+#: users/templates/users/create_update_user.html:130
+#: users/templates/users/user_list-table.html:104
+#: users/templates/users/user_list.html:35
+msgid "Superuser"
+msgstr "超级用户"
+
+#: users/templates/users/login.html:34
+msgid "Captcha invalid"
+msgstr "验证码无效"
+
+#: users/templates/users/login.html:44
+msgid "password"
+msgstr "密码"
+
+#: users/templates/users/update_user.html:57
+#: users/templates/users/update_user.html:75
+msgid "None"
+msgstr ""
+
+#: users/templates/users/user_list-table.html:27
+#: users/templates/users/user_list.html:111
+msgid "Creat by"
+msgstr "创建人"
+
+#: users/templates/users/user_list-table.html:28
+#: users/templates/users/user_list-table.html:63
+#: users/templates/users/user_list-table.html:106
+msgid "Deatil"
+msgstr "详情"
+
+#: users/templates/users/user_list-table.html:61
+msgid "Creat at"
+msgstr "创建时间"
+
+#: users/templates/users/user_list-table.html:105
+#: users/templates/users/user_list.html:36
+msgid "Last Login"
+msgstr ""
+
+#: users/templates/users/user_list.html:14
+msgid "User"
+msgstr "用户"
+
+#: users/templates/users/user_list.html:15
+msgid "group"
+msgstr "组"
+
+#: users/templates/users/user_list.html:22
+msgid "Add User"
+msgstr "添加用户"
+
+#: users/templates/users/user_list.html:73
+msgid "comment"
+msgstr "备注"
+
+#: users/templates/users/user_profile.html:18
+#: users/templates/users/user_profile.html:58
+#: users/templates/users/user_profile.html:98
+#, fuzzy
+#| msgid "user list"
+msgid "user"
+msgstr "用户列表"
+
+#: users/templates/users/user_profile.html:30
+#: users/templates/users/user_profile.html:70
+#: users/templates/users/user_profile.html:110
+#, fuzzy
+#| msgid "Email"
+msgid "email"
+msgstr "邮箱"
+
+#: users/templates/users/user_profile.html:34
+#: users/templates/users/user_profile.html:74
+#: users/templates/users/user_profile.html:114
+#, fuzzy
+#| msgid "Phone"
+msgid "phone"
+msgstr "电话"
+
+#: users/views/department.py:35
+msgid "DepartmentList"
+msgstr "部门列表"
+
+#: users/views/department.py:66
+msgid "Update department"
+msgstr "修改部门"
+
+#: users/views/department.py:83
+msgid "Delete Department"
+msgstr "删除部门"
+
+#: users/views/group.py:54
+msgid "Update Group"
+msgstr "更新组"
+
+#: users/views/user.py:46
+msgid "User detail"
+msgstr "用户详情"
+
+#: users/views/user.py:99
+msgid "User Delete"
+msgstr "删除用户"
+
+#: users/views/user.py:112
+msgid "User Profile"
+msgstr "用户信息"
+
