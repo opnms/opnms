@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-02 09:10+0800\n"
+"POT-Creation-Date: 2018-03-02 10:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,14 +49,14 @@ msgstr "VLAN"
 
 #: assets/models/instances.py:15
 #: assets/templates/instances/instance_detail.html:158
-#: assets/templates/instances/instance_list.html:32
+#: assets/templates/instances/instance_list.html:94
 #: assets/templates/server/server_create_update.html:24
 #: assets/templates/server/server_detail.html:158
 msgid "InternetMaxBandwidthIn"
 msgstr "最大带宽"
 
 #: assets/models/instances.py:16
-#: assets/templates/instances/instance_list.html:28
+#: assets/templates/instances/instance_list.html:90
 #: assets/templates/server/server_create_update.html:20
 msgid "Zone"
 msgstr "zone区域"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: assets/models/instances.py:21 assets/models/server.py:20
 #: assets/templates/instances/instance_detail.html:125
-#: assets/templates/instances/instance_list.html:30
+#: assets/templates/instances/instance_list.html:92
 #: assets/templates/server/server_create_update.html:22
 #: assets/templates/server/server_detail.html:125
 #: assets/templates/server/server_list.html:21
@@ -88,7 +88,7 @@ msgstr "内存"
 
 #: assets/models/instances.py:22
 #: assets/templates/instances/instance_detail.html:121
-#: assets/templates/instances/instance_list.html:29
+#: assets/templates/instances/instance_list.html:91
 #: assets/templates/server/server_create_update.html:21
 #: assets/templates/server/server_detail.html:121
 #: assets/templates/server/server_list.html:20
@@ -117,7 +117,7 @@ msgstr "开始时间"
 
 #: assets/models/instances.py:28
 #: assets/templates/instances/instance_detail.html:22
-#: assets/templates/instances/instance_list.html:25
+#: assets/templates/instances/instance_list.html:87
 #: assets/templates/server/server_create_update.html:17
 #: assets/templates/server/server_detail.html:22
 msgid "InstanceName"
@@ -161,7 +161,7 @@ msgstr "创建时间"
 
 #: assets/models/instances.py:36
 #: assets/templates/instances/instance_detail.html:70
-#: assets/templates/instances/instance_list.html:31
+#: assets/templates/instances/instance_list.html:93
 #: assets/templates/server/server_create_update.html:23
 #: assets/templates/server/server_detail.html:70
 msgid "Status"
@@ -177,7 +177,7 @@ msgstr ""
 
 #: assets/models/instances.py:39 assets/models/server.py:9
 #: assets/templates/instances/instance_detail.html:153
-#: assets/templates/instances/instance_list.html:27
+#: assets/templates/instances/instance_list.html:89
 #: assets/templates/server/server_create_update.html:19
 #: assets/templates/server/server_detail.html:153
 #: assets/templates/server/server_list.html:19
@@ -186,7 +186,7 @@ msgstr "内网IP地址"
 
 #: assets/models/instances.py:40 assets/models/server.py:10
 #: assets/templates/instances/instance_detail.html:149
-#: assets/templates/instances/instance_list.html:26
+#: assets/templates/instances/instance_list.html:88
 #: assets/templates/server/server_create_update.html:18
 #: assets/templates/server/server_detail.html:149
 #: assets/templates/server/server_list.html:18
@@ -203,7 +203,7 @@ msgstr "安全组"
 
 #: assets/models/instances.py:42
 #: assets/templates/instances/instance_detail.html:50
-#: assets/templates/instances/instance_list.html:33
+#: assets/templates/instances/instance_list.html:95
 #: assets/templates/server/server_create_update.html:25
 #: assets/templates/server/server_detail.html:50
 msgid "ExpiredTime"
@@ -517,13 +517,29 @@ msgstr "内网带宽"
 msgid "Vlan Info"
 msgstr "VLAN信息"
 
-#: assets/templates/instances/instance_list.html:14
+#: assets/templates/instances/instance_list.html:18
+msgid "Instances update success"
+msgstr "实例更新成功数"
+
+#: assets/templates/instances/instance_list.html:31
+msgid "Instances update fail"
+msgstr "实例更新失败数"
+
+#: assets/templates/instances/instance_list.html:45
+msgid "Instances new"
+msgstr "实例新增数"
+
+#: assets/templates/instances/instance_list.html:59
+msgid "Last update time"
+msgstr "实例最后更新时间"
+
+#: assets/templates/instances/instance_list.html:76
 #: deploy/templates/saltstack/hostlist.html:15
 #: users/templates/saltapi/saltapi-list.html:18
 msgid "Salt Host List"
 msgstr "Salt主机列表"
 
-#: assets/templates/instances/instance_list.html:34
+#: assets/templates/instances/instance_list.html:96
 #: assets/templates/region/region_list.html:29
 #: assets/templates/region/region_list.html:70
 #: assets/templates/server/server_create_update.html:26
@@ -761,8 +777,9 @@ msgstr "用户名"
 msgid "Password"
 msgstr "密码"
 
-#: deploy/models/saltstack.py:10 users/models/department.py:11
-#: users/models/group.py:13
+#: deploy/models/saltstack.py:10 deploy/models/saltstack.py:45
+#: deploy/templates/saltstack/saltgroup_create_update.html:51
+#: users/models/department.py:11 users/models/group.py:13
 #: users/templates/department/create_department.html:38
 #: users/templates/groups/create_group.html:38
 #: users/templates/groups/update_group.html:38
@@ -819,13 +836,13 @@ msgstr "salt分组别名"
 msgid "Salt Host"
 msgstr "salt主机"
 
-#: deploy/models/saltstack.py:52
+#: deploy/models/saltstack.py:53
 #, fuzzy
 #| msgid "Create Group"
 msgid "Salt Groups"
 msgstr "创建组"
 
-#: deploy/models/saltstack.py:53
+#: deploy/models/saltstack.py:54
 #, fuzzy
 #| msgid "Create Group"
 msgid "View SaltGroup"
@@ -855,6 +872,14 @@ msgstr "salt分组"
 #: deploy/templates/saltstack/saltgroup_create_update.html:39
 msgid "salt minion"
 msgstr ""
+
+#: deploy/templates/saltstack/saltgroup_create_update.html:53
+#: users/templates/department/create_department.html:40
+#: users/templates/groups/create_group.html:40
+#: users/templates/groups/update_group.html:40
+#: users/templates/saltapi/saltapi_create_update.html:62
+msgid "Comment ..."
+msgstr "备注"
 
 #: deploy/views/saltstack.py:31
 msgid "Salt Key List"
@@ -1025,13 +1050,6 @@ msgstr "创建时间"
 #: users/views/department.py:46
 msgid "Create Department"
 msgstr "添加部门"
-
-#: users/templates/department/create_department.html:40
-#: users/templates/groups/create_group.html:40
-#: users/templates/groups/update_group.html:40
-#: users/templates/saltapi/saltapi_create_update.html:62
-msgid "Comment ..."
-msgstr "备注"
 
 #: users/templates/department/update_department.html:20
 msgid "Update Department"

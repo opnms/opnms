@@ -6,6 +6,68 @@
     <li><a href="{% url 'assets:instance-list' %}">{{ action }}</a></li>
 </ul>
 
+<div class="page-content-wrap">
+
+    <!-- START WIDGETS -->
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <!-- START WIDGET SLIDER -->
+             <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
+                <div class="widget-data">
+                    <div class="widget-int num-count">{{ instances.count }}</div>
+                    <div class="widget-title">{% trans 'Instances update success' %}</div>
+                </div>
+                <div class="widget-controls">
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            <!-- END WIDGET SLIDER -->
+        </div>
+         <div class="col-md-3">
+            <!-- START WIDGET SLIDER -->
+             <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
+                <div class="widget-data">
+                    <div class="widget-int num-count">{{ instances.count }}</div>
+                    <div class="widget-title">{% trans 'Instances update fail' %}</div>
+                </div>
+                <div class="widget-controls">
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            <!-- END WIDGET SLIDER -->
+        </div>
+
+         <div class="col-md-3">
+            <!-- START WIDGET SLIDER -->
+             <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
+                <div class="widget-data">
+                    <div class="widget-int num-count">{{ instances.count }}</div>
+                    <div class="widget-title">{% trans 'Instances new' %}</div>
+                </div>
+                <div class="widget-controls">
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            <!-- END WIDGET SLIDER -->
+        </div>
+
+         <div class="col-md-3">
+            <!-- START WIDGET SLIDER -->
+             <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
+                <div class="widget-data">
+                    <div class="widget-int num-count">{{ instances.count }}</div>
+                    <div class="widget-title">{% trans 'Last update time' %}</div>
+                </div>
+                <div class="widget-controls">
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            <!-- END WIDGET SLIDER -->
+        </div>
+    </div>
+    <!-- END WIDGETS -->
+</div>
+
  <div class="page-content-wrap pull-right">
      <div class="col-md-12">
          <div class="col-md-12">
