@@ -42,6 +42,7 @@ class SaltGroup(models.Model):
     name = models.CharField(max_length=100,unique=True,verbose_name=_('Salt Group'))
     abbr_name = models.CharField(max_length=100,unique=True,verbose_name=_('Salt Group Abbrname'))
     minions = models.ManyToManyField(SaltHost,related_name='salt_host_set',verbose_name=_('Salt Host'))
+    comment = models.TextField(blank=True,verbose_name=_('Comment'))
 
     def __unicode__(self):
         return self.name

@@ -22,4 +22,4 @@ class SaltGroupForm(forms.ModelForm):
     '''
     class Meta:
         model = SaltGroup
-        fields = ('minion')
+        fields = ('name','minions')

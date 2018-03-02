@@ -25,110 +25,33 @@
                       <div class="panel-body form-group-separated">
 
                           <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Username' %}</label>
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'salt group name' %}</label>
                               <div class="col-md-6 col-xs-12">
                                   <div class="input-group">
                                       <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                      <input type="text" name="username"  value="" placeholder="{% trans 'uername' %}" class="form-control"/>
+                                      <input type="text" name="name"  value="{{ saltgroup.name }}" placeholder="{% trans 'salt group name' %}" class="form-control"/>
                                   </div>
                                   <span class="help-block">{% trans 'Required' %}</span>
                               </div>
                           </div>
 
-                        <div class="form-group">
-                            <label class="col-md-3 col-xs-12 control-label">{% trans 'Password' %}</label>
-                            <div class="col-md-6 col-xs-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                    <input type="password" name="password" value="" class="form-control"/>
-                                </div>
-                                <span class="help-block">Password field sample</span>
-                            </div>
-                        </div>
-                          <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Email' %}</label>
+                         <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'salt minion' %}</label>
                               <div class="col-md-6 col-xs-12">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
-                                      <input type="email" name="email" placeholder="join@exsample.com" class="form-control"/>
-                                  </div>
-                                  <span class="help-block">{% trans 'Required' %}</span>
-                              </div>
-                          </div>
-
-                          <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Department' %}</label>
-                              <div class="col-md-6 col-xs-12">
-                                  <select name="department" class="form-control select">
-                                      {% for department in departments %}
-                                      <option value="{{ department.pk }}">{{ department.name }}</option>
+                                  <select name="minions" class="form-control select">
+                                      {% for salt in salthosts %}
+                                      <option value="{{ salt.pk }}">{{ salt.minion }}</option>
                                       {% endfor %}
                                   </select>
                                   <span class="help-block">{% trans 'Required' %}</span>
                               </div>
                           </div>
 
-                       <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Group' %}</label>
+                         <div class="form-group">
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Comment' %}</label>
                               <div class="col-md-6 col-xs-12">
-                                  <select name="groups" class="form-control select">
-                                      {% for group in groups %}
-                                      <option value="{{ group.pk }}">{{ group.name }}</option>
-                                      {% endfor %}
-                                  </select>
-                                  <span class="help-block">{% trans 'Required' %}</span>
-                              </div>
-                          </div>
-
-                          <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Phone' %}</label>
-                              <div class="col-md-6 col-xs-12">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                      <input type="tel" name="phone" class="form-control">
-                                  </div>
-                                  <span class="help-block">Click on input field to get datepicker</span>
-                              </div>
-                          </div>
-
-                          <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Wechat' %}</label>
-                              <div class="col-md-6 col-xs-12">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><span class="fa fa-wechat text-green"></span></span>
-                                      <input type="text" name="wechat" placeholder="{% trans 'wechat' %}" class="form-control">
-                                  </div>
-                                  <span class="help-block">Click on input field to get datepicker</span>
-                              </div>
-                          </div>
-
-                          <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'dingding' %}</label>
-                              <div class="col-md-6 col-xs-12">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><span class="fa fa-digg"></span></span>
-                                      <input type="text" name="dingding" placeholder="{% trans 'dingding' %}" class="form-control">
-                                  </div>
-                                  <span class="help-block">Click on input field to get datepicker</span>
-                              </div>
-                          </div>
-
-                          <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Job number' %}</label>
-                              <div class="col-md-6 col-xs-12">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><span class="fa fa-joomla"></span></span>
-                                      <input type="text" name="job_number" placeholder="{% trans 'Job ID' %}" class="form-control">
-                                  </div>
-                                  <span class="help-block">Click on input field to get datepicker</span>
-                              </div>
-                          </div>
-
-                           <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Superuser' %}</label>
-                              <div class="col-md-6 col-xs-12">
-                                  <label class="check"><input type="checkbox" class="icheckbox" checked=""/> {% trans 'Superuser' %}</label>
-                                  <span class="help-block">Checkbox sample, easy to use</span>
+                                  <textarea name="comment" placeholder="{% trans 'Comment ...' %}" class="form-control" rows="5">{{ saltgroup.comment }}</textarea>
+                                  <span class="help-block">Default textarea field</span>
                               </div>
                           </div>
 

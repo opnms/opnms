@@ -12,7 +12,7 @@ from ..models import SaltHost,SaltGroup
 from ..saltstack.saltapi import SalstStack
 from ..forms import SaltGroupForm,SaltHostForm
 
-__all__ = ['SalstHostListView']
+__all__ = ['SalstHostListView','SaltGroupCreateView','SaltGroupUpdateView']
 
 class SalstHostListView(LoginRequiredMixin,TemplateView):
     '''
