@@ -36,7 +36,7 @@ urlpatterns = [
     url(r'api/assets/',include('assets.urls.api_urls',namespace='api-assets')),
     url(r'api/users/',include('users.urls.view_api',namespace='api-users')),
     url(r'api/crond/',include('crond.urls.api_urls',namespace='api-tasks')),
-    url(r'api/deploy/',include('deploy.urls.api_urls',namespace='api-deploies')),
+    url(r'api/deploys/',include('deploy.urls.api_urls',namespace='api-deploys')),
 ]
 
 

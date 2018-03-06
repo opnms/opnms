@@ -64,7 +64,7 @@ class SaltGroupCreateView(LoginRequiredMixin,CreateView):
         return context
 
     def get_success_url(self):
-        reverse_lazy('deploy:salthost-list')
+        return reverse_lazy('deploys:salthost-list')
 
 
 class SaltGroupUpdateView(LoginRequiredMixin,UpdateView):
@@ -83,4 +83,12 @@ class SaltGroupUpdateView(LoginRequiredMixin,UpdateView):
         return context
 
     def get_success_url(self):
-        reverse_lazy('deploys:salthost-list')
+        return reverse_lazy('deploys:salthost-list')
+
+class SaltGroupDeleteView(LoginRequiredMixin,DeleteView):
+    '''
+    salt group delete view.
+    '''
+    pass
+
+

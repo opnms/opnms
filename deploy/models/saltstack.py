@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from pypinyin import pinyin,FIRST_LETTER
+from pypinyin import pinyin,lazy_pinyin,FIRST_LETTER
+# from xpinyin import Pinyin
+
 
 __all__ = ['SaltHost','SaltGroup','SaltStack']
 
@@ -29,7 +31,7 @@ class SaltHost(models.Model):
         return self.minion
 
     class Meta:
-        default_permissions =()
+        # default_permissions =()
         permissions = (
             ('view_deploy',_('view host deploy')),
             ('edit_deploy',_('Edit host deploy')),
@@ -44,7 +46,7 @@ class SaltGroup(models.Model):
     comment = models.TextField(blank=True,verbose_name=_('Comment'))
 
     def generate_abbr_name(self):
-        abbr_name = pinyin(self.name)
+        abbr_name = ''.join(lazy_pinyin(self.name))
         return abbr_name
 
 
@@ -52,14 +54,17 @@ class SaltGroup(models.Model):
         return self.name
 
     class Meta:
-        default_permissions = ()
+        # default_permissions = ()
         permissions = (
             ('edit_saltgroup',_('Salt Groups')),
             ('view_saltgroup',_('View SaltGroup'))
         )
 
 
-
+class Module(models.Model):
+    name = models.CharField(max_length=100,unique=True,verbose_name=_('Module Name'))
+    comment = models.TextField(blank=True,verbose_name=_('Comment'))
+    create_at = models.DateTimeField(auto_now_add=True,verbose_name=_('Create at'))
 
 
 

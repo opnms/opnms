@@ -44,8 +44,8 @@
          <li class="xn-openable" id="deploys">
             <a href=""><span class="fa fa-tasks"></span> <span class="xn-text">{% trans 'deploys' %}</span></a>
             <ul>
-                <li><a href="{% url 'deploys:salthost-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Salt Auth' %}</a></li>
-                <li><a href="{% url 'deploys:salthost-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Salt Module' %}</a></li>
+                <li><a href="{% url 'deploys:salthost-list' %}"><span class="fa fa-gears text-green"></span> {% trans 'Salt Auth' %}</a></li>
+                <li><a href="{% url 'deploys:salthost-list' %}"><span class="fa fa-codepen text-green"></span> {% trans 'Salt Module' %}</a></li>
             </ul>
         </li>
 
@@ -53,7 +53,7 @@
          <li class="xn-openable" id="crond">
             <a href=""><span class="fa fa-tasks"></span> <span class="xn-text">{% trans 'Tasks' %}</span></a>
             <ul>
-                <li><a href="{% url 'crondtasks:periodic-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Task List' %}</a></li>
+                <li><a href="{% url 'crondtasks:periodic-list' %}"><span class="fa fa-cubes text-green"></span> {% trans 'Task List' %}</a></li>
                 <li><a href="{% url 'crondtasks:crontab-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Crond List' %}</a></li>
             </ul>
         </li>

@@ -11,5 +11,5 @@ class SaltHostViewSet(viewsets.ModelViewSet):
 
 
 class SaltGroupViewSet(viewsets.ModelViewSet):
-    queryset = SaltGroup
+    queryset = SaltGroup.objects.all()
     serializer_class = SaltGroupSerializer
