@@ -29,13 +29,14 @@ urlpatterns = [
     url(r'^captcha/',include('captcha.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/',include('rest_framework.urls',namespace='rest_framework')),
-    url(r'^crondtasks/',include('crondtask.urls.view_urls',namespace='crondtasks')),
+    url(r'^crond/',include('crond.urls.view_urls',namespace='crondtasks')),
     url(r'^deploys/',include('deploy.urls.view_urls',namespace='deploys')),
 
     #api
     url(r'api/assets/',include('assets.urls.api_urls',namespace='api-assets')),
     url(r'api/users/',include('users.urls.view_api',namespace='api-users')),
-    url(r'api/crondtasks/',include('crondtask.urls.api_urls',namespace='api-tasks')),
+    url(r'api/crond/',include('crond.urls.api_urls',namespace='api-tasks')),
+    url(r'api/deploy/',include('deploy.urls.api_urls',namespace='api-deploies')),
 ]
 
 

@@ -9,10 +9,11 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from ..models import SaltHost,SaltGroup
-from ..saltstack.saltapi import SalstStack
 from ..forms import SaltGroupForm,SaltHostForm
+from ..saltstack import saltapi
+from ..tasks import Create_salthost
 
-__all__ = ['SalstHostListView','SaltGroupCreateView','SaltGroupUpdateView']
+__all__ = ['SalstHostListView','SaltHostCreateView','SaltGroupCreateView','SaltGroupUpdateView']
 
 class SalstHostListView(LoginRequiredMixin,TemplateView):
     '''
@@ -33,6 +34,21 @@ class SalstHostListView(LoginRequiredMixin,TemplateView):
         context['hostgroups'] = SaltGroup.objects.all()
         return context
 
+class SaltHostCreateView(LoginRequiredMixin,CreateView):
+    model = SaltHost
+    template_name = 'saltstack/hostlist.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        salt = saltapi.SalstAPI()
+        minions = salt.list_all_key()
+        for minion in minions:
+            SaltHost.objects.create(minion=minion)
+            SaltHost.save()
+        context['hostlist'] = SaltHost.objects.all()
+        return context
+
+
 class SaltGroupCreateView(LoginRequiredMixin,CreateView):
     '''
     salt group create.
@@ -48,7 +64,7 @@ class SaltGroupCreateView(LoginRequiredMixin,CreateView):
         return context
 
     def get_success_url(self):
-        reverse_lazy('deploys:saltapi-list')
+        reverse_lazy('deploy:salthost-list')
 
 
 class SaltGroupUpdateView(LoginRequiredMixin,UpdateView):
@@ -67,4 +83,4 @@ class SaltGroupUpdateView(LoginRequiredMixin,UpdateView):
         return context
 
     def get_success_url(self):
-        reverse_lazy('deploys:saltapi-list')
+        reverse_lazy('deploys:salthost-list')

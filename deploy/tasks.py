@@ -1,1 +1,1 @@
-# Create your tasks herefrom __future__ import absolute_import, unicode_literalsfrom .forms import SlatHostFormfrom celery import shared_task
+# Create your tasks herefrom __future__ import absolute_import, unicode_literalsfrom .models import SaltHostfrom celery import shared_taskfrom .saltstack.saltapi import SalstAPI@shared_taskdef Create_salthost():    minions = SalstAPI()    salt = minions.list_all_key()    for minion in salt:        SaltHost.objects.create(minion=minion)        SaltHost.save()

@@ -7,12 +7,12 @@ import urllib.request
 import ssl,json
 from deploy.models import SaltStack
 
-__all__ = ['SalstStack']
+__all__ = ['SalstAPI']
 
 context = ssl._create_unverified_context()
 ssl._create_default_https_context = ssl._create_unverified_context
 
-class SalstStack(object):
+class SalstAPI(object):
     _token_id = ''
     def __init__(self):
         saltinfo = SaltStack.objects.all()
@@ -56,8 +56,8 @@ class SalstStack(object):
         obj = urllib.parse.urlencode(params).encode(encoding='utf-8')
         content = self.postRequest(obj)
         minions = content['return'][0]['data']['return']['minions']
-        minions_pre = content['return'][0]['data']['return']['minions_pre']
-        return minions, minions_pre
+        # minions_pre = content['return'][0]['data']['return']['minions_pre']
+        print(minions)
 
     def Minions_status(self):
         '''
@@ -91,8 +91,9 @@ class SalstStack(object):
 
 if __name__ == '__main__':
 
-    v = SalstStack()
+    v = SalstAPI()
 
     v.SaltToken()
     minon="hd-dev-biapp-01.youzibuy.com"
     v.Minion_grains(minon)
+    v.list_all_key()

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-02 10:15+0800\n"
+"POT-Creation-Date: 2018-03-02 15:03+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,7 +124,7 @@ msgid "InstanceName"
 msgstr "实例名称"
 
 #: assets/models/instances.py:29
-#: crondtask/templates/periodic/periodictask_list.html:23
+#: crond/templates/periodic/periodictask_list.html:23
 msgid "Description"
 msgstr "描述"
 
@@ -402,9 +402,9 @@ msgstr "创建组"
 
 #: assets/templates/cloudprovider/cloud_create_update.html:22
 #: assets/templates/region/create_update.html:22
-#: crondtask/templates/crond/crontab_create_update.html:22
-#: crondtask/templates/interval/interval_create_update.html:22
-#: crondtask/templates/solar/solar_create_update.html:22
+#: crond/templates/crond/crontab_create_update.html:22
+#: crond/templates/interval/interval_create_update.html:22
+#: crond/templates/solar/solar_create_update.html:22
 #: deploy/templates/saltstack/saltgroup_create_update.html:23
 #: users/templates/department/create_department.html:23
 #: users/templates/department/update_department.html:23
@@ -418,9 +418,9 @@ msgstr "注意"
 
 #: assets/templates/cloudprovider/cloud_create_update.html:22
 #: assets/templates/region/create_update.html:22
-#: crondtask/templates/crond/crontab_create_update.html:22
-#: crondtask/templates/interval/interval_create_update.html:22
-#: crondtask/templates/solar/solar_create_update.html:22
+#: crond/templates/crond/crontab_create_update.html:22
+#: crond/templates/interval/interval_create_update.html:22
+#: crond/templates/solar/solar_create_update.html:22
 #: deploy/templates/saltstack/saltgroup_create_update.html:23
 #: users/templates/department/create_department.html:23
 #: users/templates/department/update_department.html:23
@@ -495,7 +495,7 @@ msgstr "最后更新时间"
 #: assets/templates/instances/instance_detail.html:107
 #: assets/templates/server/server_detail.html:107
 msgid "Configure"
-msgstr "确认"
+msgstr "配置信息"
 
 #: assets/templates/instances/instance_detail.html:129
 #: assets/templates/server/server_detail.html:129
@@ -544,7 +544,7 @@ msgstr "Salt主机列表"
 #: assets/templates/region/region_list.html:70
 #: assets/templates/server/server_create_update.html:26
 #: assets/templates/server/server_list.html:24
-#: crondtask/templates/periodic/periodictask_list.html:27
+#: crond/templates/periodic/periodictask_list.html:27
 #: deploy/templates/saltstack/hostlist.html:30
 #: deploy/templates/saltstack/hostlist.html:70
 #: users/templates/saltapi/saltapi-list.html:32
@@ -567,7 +567,7 @@ msgid "secret"
 msgstr ""
 
 #: assets/templates/region/region_list.html:65
-#: crondtask/templates/periodic/periodictask_list.html:17
+#: crond/templates/periodic/periodictask_list.html:17
 msgid "Name"
 msgstr "名称"
 
@@ -619,148 +619,147 @@ msgstr "服务器管理"
 msgid "Server Update"
 msgstr "服务器管理"
 
-#: crondtask/templates/crond/crontab_create_update.html:6
-#: crondtask/templates/interval/interval_create_update.html:6
-#: crondtask/templates/solar/solar_create_update.html:6
-#: crondtask/views/crond.py:26
+#: crond/templates/crond/crontab_create_update.html:6
+#: crond/templates/interval/interval_create_update.html:6
+#: crond/templates/solar/solar_create_update.html:6 crond/views/crond.py:26
 msgid "Crontab List"
 msgstr "计划列表"
 
-#: crondtask/templates/crond/crontab_create_update.html:19
+#: crond/templates/crond/crontab_create_update.html:19
 msgid "Create or Update crontab"
 msgstr "添加或更新计划表"
 
-#: crondtask/templates/crond/crontab_create_update.html:27
-#: crondtask/templates/crond/crontab_create_update.html:31
-#: crondtask/templates/crond/crontab_list.html:23
+#: crond/templates/crond/crontab_create_update.html:27
+#: crond/templates/crond/crontab_create_update.html:31
+#: crond/templates/crond/crontab_list.html:23
 msgid "minute"
 msgstr "分"
 
-#: crondtask/templates/crond/crontab_create_update.html:38
-#: crondtask/templates/crond/crontab_create_update.html:42
-#: crondtask/templates/crond/crontab_list.html:24
+#: crond/templates/crond/crontab_create_update.html:38
+#: crond/templates/crond/crontab_create_update.html:42
+#: crond/templates/crond/crontab_list.html:24
 msgid "hour"
 msgstr "时"
 
-#: crondtask/templates/crond/crontab_create_update.html:49
-#: crondtask/templates/crond/crontab_create_update.html:53
-#: crondtask/templates/crond/crontab_list.html:25
+#: crond/templates/crond/crontab_create_update.html:49
+#: crond/templates/crond/crontab_create_update.html:53
+#: crond/templates/crond/crontab_list.html:25
 msgid "week"
 msgstr "周"
 
-#: crondtask/templates/crond/crontab_create_update.html:60
-#: crondtask/templates/crond/crontab_create_update.html:64
-#: crondtask/templates/crond/crontab_list.html:27
+#: crond/templates/crond/crontab_create_update.html:60
+#: crond/templates/crond/crontab_create_update.html:64
+#: crond/templates/crond/crontab_list.html:27
 msgid "day"
 msgstr "日"
 
-#: crondtask/templates/crond/crontab_create_update.html:71
-#: crondtask/templates/crond/crontab_create_update.html:75
-#: crondtask/templates/crond/crontab_list.html:26
+#: crond/templates/crond/crontab_create_update.html:71
+#: crond/templates/crond/crontab_create_update.html:75
+#: crond/templates/crond/crontab_list.html:26
 msgid "month"
 msgstr "月"
 
-#: crondtask/templates/crond/crontab_list.html:28
-#: crondtask/templates/crond/crontab_list.html:66
+#: crond/templates/crond/crontab_list.html:28
+#: crond/templates/crond/crontab_list.html:66
 #, fuzzy
 #| msgid "Actions"
 msgid "actions"
 msgstr "操作"
 
-#: crondtask/templates/crond/crontab_list.html:64
-#: crondtask/templates/interval/interval_create_update.html:27
-#: crondtask/templates/interval/interval_create_update.html:31
+#: crond/templates/crond/crontab_list.html:64
+#: crond/templates/interval/interval_create_update.html:27
+#: crond/templates/interval/interval_create_update.html:31
 msgid "every"
 msgstr ""
 
-#: crondtask/templates/crond/crontab_list.html:65
-#: crondtask/templates/interval/interval_create_update.html:37
+#: crond/templates/crond/crontab_list.html:65
+#: crond/templates/interval/interval_create_update.html:37
 msgid "period"
 msgstr ""
 
-#: crondtask/templates/interval/interval_create_update.html:19
+#: crond/templates/interval/interval_create_update.html:19
 msgid "Create or Update interval"
 msgstr ""
 
-#: crondtask/templates/periodic/periodictask_list.html:18
+#: crond/templates/periodic/periodictask_list.html:18
 msgid "task"
 msgstr "任务"
 
-#: crondtask/templates/periodic/periodictask_list.html:19
+#: crond/templates/periodic/periodictask_list.html:19
 msgid "enabled status"
 msgstr "开启状态"
 
-#: crondtask/templates/periodic/periodictask_list.html:20
+#: crond/templates/periodic/periodictask_list.html:20
 msgid "last_run_at"
 msgstr "最后执行时间"
 
-#: crondtask/templates/periodic/periodictask_list.html:21
+#: crond/templates/periodic/periodictask_list.html:21
 msgid "total_run_count"
 msgstr "执行次数"
 
-#: crondtask/templates/periodic/periodictask_list.html:22
+#: crond/templates/periodic/periodictask_list.html:22
 msgid "date_changed"
 msgstr "更新时间"
 
-#: crondtask/templates/periodic/periodictask_list.html:24
+#: crond/templates/periodic/periodictask_list.html:24
 msgid "crontab"
 msgstr "计划表"
 
-#: crondtask/templates/periodic/periodictask_list.html:25
+#: crond/templates/periodic/periodictask_list.html:25
 msgid "interval"
 msgstr ""
 
-#: crondtask/templates/periodic/periodictask_list.html:26
+#: crond/templates/periodic/periodictask_list.html:26
 msgid "solar"
 msgstr ""
 
-#: crondtask/templates/solar/solar_create_update.html:19
+#: crond/templates/solar/solar_create_update.html:19
 msgid "Create or Update solar"
 msgstr ""
 
-#: crondtask/templates/solar/solar_create_update.html:27
+#: crond/templates/solar/solar_create_update.html:27
 msgid "event"
 msgstr ""
 
-#: crondtask/templates/solar/solar_create_update.html:47
-#: crondtask/templates/solar/solar_create_update.html:51
+#: crond/templates/solar/solar_create_update.html:47
+#: crond/templates/solar/solar_create_update.html:51
 msgid "latitude"
 msgstr ""
 
-#: crondtask/templates/solar/solar_create_update.html:57
-#: crondtask/templates/solar/solar_create_update.html:61
+#: crond/templates/solar/solar_create_update.html:57
+#: crond/templates/solar/solar_create_update.html:61
 msgid "longitude"
 msgstr ""
 
-#: crondtask/views/crond.py:39
+#: crond/views/crond.py:39
 msgid "Crontab Create"
 msgstr ""
 
-#: crondtask/views/crond.py:56
+#: crond/views/crond.py:56
 msgid "Crontab Update"
 msgstr ""
 
-#: crondtask/views/interval.py:30
+#: crond/views/interval.py:30
 msgid "Interval Create"
 msgstr ""
 
-#: crondtask/views/interval.py:46
+#: crond/views/interval.py:46
 msgid "Interval Update"
 msgstr ""
 
-#: crondtask/views/periodic.py:30 templates/_left_side_bar.html:56
+#: crond/views/periodic.py:30 templates/_left_side_bar.html:56
 msgid "Task List"
 msgstr "任务列表"
 
-#: crondtask/views/periodic.py:43
+#: crond/views/periodic.py:43
 msgid "PeriodicTasks Detail"
 msgstr ""
 
-#: crondtask/views/solar.py:29
+#: crond/views/solar.py:29
 msgid "Solar Create"
 msgstr ""
 
-#: crondtask/views/solar.py:45
+#: crond/views/solar.py:45
 msgid "Solar Update"
 msgstr ""
 
@@ -777,7 +776,7 @@ msgstr "用户名"
 msgid "Password"
 msgstr "密码"
 
-#: deploy/models/saltstack.py:10 deploy/models/saltstack.py:45
+#: deploy/models/saltstack.py:10 deploy/models/saltstack.py:43
 #: deploy/templates/saltstack/saltgroup_create_update.html:51
 #: users/models/department.py:11 users/models/group.py:13
 #: users/templates/department/create_department.html:38
@@ -799,54 +798,54 @@ msgstr ""
 msgid "Edit salt api"
 msgstr ""
 
-#: deploy/models/saltstack.py:25 deploy/templates/saltstack/hostlist.html:27
-msgid "Online status"
-msgstr "在线状态"
-
-#: deploy/models/saltstack.py:26 deploy/templates/saltstack/hostlist.html:28
+#: deploy/models/saltstack.py:25 deploy/templates/saltstack/hostlist.html:28
 msgid "Alive Last Time"
 msgstr ""
 
-#: deploy/models/saltstack.py:27 deploy/templates/saltstack/hostlist.html:29
-msgid "Join saltstack"
-msgstr "加入salt"
-
-#: deploy/models/saltstack.py:35
+#: deploy/models/saltstack.py:33
 msgid "view host deploy"
 msgstr ""
 
-#: deploy/models/saltstack.py:36
+#: deploy/models/saltstack.py:34
 msgid "Edit host deploy"
 msgstr ""
 
-#: deploy/models/saltstack.py:37
+#: deploy/models/saltstack.py:35
 msgid "view salt host"
 msgstr ""
 
-#: deploy/models/saltstack.py:42 deploy/templates/saltstack/hostlist.html:67
+#: deploy/models/saltstack.py:40 deploy/templates/saltstack/hostlist.html:67
 msgid "Salt Group"
 msgstr "salt分组"
 
-#: deploy/models/saltstack.py:43 deploy/templates/saltstack/hostlist.html:68
+#: deploy/models/saltstack.py:41 deploy/templates/saltstack/hostlist.html:68
 msgid "Salt Group Abbrname"
 msgstr "salt分组别名"
 
-#: deploy/models/saltstack.py:44 deploy/templates/saltstack/hostlist.html:69
+#: deploy/models/saltstack.py:42 deploy/templates/saltstack/hostlist.html:69
 #: users/templates/saltapi/saltapi-list.html:29
 msgid "Salt Host"
 msgstr "salt主机"
 
-#: deploy/models/saltstack.py:53
+#: deploy/models/saltstack.py:51
 #, fuzzy
 #| msgid "Create Group"
 msgid "Salt Groups"
 msgstr "创建组"
 
-#: deploy/models/saltstack.py:54
+#: deploy/models/saltstack.py:52
 #, fuzzy
 #| msgid "Create Group"
 msgid "View SaltGroup"
 msgstr "创建组"
+
+#: deploy/templates/saltstack/hostlist.html:27
+msgid "Online status"
+msgstr "在线状态"
+
+#: deploy/templates/saltstack/hostlist.html:29
+msgid "Join saltstack"
+msgstr "加入salt"
 
 #: deploy/templates/saltstack/saltgroup_create_update.html:7
 #: users/templates/department/create_department.html:8

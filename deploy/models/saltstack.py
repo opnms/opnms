@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from pypinyin import pinyin,FIRST_LETTER
 
 __all__ = ['SaltHost','SaltGroup','SaltStack']
 
@@ -22,12 +23,10 @@ class SaltStack(models.Model):
 
 class SaltHost(models.Model):
     minion = models.CharField(max_length=100,unique=True,verbose_name=_("Salt Minion"))
-    alive = models.BooleanField(default=False,verbose_name=_('Online status'))
     alive_last_time = models.DateTimeField(auto_now=True,verbose_name=_('Alive Last Time'))
-    status = models.BooleanField(default=False,verbose_name=_('Join saltstack'))
 
     def __unicode__(self):
-        return self.hostname
+        return self.minion
 
     class Meta:
         default_permissions =()
@@ -43,6 +42,11 @@ class SaltGroup(models.Model):
     abbr_name = models.CharField(max_length=100,unique=True,verbose_name=_('Salt Group Abbrname'))
     minions = models.ManyToManyField(SaltHost,related_name='salt_host_set',verbose_name=_('Salt Host'))
     comment = models.TextField(blank=True,verbose_name=_('Comment'))
+
+    def generate_abbr_name(self):
+        abbr_name = pinyin(self.name)
+        return abbr_name
+
 
     def __unicode__(self):
         return self.name
