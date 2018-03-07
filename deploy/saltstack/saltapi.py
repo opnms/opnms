@@ -7,31 +7,17 @@ import urllib.request
 import ssl,json
 from deploy.models import SaltStack
 
-__all__ = ['SalstAPI']
+__all__ = ['SaltstackAPI']
 
 context = ssl._create_unverified_context()
 ssl._create_default_https_context = ssl._create_unverified_context
 
-class SalstAPI(object):
-    _token_id = ''
+class SaltstackAPI(object):
     def __init__(self):
         saltinfo = SaltStack.objects.all()
         self._url = [item.url for item in saltinfo][0].strip()
         self._user = [item.username for item in saltinfo][0].strip()
         self._password = [item.password for item in saltinfo][0].strip()
-
-    def SaltToken(self):
-
-        params = {
-            'eauth': 'pam',
-            'username': self._user,
-            'password': self._password
-        }
-
-        encode_params = urllib.parse.urlencode(params).encode(encoding='utf-8')
-        content = self.postRequest(encode_params,prefix = '/login')
-        self._token_id = content['return'][0]['token']
-        return self._token_id
 
 
     def postRequest(self,params,prefix='/'):
@@ -41,11 +27,27 @@ class SalstAPI(object):
         :return:
         '''
         url = self._url + prefix
-        headers = {'X-Auth-Token': self._token_id}
+        headers = {'X-Auth-Token': self.SaltToken()}
         req = urllib.request.Request(url,params, headers=headers)
         data = urllib.request.urlopen(req).read().decode("utf-8")
         content = json.loads(data)
         return content
+
+    def SaltToken(self):
+
+        params = {
+            'eauth': 'pam',
+            'username': self._user,
+            'password': self._password
+        }
+        url = self._url + '/login'
+        encode_params = urllib.parse.urlencode(params).encode(encoding='utf-8')
+        req = urllib.request.Request(url,encode_params)
+        content = json.loads(urllib.request.urlopen(req).read().decode("utf-8"))
+        # content = self.postRequest(encode_params,prefix = '/login')
+        _token_id = content['return'][0]['token']
+        return _token_id
+
 
     def list_all_key(self):
         '''
@@ -57,7 +59,7 @@ class SalstAPI(object):
         content = self.postRequest(obj)
         minions = content['return'][0]['data']['return']['minions']
         # minions_pre = content['return'][0]['data']['return']['minions_pre']
-        print(minions)
+        return minions
 
     def Minions_status(self):
         '''
@@ -91,9 +93,9 @@ class SalstAPI(object):
 
 if __name__ == '__main__':
 
-    v = SalstAPI()
+    v = SaltstackAPI()
 
     v.SaltToken()
-    minon="hd-dev-biapp-01.youzibuy.com"
-    v.Minion_grains(minon)
+    # minon="hd-dev-biapp-01.youzibuy.com"
+    # v.Minion_grains(minon)
     v.list_all_key()

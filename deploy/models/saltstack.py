@@ -4,7 +4,7 @@ from pypinyin import pinyin,lazy_pinyin,FIRST_LETTER
 # from xpinyin import Pinyin
 
 
-__all__ = ['SaltHost','SaltGroup','SaltStack']
+__all__ = ['SaltHost','SaltGroup','SaltStack','SaltModule']
 
 class SaltStack(models.Model):
     url = models.URLField(max_length=150,unique=True,verbose_name = _('Saltapi Url'))
@@ -60,11 +60,20 @@ class SaltGroup(models.Model):
             ('view_saltgroup',_('View SaltGroup'))
         )
 
-
-class Module(models.Model):
+class SaltModule(models.Model):
     name = models.CharField(max_length=100,unique=True,verbose_name=_('Module Name'))
     comment = models.TextField(blank=True,verbose_name=_('Comment'))
     create_at = models.DateTimeField(auto_now_add=True,verbose_name=_('Create at'))
+    create_by = models.CharField(max_length=100,blank=False,verbose_name=_('Create by'))
 
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+        permissions = (
+            ('edit_module',_('edit module')),
+            ('view_module',_('view module'))
+        )
 
 

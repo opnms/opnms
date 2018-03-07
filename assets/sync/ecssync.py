@@ -3,9 +3,10 @@
 import requests
 import json
 from assets.sync.ecsToopnms import getinit
+
 class AliyunToOpnms:
     opnms_url = 'http://127.0.0.1:8000/api/assets/v1/instance/'
-    token = '0255242600a97c2a11faf619369c5db492f83ae2'
+    token = '5632741b8367408ac21b54f31d00dcb1968c5aab'
 
     def __init__(self,search):
         self.setup_header()

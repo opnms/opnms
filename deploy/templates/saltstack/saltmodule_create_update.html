@@ -4,7 +4,7 @@
 <ul class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
 {#    <li class="active">Dashboard</li>#}
-    <li><a href="{% url 'deploys:salthost-list' %}">{% trans 'Salt Host and Group List' %}</a></li>
+    <li><a href="{% url 'deploys:saltmodule-list' %}">{% trans 'Salt Module List' %}</a></li>
     <li><a href="#">{{ action }}</a></li>
 </ul>
 
@@ -17,7 +17,7 @@
               {% csrf_token %}
                   <div class="panel panel-default">
                       <div class="panel-heading">
-                          <h3 class="panel-title"><strong>{% trans 'Create Salt Group' %}</strong></h3>
+                          <h3 class="panel-title"><strong>{% trans 'Create User' %}</strong></h3>
                       </div>
                       <div class="panel-body">
                           <p>{% trans 'note' %} <code>[*] and Required</code>{% trans 'Please follow the prompts to improve the form' %}</p>
@@ -29,39 +29,17 @@
                               <div class="col-md-6 col-xs-12">
                                   <div class="input-group">
                                       <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                      <input type="text" name="name"  value="{{ saltgroup.name }}" placeholder="{% trans 'salt group name' %}" class="form-control"/>
+                                      <input type="text" name="name"  value="{{ saltmodule.name }}" placeholder="{% trans 'Salt Module Name' %}" class="form-control"/>
                                   </div>
                                   <span class="help-block">{% trans 'Required' %}</span>
                               </div>
                           </div>
-{##}
-{#                          <div class="form-group">#}
-{#                              <label class="col-md-3 col-xs-12 control-label">{% trans 'salt group name' %}</label>#}
-{#                              <div class="col-md-6 col-xs-12">#}
-{#                                  <div class="input-group">#}
-{#                                      <span class="input-group-addon"><span class="fa fa-user"></span></span>#}
-{#                                      <input type="text" name="abbr_name"  value="{{ saltgroup.abbr_name }}" placeholder="{% trans 'salt group name' %}" class="form-control"/>#}
-{#                                  </div>#}
-{#                                  <span class="help-block">{% trans 'Required' %}</span>#}
-{#                              </div>#}
-{#                          </div>#}
 
-                         <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'salt minion' %}</label>
-                              <div class="col-md-6 col-xs-12">
-                                  <select name="minions"  multiple="multiple" class="form-control select">
-                                      {% for salt in salthosts %}
-                                      <option value="{{ salt.pk }}">{{ salt.minion }}</option>
-                                      {% endfor %}
-                                  </select>
-                                  <span class="help-block">{% trans 'Required' %}</span>
-                              </div>
-                          </div>
 
                          <div class="form-group">
                               <label class="col-md-3 col-xs-12 control-label">{% trans 'Comment' %}</label>
                               <div class="col-md-6 col-xs-12">
-                                  <textarea name="comment" placeholder="{% trans 'Comment ...' %}" class="form-control" rows="5">{{ saltgroup.comment }}</textarea>
+                                  <textarea name="comment" placeholder="{% trans 'Comment ...' %}" class="form-control" rows="5">{{ saltmodule.comment }}</textarea>
                                   <span class="help-block">Default textarea field</span>
                               </div>
                           </div>

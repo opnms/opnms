@@ -15,8 +15,8 @@ __all__ = ['getinit']
 
 def getinit():
     client = AcsClient(
-        "LTAIuSLn28HWNALb",
-        "O8Qobl7znrzcPIj90GAwu018OCrVkM",
+        "LTAIcSA5toFFbDGJ",
+        "FHWUSnWVA2ObJnpYDbmrG6bi5yuQQB",
         "cn-hangzhou"
     )
 
