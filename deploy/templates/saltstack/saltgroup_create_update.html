@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
+{% load static %}
 <ul class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
 {#    <li class="active">Dashboard</li>#}
@@ -73,10 +74,8 @@
                       </div>
                   </div>
               </form>
-
           </div>
       </div>
-
   </div>
-
+ <script src="{% static 'login/js/jquery-3.2.1.min.js' %}"></script>
 {% endblock %}

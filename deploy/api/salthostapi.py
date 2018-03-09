@@ -1,9 +1,9 @@
 from rest_framework import routers,viewsets
-from ..models import SaltGroup,SaltHost
-from ..serializers import SaltHostSerializer,SaltGroupSerializer
+from ..models import SaltGroup,SaltHost,SaltModule
+from ..serializers import SaltHostSerializer,SaltGroupSerializer,SaltModuleSerializer
 
 
-__all__ = ['SaltHostViewSet','SaltGroupViewSet']
+__all__ = ['SaltHostViewSet','SaltGroupViewSet','SaltModuleViewset']
 
 class SaltHostViewSet(viewsets.ModelViewSet):
     queryset = SaltHost.objects.all()
@@ -25,3 +25,7 @@ class SaltHostViewSet(viewsets.ModelViewSet):
 class SaltGroupViewSet(viewsets.ModelViewSet):
     queryset = SaltGroup.objects.all()
     serializer_class = SaltGroupSerializer
+
+class SaltModuleViewset(viewsets.ModelViewSet):
+    queryset = SaltModule.objects.all()
+    serializer_class = SaltModuleSerializer

@@ -1,5 +1,5 @@
 from rest_framework import routers,serializers,viewsets
-from .models import SaltGroup,SaltHost
+from .models import SaltGroup,SaltHost,SaltModule
 from rest_framework_bulk import (BulkListSerializer,BulkSerializerMixin,ListBulkCreateUpdateDestroyAPIView,)
 
 class SaltHostSerializer(BulkSerializerMixin,serializers.ModelSerializer):
@@ -18,4 +18,13 @@ class SaltGroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SaltGroup
+        fields = '__all__'
+
+class SaltModuleSerializer(serializers.ModelSerializer):
+    '''
+    salt module serializer
+    '''
+
+    class Meta:
+        model = SaltModule
         fields = '__all__'

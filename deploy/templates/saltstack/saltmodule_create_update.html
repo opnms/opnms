@@ -17,7 +17,7 @@
               {% csrf_token %}
                   <div class="panel panel-default">
                       <div class="panel-heading">
-                          <h3 class="panel-title"><strong>{% trans 'Create User' %}</strong></h3>
+                          <h3 class="panel-title"><strong>{% trans 'Salt Module Create' %}</strong></h3>
                       </div>
                       <div class="panel-body">
                           <p>{% trans 'note' %} <code>[*] and Required</code>{% trans 'Please follow the prompts to improve the form' %}</p>
@@ -28,7 +28,7 @@
                               <label class="col-md-3 col-xs-12 control-label">{% trans 'salt group name' %}</label>
                               <div class="col-md-6 col-xs-12">
                                   <div class="input-group">
-                                      <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                                      <span class="input-group-addon"><span class="fa fa-info"></span></span>
                                       <input type="text" name="name"  value="{{ saltmodule.name }}" placeholder="{% trans 'Salt Module Name' %}" class="form-control"/>
                                   </div>
                                   <span class="help-block">{% trans 'Required' %}</span>

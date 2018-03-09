@@ -7,7 +7,6 @@
 </ul>
 
 <div class="page-content-wrap">
-
     <!-- START WIDGETS -->
     <div class="col-md-12">
         <div class="col-md-3">
@@ -68,6 +67,7 @@
     <!-- END WIDGETS -->
 </div>
 
+
  <div class="page-content-wrap pull-right">
      <div class="col-md-12">
          <div class="col-md-12">
@@ -79,7 +79,7 @@
                       <li><a href="{% url 'assets:instance-refresh' %}" class=""><span class="fa fa-refresh"></span></a></li>
                       <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                   </ul>
-              </div>
+               </div>
                  <div class="panel-body">
                      <table class="table datatable">
                          <thead>
@@ -88,7 +88,7 @@
                              <th>{% trans 'PublicIpAddress' %}</th>
                              <th>{% trans 'InnerIpAddress' %}</th>
                              <th>{% trans 'Zone' %}</th>
-                             <th>{% trans 'Cpu' %}</th>
+                             <th>{% trans 'Cpu' %}&nbsp;</th>
                              <th>{% trans 'Memory' %}(Mb)</th>
                              <th>{% trans 'Status' %}</th>
                              <th>{% trans 'InternetMaxBandwidthIn' %}</th>
@@ -116,6 +116,7 @@
                      </table>
                  </div>
              </div>
+         </div>
          </div>
      </div>
  </div>

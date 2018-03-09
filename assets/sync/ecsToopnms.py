@@ -6,6 +6,7 @@ import time
 import random
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkecs.request.v20140526 import DescribeInstancesRequest
+from assets.models import Cloudprovider,Region
 import re
 # 'LTAIuSLn28HWNALb': 'O8Qobl7znrzcPIj90GAwu018OCrVkM'
 # 'LTAIcSA5toFFbDGJ': 'FHWUSnWVA2ObJnpYDbmrG6bi5yuQQB'
@@ -13,11 +14,11 @@ import re
 __all__ = ['getinit']
 
 
-def getinit():
+def getinit(key,secret,region):
     client = AcsClient(
-        "LTAIcSA5toFFbDGJ",
-        "FHWUSnWVA2ObJnpYDbmrG6bi5yuQQB",
-        "cn-hangzhou"
+        "%s" % (key),
+        "%s" %(secret),
+        "%s" %(region)
     )
 
     request = DescribeInstancesRequest.DescribeInstancesRequest()

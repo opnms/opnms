@@ -5,6 +5,7 @@ from .. import api
 router = BulkRouter()
 router.register(r'v1/salthost',api.SaltHostViewSet,'salthost')
 router.register(r'v1/saltgroup',api.SaltGroupViewSet,'saltgroup')
+router.register(r'v1/saltmodule',api.SaltModuleViewset,'saltmodule')
 
 app_name = 'deploy'
 

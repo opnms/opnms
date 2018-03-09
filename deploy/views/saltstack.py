@@ -13,7 +13,10 @@ from ..forms import SaltGroupForm,SaltHostForm,SaltModuleForm
 from ..saltstack import saltapi
 from assets.tasks import salt_host_create_update
 
-__all__ = ['SaltHostListView','SaltHostRefreshView','SaltGroupCreateView','SaltGroupUpdateView','SaltModuleListView','SaltGroupDetailView','SaltModuleCreateView','SaltModuleUpdateView']
+__all__ = ['SaltHostListView','SaltHostRefreshView','SaltGroupCreateView','SaltGroupUpdateView',
+           'SaltModuleListView','SaltGroupDetailView','SaltModuleCreateView','SaltModuleUpdateView',
+           'SaltModuleDeployView',
+           ]
 
 class SaltHostListView(LoginRequiredMixin,TemplateView):
     '''
@@ -155,4 +158,18 @@ class SaltModuleUpdateView(LoginRequiredMixin,UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('deploys:saltmodule-list')
+
+class SaltModuleDeployView(LoginRequiredMixin,TemplateView):
+    '''
+    saltstack deploy module view.
+    '''
+    template_name = 'saltstack/saltmodule_deploy.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = _('Salt Module Deploy')
+        context['saltgoups'] = SaltGroup.objects.all()
+        context['salthosts'] = SaltHost.objects.all()
+        context['modules'] = SaltModule.objects.all()
+        return context
 

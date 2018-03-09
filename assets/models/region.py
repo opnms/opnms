@@ -25,9 +25,9 @@ class Cloudprovider(models.Model):
 
 
 class Region(models.Model):
-    name = models.CharField(max_length=15,unique=True,verbose_name=_('Region'))
+    name = models.CharField(max_length=15,verbose_name=_('Region'))
     provider = models.ForeignKey(Cloudprovider,on_delete=models.CASCADE,verbose_name=_('Cloud Provider'))
-    city = models.CharField(max_length=15, blank=False, unique=True, verbose_name=_('City'))
+    city = models.CharField(max_length=15, blank=False, verbose_name=_('City'))
     create_at = models.DateTimeField(auto_now_add=True,verbose_name=_('Create at'))
     create_by = models.CharField(max_length=100,blank=False,verbose_name=_('Create by'))
 
@@ -36,3 +36,4 @@ class Region(models.Model):
 
     class Meta:
         ordering =['name']
+        unique_together = (('name','provider'),)

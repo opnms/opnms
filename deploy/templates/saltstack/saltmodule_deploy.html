@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+{% load static %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'deploys:saltmodule-list' %}">{% trans 'Salt Module List' %}</a></li>
+    <li><a href="#">{{ action }}</a></li>
+</ul>
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
+
+<div class="page-content-wrap">
+    <div class="col-md-12">
+        <div class="col-md-6" >
+            <section class="deploy-switch">
+                <div class="login-box">
+                    <form id="module_deploy" class="login-form" role="form" method="post" action="">
+                     {% csrf_token %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
+                            </div>
+                            <div class="panel-body form-group-separated">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'salt group' %}</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <select name="minions"  class="form-control select" id="group_choice" onchange="myFc()">
+                                            <option value="" selected >{% trans 'Please choice' %}</option>
+                                            {% for group in saltgoups %}
+                                                <option value="{{ group.pk }}">{{ group.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <button ><a href="#" data-toggle="flip">使用salt节点</a></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                         <div class="panel-body form-group-separated">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'choices node' %}</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <textarea id="saltgroup" name="comment" placeholder="{% trans 'choices node ...' %}" class="form-control" rows="5">{{ saltgroup.comment }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body form-group-separated">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'salt module' %}</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <select name="minions" class="form-control select">
+                                            {% for module in modules %}
+                                                <option value="{{ module.pk }}">{{ module.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-footer">
+                                <button type="button" id="exec_submit" class="btn btn-primary pull-right">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="forget-form" role="form" method="post" action="">
+                     {% csrf_token %}
+                       <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
+                            </div>
+                            <div class="panel-body form-group-separated">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'salt host' %}</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <select name="minions" multiple="multiple" class="form-control select" id="node_choice" onchange="myFc()">
+                                            {% for host in salthosts %}
+                                                <option value="{{ host.pk }}">{{ host.minion }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <p class="semibold-text mb-2"><a href="#" data-toggle="flip">使用salt分组</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body form-group-separated">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'choices node' %}</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <textarea id="saltnode" name="comment" placeholder="{% trans 'choices node ...' %}" class="form-control" rows="5">{{ saltgroup.comment }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-body form-group-separated">
+                                <div class="form-group">
+                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'salt module' %}</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <select name="minions" class="form-control select">
+                                            {% for module in modules %}
+                                                <option value="{{ module.pk }}">{{ module.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-footer">
+                                <button class="btn btn-primary pull-right">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-6" >
+            <form class="form-horizontal" method="post" action="">
+                {% csrf_token %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
+                    </div>
+                    <div class="panel-body form-group-separated">
+                        <div class="form-group">
+                            <label class="col-md-2 col-xs-12 control-label">{% trans 'Result' %}</label>
+                            <div class="col-md-6 col-xs-12">
+                                <textarea name="comment" placeholder="{% trans 'please wait ...' %}" class="form-control" style="margin: 0px -169.5px 0px 0px; width: 165%;" rows="14">{{ saltmodule.comment }}</textarea>
+                                <span class="help-block">Default textarea field</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  $('.deploy-switch [data-toggle="flip"]').click(function() {
+  	$('.login-box').toggleClass('flipped');
+  	return false;
+  });
+function myFc() {
+    var val = $('#group_choice option:selected').text();
+    $("#saltgroup").html(val);
+
+    var val = $('#node_choice option:selected').text();
+    $('#saltnode').html(val);
+};
+{#var id = $('#group_choice option:selected').val();#}
+{#var get_url = {% url 'api-deploys:saltgroup-detail' %} + id;#}
+$("#exec_submit").click(function () {
+    $.ajax({
+            type: "get",   //提交的方法
+            url:'', //提交的地址
+            data:$('#module_deploy').serialize(),// 序列化表单值
+            async: false,
+            error: function(request) {  //失败的话
+                 alert("Connection error");
+            },
+            success: function(data) {  //成功
+                 alert(data);  //就将返回的数据显示出来
+                 {#window.location.href="跳转页面"#}
+            }
+         });
+       });
+  </script>
+{% endblock %}
