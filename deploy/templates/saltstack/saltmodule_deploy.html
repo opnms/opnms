@@ -60,48 +60,47 @@
                     </form>
                     <form class="forget-form" role="form" method="post" action="">
                      {% csrf_token %}
-                       <div ng-controller="SaltHostCtrl" class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
-                            </div>
-                            <div class="panel-body form-group-separated">
-                                <div class="form-group">
-                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'salt host' %}</label>
-                                    <div class="col-md-6 col-xs-12">
-                                        <select ng-model="choice_host" multiple ng-multiple="true" name="minions" class="form-control selected">
-                                            <option ng-repeat="host in hosts" value="{[ host.minion ]}">{[ host.minion ]}</option>
-                                        </select>
-                                        <p class="semibold-text mb-2"><a href="#" data-toggle="flip">使用salt分组</a></p>
-                                    </div>
-                                </div>
-                            </div>
+                      <div ng-controller="SaltHostCtrl" class="panel panel-default">
+                          <div class="panel-heading">
+                              <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
+                          </div>
+                          <div class="panel-body form-group-separated">
+                              <div class="form-group">
+                                  <label class="col-md-2 col-xs-12 control-label">{% trans 'salt host' %}</label>
+                                  <div class="col-md-6 col-xs-12">
+                                      <select ng-model="choice_host" multiple ng-multiple="true" name="minions" class="form-control selected">
+                                          <option ng-repeat="host in hosts" value="{[ host.minion ]}">{[ host.minion ]}</option>
+                                      </select>
+                                      <p class="semibold-text mb-2"><a href="#" data-toggle="flip">使用salt分组</a></p>
+                                  </div>
+                              </div>
+                          </div>
 
-                            <div class="panel-body form-group-separated">
-                                <div class="form-group">
-                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'choices node' %}</label>
-                                    <div class="col-md-6 col-xs-12">
-                                        <textarea id="saltnode" name="comment" placeholder="{% trans 'choices node ...' %}" class="form-control" rows="5">{[ nodes ]}</textarea>
-                                    </div>
-                                </div>
-                            </div>
+                          <div class="panel-body form-group-separated">
+                              <div class="form-group">
+                                  <label class="col-md-2 col-xs-12 control-label">{% trans 'choices node' %}</label>
+                                  <div class="col-md-6 col-xs-12">
+                                      <textarea id="saltnode" name="comment" placeholder="{% trans 'choices node ...' %}" class="form-control" rows="5">{[ nodes ]}</textarea>
+                                  </div>
+                              </div>
+                          </div>
 
-                            <div class="panel-body form-group-separated">
-                                <div class="form-group">
-                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'salt module' %}</label>
-                                    <div class="col-md-6 col-xs-12">
-                                        <select name="minions" class="form-control select">
-                                            {% for module in modules %}
-                                                <option value="{{ module.pk }}">{{ module.name }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel-footer">
-                                <button class="btn btn-primary pull-right">Submit</button>
-                            </div>
-                        </div>
+                          <div class="panel-body form-group-separated">
+                              <div class="form-group">
+                                  <label class="col-md-2 col-xs-12 control-label">{% trans 'salt module' %}</label>
+                                  <div class="col-md-6 col-xs-12">
+                                      <select name="minions" class="form-control select">
+                                          {% for module in modules %}
+                                              <option value="{{ module.pk }}">{{ module.name }}</option>
+                                          {% endfor %}
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel-footer">
+                              <button class="btn btn-primary pull-right">Submit</button>
+                          </div>
+                      </div>
                     </form>
                 </div>
             </section>
