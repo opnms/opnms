@@ -15,7 +15,7 @@
                   <h3 class="panel-title">{% trans 'Salt Host List' %}</h3>
                   <ul class="panel-controls">
                       <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                      <li><a href="{% url 'deploys:salthost-refresh' %}" ><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="{% url 'deploys:salthost-refresh' %}" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh SaltHost' %}" ><span class="fa fa-refresh"></span></a></li>
                       <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                   </ul>
               </div>
@@ -40,7 +40,7 @@
           <!-- END DEFAULT DATATABLE -->
 
        <!-- START DEFAULT DATATABLE -->
-      <div class="col-md-7">
+      <!-- <div class="col-md-7">
           <div class="panel panel-default">
               <div class="panel-heading">
                   <h3 class="panel-title">{% trans 'Salt Group List' %}</h3>
@@ -77,11 +77,53 @@
           </div>
       </div>
           <!-- END DEFAULT DATATABLE -->
+         <div class="col-md-7">
+          <!-- START DEFAULT DATATABLE -->
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'Salt Module List' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="{% url 'deploy:saltmodule-create' %}" data-toggle="tooltip" data-placement="top" title="{% trans 'Create SaltModel' %}"><span class="fa fa-plus-square"></span></a></li>
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="{% url 'deploys:salthost-refresh' %}" ><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+              </div>
+              <div class="panel-body">
+                  <table class="table datatable">
+                      <thead>
+                      <tr>
+                          <th>{% trans 'Module Name' %}</th>
+                          <th>{% trans 'Comment' %}</th>
+                          <th>{% trans 'Create at' %}</th>
+                          <th>{% trans 'Create by' %}</th>
+                          <th>{% trans 'Actions' %}</th>
+                      </tr>
+                      </thead>
+                      {% for module in modules %}
+                         <tr id="{{ module.pk }}">
+                             <td>{{ module.name }}</td>
+                             <td>{{ module.comment }}</td>
+                             <td>{{ module.create_at }}</td>
+                             <td>{{ module.create_by }}</td>
+                            <td>
+                                <a href="{% url 'deploys:saltmodule-update'  module.pk %}"><i class="fa fa-edit text-b"></i></a>
+                                <a onclick="delete_saltmodule({{ module.id }})"><i class="fa fa-recycle text-red"></i></a>
+                            </td>
+                         </tr>
+                     {% endfor %}
+                  </table>
+              </div>
+          </div>
       </div>
+          <!-- END DEFAULT DATATABLE -->
+
+       <!-- START DEFAULT DATATABLE -->
   </div>
+</div>
 
 <script>
-    function delete_saltgroup(id) {
+    function delete_saltmodule(id) {
         var the_url = "{% url 'api-deploys:saltgroup-list' %}";
             swal({
                 title: "确认删除此条记录吗?",
@@ -98,13 +140,13 @@
                         type: "POST",
                         method: "DELETE",
                         success: function () {
-                            swal("Salt分组删除!","Salt分组删除成功！","success");
+                            swal("Salt module 删除!","Salt module 删除成功！","success");
                             window.location.reload();
                         }
                     });
             }
             })
-    }
+    };
 </script>
 {% endblock %}
 

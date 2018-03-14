@@ -15,10 +15,10 @@ class SaltGroupSerializer(serializers.ModelSerializer):
     '''
     salt group serializer
     '''
-
+    minions = serializers.SlugRelatedField(many=True,read_only=True,slug_field='minion')
     class Meta:
         model = SaltGroup
-        fields = '__all__'
+        fields = ('id','name','abbr_name','minions','comment',)
 
 class SaltModuleSerializer(serializers.ModelSerializer):
     '''

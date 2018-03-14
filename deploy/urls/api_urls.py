@@ -10,6 +10,6 @@ router.register(r'v1/saltmodule',api.SaltModuleViewset,'saltmodule')
 app_name = 'deploy'
 
 urlpatterns = [
-    # url(r'^v1/instance-bulk/$',api.InstanceUpdateAPI.as_view(),'instance-bulk-update'),
+    url(r'v1/salthost/(?P<pk>\d+)/detail/$',api.SaltHostListApi.as_view(),name='salthost-detail'),
 ]
 urlpatterns += router.urls

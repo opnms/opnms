@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^saltmodule/deploy/$', views.SaltModuleDeployView.as_view(), name='saltmodule-deploy'),
 
     #salt group
+    url(r'^salt-group/$',views.SaltGroupListView.as_view(),name='saltgroup-list'),
     url(r'^salt-group/create/$',views.SaltGroupCreateView.as_view(),name='saltgroup-create'),
     url(r'^salt-group/(?P<pk>\d+)/update/$',views.SaltGroupUpdateView.as_view(),name='saltgroup-update'),
     url(r'^saltgroup/(?P<pk>\d+)/detail/$',views.SaltGroupDetailView.as_view(),name='saltgroup-detail'),

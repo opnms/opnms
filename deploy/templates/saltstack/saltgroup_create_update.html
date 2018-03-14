@@ -8,12 +8,10 @@
     <li><a href="{% url 'deploys:salthost-list' %}">{% trans 'Salt Host and Group List' %}</a></li>
     <li><a href="#">{{ action }}</a></li>
 </ul>
-
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
   <div class="page-content-wrap">
-
       <div class="col-md-12">
           <div class="col-md-12">
-
               <form class="form-horizontal" method="post" action="">
               {% csrf_token %}
                   <div class="panel panel-default">
@@ -35,19 +33,8 @@
                                   <span class="help-block">{% trans 'Required' %}</span>
                               </div>
                           </div>
-{##}
-{#                          <div class="form-group">#}
-{#                              <label class="col-md-3 col-xs-12 control-label">{% trans 'salt group name' %}</label>#}
-{#                              <div class="col-md-6 col-xs-12">#}
-{#                                  <div class="input-group">#}
-{#                                      <span class="input-group-addon"><span class="fa fa-user"></span></span>#}
-{#                                      <input type="text" name="abbr_name"  value="{{ saltgroup.abbr_name }}" placeholder="{% trans 'salt group name' %}" class="form-control"/>#}
-{#                                  </div>#}
-{#                                  <span class="help-block">{% trans 'Required' %}</span>#}
-{#                              </div>#}
-{#                          </div>#}
 
-                         <div class="form-group">
+                          <div class="form-group">
                               <label class="col-md-3 col-xs-12 control-label">{% trans 'salt minion' %}</label>
                               <div class="col-md-6 col-xs-12">
                                   <select name="minions"  multiple="multiple" class="form-control select">
@@ -59,7 +46,7 @@
                               </div>
                           </div>
 
-                         <div class="form-group">
+                          <div class="form-group">
                               <label class="col-md-3 col-xs-12 control-label">{% trans 'Comment' %}</label>
                               <div class="col-md-6 col-xs-12">
                                   <textarea name="comment" placeholder="{% trans 'Comment ...' %}" class="form-control" rows="5">{{ saltgroup.comment }}</textarea>
@@ -77,5 +64,5 @@
           </div>
       </div>
   </div>
- <script src="{% static 'login/js/jquery-3.2.1.min.js' %}"></script>
+
 {% endblock %}

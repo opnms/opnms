@@ -15,7 +15,7 @@ from assets.tasks import salt_host_create_update
 
 __all__ = ['SaltHostListView','SaltHostRefreshView','SaltGroupCreateView','SaltGroupUpdateView',
            'SaltModuleListView','SaltGroupDetailView','SaltModuleCreateView','SaltModuleUpdateView',
-           'SaltModuleDeployView',
+           'SaltModuleDeployView','SaltGroupListView'
            ]
 
 class SaltHostListView(LoginRequiredMixin,TemplateView):
@@ -34,7 +34,7 @@ class SaltHostListView(LoginRequiredMixin,TemplateView):
         context = super().get_context_data(**kwargs)
         context['action'] = _('Salt Key List')
         context['hostlist'] = SaltHost.objects.all()
-        context['hostgroups'] = SaltGroup.objects.all()
+        context['modules'] = SaltModule.objects.all()
         return context
 
 class SaltHostRefreshView(SaltHostListView):
@@ -85,6 +85,20 @@ class SaltGroupUpdateView(LoginRequiredMixin,UpdateView):
     def get_success_url(self):
         return reverse_lazy('deploys:salthost-list')
 
+class SaltGroupListView(LoginRequiredMixin,TemplateView):
+    '''
+    salt group list
+    '''
+
+    template_name = 'saltstack/saltgroup_list.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = _('Salt group list')
+        context['hostgroups'] = SaltGroup.objects.all()
+        return context
+
+
+
 class SaltGroupDetailView(LoginRequiredMixin,DetailView):
     '''
     salt group detail view.
@@ -132,7 +146,7 @@ class SaltModuleCreateView(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('deploys:saltmodule-list')
+        return reverse_lazy('deploys:salthost-list')
 
 
 
@@ -157,7 +171,7 @@ class SaltModuleUpdateView(LoginRequiredMixin,UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('deploys:saltmodule-list')
+        return reverse_lazy('deploys:salthost-list')
 
 class SaltModuleDeployView(LoginRequiredMixin,TemplateView):
     '''
@@ -172,4 +186,3 @@ class SaltModuleDeployView(LoginRequiredMixin,TemplateView):
         context['salthosts'] = SaltHost.objects.all()
         context['modules'] = SaltModule.objects.all()
         return context
-
