@@ -31,7 +31,6 @@ class SaltHost(models.Model):
         return self.minion
 
     class Meta:
-        # default_permissions =()
         permissions = (
             ('view_deploy',_('view host deploy')),
             ('edit_deploy',_('Edit host deploy')),
@@ -44,6 +43,8 @@ class SaltGroup(models.Model):
     abbr_name = models.CharField(max_length=100,unique=True,verbose_name=_('Salt Group Abbrname'))
     minions = models.ManyToManyField(SaltHost,related_name='salt_host_set',verbose_name=_('Salt Host'))
     comment = models.TextField(blank=True,verbose_name=_('Comment'))
+    create_by = models.CharField(max_length=50, blank=False, verbose_name=_('Create by'))
+    create_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Create at'))
 
     def generate_abbr_name(self):
         abbr_name = ''.join(lazy_pinyin(self.name))
@@ -54,7 +55,6 @@ class SaltGroup(models.Model):
         return self.name
 
     class Meta:
-        # default_permissions = ()
         permissions = (
             ('edit_saltgroup',_('Salt Groups')),
             ('view_saltgroup',_('View SaltGroup'))

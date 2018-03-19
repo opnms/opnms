@@ -12,11 +12,9 @@
           <!-- START DEFAULT DATATABLE -->
           <div class="panel panel-default">
               <div class="panel-heading">
-                   <a href="{% url 'users:saltapi-create' %}">
-                      <button class="btn btn-success" data-toggle="tooltip" data-placement="right" title="{% trans 'Add User' %}"><i class="fa fa-plus"></i></button>
-                  </a>
                   <h3 class="panel-title">{% trans 'Salt Host List' %}</h3>
                   <ul class="panel-controls">
+                      <li><a href="{% url 'users:saltapi-create' %}" data-toggle="tooltip" data-placement="top" title="{% trans 'Create SaltApi' %}"><span class="fa fa-plus-square"></span></a></li>
                       <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
                       <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
                       <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>

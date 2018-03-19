@@ -19,4 +19,7 @@ urlpatterns = [
     url(r'^salt-group/create/$',views.SaltGroupCreateView.as_view(),name='saltgroup-create'),
     url(r'^salt-group/(?P<pk>\d+)/update/$',views.SaltGroupUpdateView.as_view(),name='saltgroup-update'),
     url(r'^saltgroup/(?P<pk>\d+)/detail/$',views.SaltGroupDetailView.as_view(),name='saltgroup-detail'),
+
+    #salt deploy
+    url(r'^salt-deploy/module/$',views.SaltDeployModuleView.as_view(),name='salt-module-deploy'),
     ]

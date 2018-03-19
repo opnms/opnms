@@ -44,7 +44,6 @@ class SaltstackAPI(object):
         encode_params = urllib.parse.urlencode(params).encode(encoding='utf-8')
         req = urllib.request.Request(url,encode_params)
         content = json.loads(urllib.request.urlopen(req).read().decode("utf-8"))
-        # content = self.postRequest(encode_params,prefix = '/login')
         _token_id = content['return'][0]['token']
         return _token_id
 
@@ -72,7 +71,7 @@ class SaltstackAPI(object):
         context =  self.postRequest(req)
         minions_up = context['return'][0]['up']
         minions_down = context['return'][0]['down']
-        print(minions_up,minions_down)
+        return minions_up,minions_down
 
     def Minion_grains(self,minion):
         '''
@@ -90,6 +89,24 @@ class SaltstackAPI(object):
         print(ret)
 
 
+    def remote_execution(self,tgt,fun,arg,tgt_type):
+        '''
+        异步执行远程命令、部署模块
+        '''
+
+        params = {'client': 'local_async', 'tgt': tgt, 'fun': fun, 'arg': arg, 'tgt_type': tgt_type}
+        obj = urllib.parse.urlencode(params).encode(encoding='utf-8')
+        content = self.postRequest(obj)
+        jid = content['return'][0]['jid']
+        print(jid)
+
+    def remote_localexec(self,tgt,fun,arg,tgt_type):
+        params = {'client': 'local', 'tgt': tgt, 'fun': fun, 'arg': arg, 'tgt_type': tgt_type}
+        obj = urllib.parse.urlencode(params).encode(encoding='utf-8')
+        content = self.postRequest(obj)
+        ret = content['return'][0]
+        print(ret)
+
 
 if __name__ == '__main__':
 
@@ -98,4 +115,16 @@ if __name__ == '__main__':
     v.SaltToken()
     # minon="hd-dev-biapp-01.youzibuy.com"
     # v.Minion_grains(minon)
-    v.list_all_key()
+    # v.list_all_key()
+    up,down = v.Minions_status()
+    print(up)
+    print(down)
+    host = '10.252.221.163,10.80.227.82'
+    fun = 'cmd.run'
+    arg = 'ls -l'
+    tgt_type = 'list'
+    v.remote_execution(tgt=host,fun=fun,arg=arg,tgt_type=tgt_type)
+
+
+
+

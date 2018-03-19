@@ -1,21 +1,24 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
+from django.http import JsonResponse,HttpResponseRedirect,HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect,get_object_or_404
+from django.shortcuts import redirect,get_object_or_404,render
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView,DeleteView
+from django.views.generic.edit import CreateView, UpdateView,DeleteView,FormView
+from django.views import View
 from django.views.generic.detail import DetailView
 from ..models import SaltHost,SaltGroup,SaltModule
 from ..forms import SaltGroupForm,SaltHostForm,SaltModuleForm
 from ..saltstack import saltapi
+import json
 from assets.tasks import salt_host_create_update
 
 __all__ = ['SaltHostListView','SaltHostRefreshView','SaltGroupCreateView','SaltGroupUpdateView',
            'SaltModuleListView','SaltGroupDetailView','SaltModuleCreateView','SaltModuleUpdateView',
-           'SaltModuleDeployView','SaltGroupListView'
+           'SaltModuleDeployView','SaltGroupListView','SaltDeployModuleView'
            ]
 
 class SaltHostListView(LoginRequiredMixin,TemplateView):
@@ -186,3 +189,43 @@ class SaltModuleDeployView(LoginRequiredMixin,TemplateView):
         context['salthosts'] = SaltHost.objects.all()
         context['modules'] = SaltModule.objects.all()
         return context
+
+
+class AjaxableResponseMixin:
+    """
+    Mixin to add AJAX support to a form.
+    Must be used with an object-based FormView (e.g. CreateView)
+    """
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        if self.request.is_ajax():
+            return JsonResponse(form.errors, status=400)
+        else:
+            return response
+
+    def form_valid(self, form):
+        # We make sure to call the parent's form_valid() method because
+        # it might do some processing (in the case of CreateView, it will
+        # call form.save() for example).
+        response = super().form_valid(form)
+        if self.request.is_ajax():
+            data = {
+                'pk': self.object.pk,
+            }
+            return JsonResponse(data)
+        else:
+            return response
+
+class SaltDeployModuleView(LoginRequiredMixin,FormView):
+    '''
+    salt exec command view,
+    '''
+
+
+    def get(self, request, *args, **kwargs):
+        saltgroup = self.request.POST.get('saltgroup')
+        return  HttpResponse(saltgroup)
+
+    def post(self,request,*args,**kwargs):
+        data = self.request.body
+        return HttpResponse(data)
