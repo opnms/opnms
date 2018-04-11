@@ -4,7 +4,7 @@ from django import forms
 from ..models import SaltHost,SaltGroup,SaltModule
 
 
-__all__ = ['SaltHostForm','SaltGroupForm','SaltModuleForm']
+__all__ = ['SaltHostForm','SaltGroupForm','SaltModuleForm','SaltDeployForm']
 
 
 class SaltHostForm(forms.ModelForm):
@@ -32,3 +32,7 @@ class SaltModuleForm(forms.ModelForm):
     class Meta:
         model = SaltModule
         fields = ('name','comment')
+
+class SaltDeployForm(forms.Form):
+    saltgroup = forms.CharField()
+    saltmodule = forms.CharField()

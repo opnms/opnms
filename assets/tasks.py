@@ -11,7 +11,8 @@ from base.apis import salthost_create_or_update
 
 # cloud = Cloudprovider.objects.all()
 # print(cloud)
-
+opnms_url = 'http://127.0.0.1:8000/api/assets/v1/instance/'
+token = '5632741b8367408ac21b54f31d00dcb1968c5aab'
 @shared_task
 def ecs_sync():
     cloud = Cloudprovider.objects.all()
@@ -28,7 +29,7 @@ def ecs_sync():
                 'SerialNumber': instance['SerialNumber'],
             }
 
-            a = AliyunToOpnms(search)
+            a = AliyunToOpnms(url=opnms_url,token=token,search=search)
             a.main(instance)
 
 @shared_task

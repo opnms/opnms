@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^api-auth/',include('rest_framework.urls',namespace='rest_framework')),
     url(r'^crond/',include('crond.urls.view_urls',namespace='crondtasks')),
     url(r'^deploys/',include('deploy.urls.view_urls',namespace='deploys')),
+    url(r'^business/',include('business.urls.view_urls',namespace='business')),
 
     #api
     url(r'api/assets/',include('assets.urls.api_urls',namespace='api-assets')),

@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label class="col-md-2 col-xs-12 control-label">{% trans 'Result' %}</label>
                             <div class="col-md-6 col-xs-12">
-                                <textarea name="comment" placeholder="{% trans 'please wait ...' %}" class="form-control" style="margin: 0px -169.5px 0px 0px; width: 165%; height: 259px;" rows="10">{[ hosts ]}</textarea>
+                                <textarea name="comment" placeholder="{% trans 'please wait ...' %}" class="form-control" style="margin: 0px -169.5px 0px 0px; width: 165%; height: 259px;" rows="10">{[ PostDataResponse ]}</textarea>
                                 <span class="help-block">Default textarea field</span>
                             </div>
                         </div>
@@ -172,21 +172,22 @@
       });
 
       $scope.toggle = function () {
-        $http({
-            method:'POST',
-            url:"{% url 'deploys:salt-module-deploy' %}",
-            headers: {},
-            data: {saltgroup:'dd'}
-        }).then(
-            function successCallback(response) {
-                $scope.hosts = response;
-            },
-            function errorCallback(response) {
+        var data = $.param({
+            saltgroup:ngModelnode_list,
+        });
+        $http.post('{% url 'deploy:salt-module-deploy' %}',data)
+            .success(function (response) {
+                $scope.PostDataResponse = response;
 
-            }
-        );
-      };
-  });
+            })
+            .error(function (data, status, header, config) {
+                $scope.ResponseDetails = "Data: " + data +
+                    "<hr />status: " + status +
+                    "<hr />headers: " + header +
+                    "<hr />config: " + config;
+            });
+      }})
+  ;
 
   app.controller('SaltHostCtrl',function ($scope,$http) {
       $http({
@@ -204,20 +205,5 @@
   });
 
 
-  $(".name_submit").click(function(){
-    var nickname = $("input[name='nickname']").val();
-    $.ajax({
-      url:"{% url 'deploys:salt-module-deploy' %}",
-      type:"post",
-      data:{"nickname":nickname},
-      dataType:"json",
-      success:function(data){
-        $(".name_value").text("")
-       $(".name_value").append("名字为:"+data)
-      }
-    }); // Ajax End
-  });
 </script>
-
-
 {% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'business:project-list'%}">{% trans 'InstanceList' %}</a></li>
+    <li><a href="{% url 'business:project-detail' project.pk  %}">{{ action }}</a></li>
+</ul>
+
+<div class="col-xs-12">
+      <div class="box">
+          <div class="box-header">
+              <h3 class="box-title">{% trans 'Base Info' %}</h3>
+          </div>
+          <div class="box-body box-padding">
+              <table class="table table-striped">
+                  <tr class="hide">
+                      <th>key</th>
+                      <th>value</th>
+                  </tr>
+                    <tr>
+                      <td>{% trans 'Project Name' %}</td>
+                      <td>{{ project.name }}</td>
+                  </tr>
+                   <tr>
+                      <td>{% trans 'Project abbr name' %}</td>
+                      <td>{{ project.abbr_name }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'project owner' %}</td>
+                      <td>{{ project.owner }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'Project Code URL' %}</td>
+                      <td>{{ project.code_address }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'Comment' %}</td>
+                      <td>{{ project.comment }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'Create by' %}</td>
+                      <td>{{ project.create_by }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'Create at' %}</td>
+                      <td>{{ project.create_at }}</td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+  </div>
+  <div class="col-xs-6">
+      <div class="box" id="idc_rack">
+          <div class="box-header">
+              <h3 class="box-title">{% trans 'PROD' %}</h3>
+              <a href="#" class="btn btn-sm btn-default pull-right">新增机柜</a>
+          </div>
+          <div class="box-body">
+              <table class="table table-bordered">
+                  <tr>
+                      <th>ID</th>
+                      <th>机柜名称</th>
+                      <th>交换机</th>
+                      <th>服务器</th>
+                      <th>管理</th>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>(U)</td>
+                      <td>
+                        <a href="#"></a>
+                      </td>
+                      <td>
+                        <a href="#"></a></td>
+                      <td>
+                        <a href="#" class="badge bg-green">更新</a>
+                        <a href="#" class="badge bg-red">回收</a>
+                      </td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+  </div>
+  <div class="col-xs-6">
+      <div class="box" id="idc_rack">
+          <div class="box-header">
+              <h3 class="box-title">{% trans 'PRE' %}</h3>
+              <a href="#" class="btn btn-sm btn-default pull-right">新增机柜</a>
+          </div>
+          <div class="box-body">
+              <table class="table table-bordered">
+                  <tr>
+                      <th>ID</th>
+                      <th>机柜名称</th>
+                      <th>交换机</th>
+                      <th>服务器</th>
+                      <th>管理</th>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td>(U)</td>
+                      <td>
+                        <a href="#"></a>
+                      </td>
+                      <td>
+                        <a href="#"></a></td>
+                      <td>
+                        <a href="#" class="badge bg-green">更新</a>
+                        <a href="#" class="badge bg-red">回收</a>
+                      </td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+

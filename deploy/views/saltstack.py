@@ -11,10 +11,14 @@ from django.views.generic.edit import CreateView, UpdateView,DeleteView,FormView
 from django.views import View
 from django.views.generic.detail import DetailView
 from ..models import SaltHost,SaltGroup,SaltModule
-from ..forms import SaltGroupForm,SaltHostForm,SaltModuleForm
+from ..forms import SaltGroupForm,SaltHostForm,SaltModuleForm,SaltDeployForm
 from ..saltstack import saltapi
 import json
 from assets.tasks import salt_host_create_update
+from django.http import QueryDict
+from urllib.parse import urlencode
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseBadRequest
 
 __all__ = ['SaltHostListView','SaltHostRefreshView','SaltGroupCreateView','SaltGroupUpdateView',
            'SaltModuleListView','SaltGroupDetailView','SaltModuleCreateView','SaltModuleUpdateView',
@@ -190,42 +194,45 @@ class SaltModuleDeployView(LoginRequiredMixin,TemplateView):
         context['modules'] = SaltModule.objects.all()
         return context
 
-
-class AjaxableResponseMixin:
+class JSONMiddleware:
     """
-    Mixin to add AJAX support to a form.
-    Must be used with an object-based FormView (e.g. CreateView)
+    Process application/json requests data from GET and POST requests.
     """
-    def form_invalid(self, form):
-        response = super().form_invalid(form)
-        if self.request.is_ajax():
-            return JsonResponse(form.errors, status=400)
-        else:
-            return response
+    def process_request(self, request):
+        if 'application/json' in request.META['CONTENT_TYPE']:
+            # load the json data
+            data = json.loads(request.body)
 
-    def form_valid(self, form):
-        # We make sure to call the parent's form_valid() method because
-        # it might do some processing (in the case of CreateView, it will
-        # call form.save() for example).
-        response = super().form_valid(form)
-        if self.request.is_ajax():
-            data = {
-                'pk': self.object.pk,
-            }
-            return JsonResponse(data)
-        else:
-            return response
+            q_data = QueryDict('', mutable=True)
+            for key, value in data.iteritems():
+                if isinstance(value, list):
+                    # need to iterate through the list and upate
+                    # so that the list does not get wrapped in an
+                    # additional list.
+                    for x in value:
+                        q_data.update({key: x})
+                else:
+                    q_data.update({key: value})
 
-class SaltDeployModuleView(LoginRequiredMixin,FormView):
+            if request.method == 'GET':
+                request.GET = q_data
+
+            if request.method == 'POST':
+                request.POST = q_data
+
+        return None
+
+
+class SaltDeployModuleView(LoginRequiredMixin,TemplateView):
     '''
     salt exec command view,
     '''
 
+    # @csrf_exempt
+    # def dispatch(self, *args, **kwargs):
+    #     return super(SaltDeployModuleView, self).dispatch(*args, **kwargs)
 
-    def get(self, request, *args, **kwargs):
-        saltgroup = self.request.POST.get('saltgroup')
-        return  HttpResponse(saltgroup)
-
-    def post(self,request,*args,**kwargs):
-        data = self.request.body
-        return HttpResponse(data)
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            nickname = request.POST.get('nickname', '')  # 获取ajax POST的nickname值
+            return HttpResponse(nickname)

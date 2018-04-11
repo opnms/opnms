@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-14 15:24+0800\n"
+"POT-Creation-Date: 2018-04-10 23:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "IoOptimized"
 msgstr ""
 
-#: assets/models/instances.py:21 assets/models/server.py:20
+#: assets/models/instances.py:21 assets/models/server.py:18
 #: assets/templates/instances/instance_detail.html:125
 #: assets/templates/instances/instance_list.html:92
 #: assets/templates/server/server_create_update.html:22
@@ -247,7 +247,7 @@ msgstr ""
 msgid "GPUAmount"
 msgstr ""
 
-#: assets/models/instances.py:51 assets/models/server.py:29
+#: assets/models/instances.py:51 assets/models/server.py:27
 #: assets/templates/server/server_list.html:23
 msgid "LastUpdat_time"
 msgstr "最后更新时间"
@@ -285,21 +285,30 @@ msgid "Country"
 msgstr ""
 
 #: assets/models/region.py:17 assets/models/region.py:31
-#: assets/models/server.py:32 assets/templates/region/region_list.html:27
-#: assets/templates/region/region_list.html:68 deploy/models/saltstack.py:66
-#: deploy/templates/saltstack/saltmodule_list.html:29 perms/models/perm.py:10
-#: users/models/department.py:12 users/models/group.py:14
-#: users/templates/users/user_list-table.html:26
+#: assets/models/server.py:29 assets/templates/region/region_list.html:27
+#: assets/templates/region/region_list.html:68 business/models/project.py:14
+#: business/templates/projects/project_detail.html:46
+#: business/templates/projects/project_list.html:32
+#: deploy/models/saltstack.py:47 deploy/models/saltstack.py:66
+#: deploy/templates/saltstack/saltgroup_list.html:31
+#: deploy/templates/saltstack/salthost_group_list.html:98
+#: perms/models/perm.py:10 users/models/department.py:12
+#: users/models/group.py:14 users/templates/users/user_list-table.html:26
 #: users/templates/users/user_list.html:74
 #: users/templates/users/user_list.html:110
 msgid "Create at"
 msgstr "创建时间"
 
 #: assets/models/region.py:18 assets/models/region.py:32
-#: assets/models/server.py:31 assets/templates/region/region_list.html:28
-#: assets/templates/region/region_list.html:69 deploy/models/saltstack.py:67
-#: deploy/templates/saltstack/saltmodule_list.html:30 perms/models/perm.py:9
-#: users/models/user.py:28 users/templates/users/user_list-table.html:62
+#: assets/models/server.py:28 assets/templates/region/region_list.html:28
+#: assets/templates/region/region_list.html:69 business/models/project.py:13
+#: business/templates/projects/project_detail.html:42
+#: business/templates/projects/project_list.html:31
+#: deploy/models/saltstack.py:46 deploy/models/saltstack.py:67
+#: deploy/templates/saltstack/saltgroup_list.html:32
+#: deploy/templates/saltstack/salthost_group_list.html:99
+#: perms/models/perm.py:9 users/models/user.py:28
+#: users/templates/users/user_list-table.html:62
 #: users/templates/users/user_list.html:75
 msgid "Create by"
 msgstr "创建人"
@@ -330,64 +339,52 @@ msgstr "商场"
 msgid "productname"
 msgstr "型号"
 
-#: assets/models/server.py:14
-msgid "esc"
-msgstr ""
-
-#: assets/models/server.py:15 assets/templates/server/server_list.html:22
+#: assets/models/server.py:14 assets/templates/server/server_list.html:22
 msgid "os"
 msgstr ""
 
-#: assets/models/server.py:16
-msgid "purchase_date"
-msgstr ""
-
-#: assets/models/server.py:17
-msgid "maintain"
-msgstr ""
-
-#: assets/models/server.py:18
+#: assets/models/server.py:15
 msgid "cpu_model"
 msgstr ""
 
-#: assets/models/server.py:19
+#: assets/models/server.py:16
 msgid "cpu_nums"
 msgstr ""
 
-#: assets/models/server.py:21
+#: assets/models/server.py:17
+msgid "gpu_nums"
+msgstr ""
+
+#: assets/models/server.py:19
 msgid "hd"
 msgstr ""
 
-#: assets/models/server.py:22
+#: assets/models/server.py:20
 msgid "nic"
 msgstr ""
 
-#: assets/models/server.py:23
+#: assets/models/server.py:21
 msgid "virtual"
 msgstr ""
 
-#: assets/models/server.py:24
+#: assets/models/server.py:22
 msgid "kernel"
 msgstr ""
 
-#: assets/models/server.py:25
+#: assets/models/server.py:23
 msgid "shell"
 msgstr ""
 
-#: assets/models/server.py:26
+#: assets/models/server.py:24
 msgid "saltversion"
 msgstr ""
 
-#: assets/models/server.py:27
+#: assets/models/server.py:25
 msgid "locale"
 msgstr ""
 
-#: assets/models/server.py:28
+#: assets/models/server.py:26
 msgid "selinux"
-msgstr ""
-
-#: assets/models/server.py:30 deploy/models/saltstack.py:27
-msgid "Salt Minion"
 msgstr ""
 
 #: assets/templates/cloudprovider/cloud_create_update.html:7
@@ -404,6 +401,7 @@ msgstr "创建组"
 
 #: assets/templates/cloudprovider/cloud_create_update.html:22
 #: assets/templates/region/create_update.html:22
+#: business/templates/projects/project_create_update.html:23
 #: crond/templates/crond/crontab_create_update.html:22
 #: crond/templates/interval/interval_create_update.html:22
 #: crond/templates/solar/solar_create_update.html:22
@@ -421,6 +419,7 @@ msgstr "注意"
 
 #: assets/templates/cloudprovider/cloud_create_update.html:22
 #: assets/templates/region/create_update.html:22
+#: business/templates/projects/project_create_update.html:23
 #: crond/templates/crond/crontab_create_update.html:22
 #: crond/templates/interval/interval_create_update.html:22
 #: crond/templates/solar/solar_create_update.html:22
@@ -444,6 +443,9 @@ msgstr "请按提示完善表单"
 #: assets/templates/region/create_update.html:32
 #: assets/templates/region/create_update.html:43
 #: assets/templates/region/create_update.html:60
+#: business/templates/projects/project_create_update.html:34
+#: business/templates/projects/project_create_update.html:45
+#: business/templates/projects/project_create_update.html:60
 #: deploy/templates/saltstack/saltgroup_create_update.html:33
 #: deploy/templates/saltstack/saltgroup_create_update.html:45
 #: deploy/templates/saltstack/saltmodule_create_update.html:34
@@ -474,11 +476,13 @@ msgstr ""
 #: assets/templates/instances/instance_detail.html:6
 #: assets/templates/server/server_detail.html:6 assets/views/instances.py:25
 #: assets/views/instances.py:37
+#: business/templates/projects/project_detail.html:6
 msgid "InstanceList"
 msgstr "实例列表"
 
 #: assets/templates/instances/instance_detail.html:13
 #: assets/templates/server/server_detail.html:13
+#: business/templates/projects/project_detail.html:13
 msgid "Base Info"
 msgstr "基础信息"
 
@@ -539,8 +543,9 @@ msgid "Last update time"
 msgstr "实例最后更新时间"
 
 #: assets/templates/instances/instance_list.html:76
+#: business/templates/projects/project_list.html:15
 #: deploy/templates/saltstack/salthost_group_list.html:15
-#: users/templates/saltapi/saltapi-list.html:18
+#: users/templates/saltapi/saltapi-list.html:15
 msgid "Salt Host List"
 msgstr "Salt主机列表"
 
@@ -555,10 +560,13 @@ msgstr "实例刷新"
 #: assets/templates/region/region_list.html:70
 #: assets/templates/server/server_create_update.html:26
 #: assets/templates/server/server_list.html:24
+#: business/templates/projects/project_list.html:33
 #: crond/templates/periodic/periodictask_list.html:27
+#: deploy/templates/saltstack/saltgroup_list.html:33
 #: deploy/templates/saltstack/salthost_group_list.html:61
-#: deploy/templates/saltstack/saltmodule_list.html:31
-#: users/templates/saltapi/saltapi-list.html:32
+#: deploy/templates/saltstack/salthost_group_list.html:100
+#: deploy/templates/saltstack/saltmodule_list.html:30
+#: users/templates/saltapi/saltapi-list.html:30
 #: users/templates/users/user_list.html:37
 #: users/templates/users/user_list.html:76
 #: users/templates/users/user_list.html:112
@@ -625,6 +633,153 @@ msgstr "添加服务器"
 #: assets/views/servers.py:62
 msgid "Server Update"
 msgstr "更新服务器"
+
+#: business/models/project.py:8
+#, fuzzy
+#| msgid "productname"
+msgid "project name"
+msgstr "项目名称"
+
+#: business/models/project.py:9
+#, fuzzy
+#| msgid "productname"
+msgid "project abbr name"
+msgstr "项目别名"
+
+#: business/models/project.py:10
+msgid "project owner"
+msgstr "项目负责人"
+
+#: business/models/project.py:11
+msgid "gitlab url"
+msgstr "代码地址"
+
+#: business/models/project.py:12
+#: business/templates/projects/project_create_update.html:76
+#: deploy/models/saltstack.py:13 deploy/models/saltstack.py:45
+#: deploy/models/saltstack.py:65
+#: deploy/templates/saltstack/saltgroup_create_update.html:50
+#: deploy/templates/saltstack/saltgroup_list.html:30
+#: deploy/templates/saltstack/salthost_group_list.html:97
+#: deploy/templates/saltstack/saltmodule_create_update.html:40
+#: users/models/department.py:11 users/models/group.py:13
+#: users/templates/department/create_department.html:38
+#: users/templates/groups/create_group.html:38
+#: users/templates/groups/update_group.html:38
+#: users/templates/saltapi/saltapi-list.html:29
+#: users/templates/saltapi/saltapi_create_update.html:60
+#: users/templates/users/user_list-table.html:25
+#: users/templates/users/user_list-table.html:60
+#: users/templates/users/user_list.html:109
+msgid "Comment"
+msgstr "备注"
+
+#: business/models/project.py:21
+msgid "view project"
+msgstr "查看项目"
+
+#: business/models/project.py:22
+msgid "Edit project"
+msgstr "编辑项目"
+
+#: business/models/project.py:23
+msgid "deploy project"
+msgstr "发布项目"
+
+#: business/templates/projects/project_create_update.html:7
+#: users/templates/department/create_department.html:8
+#: users/templates/department/update_department.html:8
+#: users/templates/groups/create_group.html:8
+#: users/templates/groups/update_group.html:8
+#: users/templates/users/create_update_user.html:7
+#: users/templates/users/update_user.html:7 users/views/user.py:32
+msgid "user list"
+msgstr "用户列表"
+
+#: business/templates/projects/project_create_update.html:20
+#: users/templates/users/create_update_user.html:20
+#: users/templates/users/update_user.html:20 users/views/user.py:60
+msgid "Create User"
+msgstr "创建用户"
+
+#: business/templates/projects/project_create_update.html:28
+#: business/templates/projects/project_create_update.html:39
+#: business/templates/projects/project_detail.html:22
+#: business/templates/projects/project_list.html:27
+msgid "Project Name"
+msgstr "项目名称"
+
+#: business/templates/projects/project_create_update.html:32
+#, fuzzy
+#| msgid "productname"
+msgid "Project name"
+msgstr "型号"
+
+#: business/templates/projects/project_create_update.html:43
+#: business/templates/projects/project_detail.html:26
+msgid "Project abbr name"
+msgstr "项目别名"
+
+#: business/templates/projects/project_create_update.html:52
+#: business/templates/projects/project_detail.html:30
+#: business/templates/projects/project_list.html:29
+msgid "Project owner"
+msgstr ""
+
+#: business/templates/projects/project_create_update.html:65
+msgid "Project Code address"
+msgstr "代码地址"
+
+#: business/templates/projects/project_create_update.html:78
+#: deploy/templates/saltstack/saltgroup_create_update.html:52
+#: deploy/templates/saltstack/saltmodule_create_update.html:42
+#: users/templates/department/create_department.html:40
+#: users/templates/groups/create_group.html:40
+#: users/templates/groups/update_group.html:40
+#: users/templates/saltapi/saltapi_create_update.html:62
+msgid "Comment ..."
+msgstr "备注"
+
+#: business/templates/projects/project_detail.html:34
+msgid "Project Code URL"
+msgstr "代码URL"
+
+#: business/templates/projects/project_detail.html:38
+msgid "Project Comment"
+msgstr "备注"
+
+#: business/templates/projects/project_detail.html:56
+msgid "PROD"
+msgstr "生产环境"
+
+#: business/templates/projects/project_detail.html:88
+msgid "PRE"
+msgstr "预发环境"
+
+#: business/templates/projects/project_list.html:19
+#: deploy/templates/saltstack/salthost_group_list.html:18
+msgid "Refresh SaltHost"
+msgstr "刷新salt主机"
+
+#: business/templates/projects/project_list.html:28
+msgid "Project abbr Name"
+msgstr ""
+
+#: business/templates/projects/project_list.html:30
+msgid "Project comment"
+msgstr "备注"
+
+#: business/views/projects.py:23
+msgid "Project List"
+msgstr "项目列表"
+
+#: business/views/projects.py:34
+msgid "Project Create"
+msgstr "创建项目"
+
+#: business/views/projects.py:53
+msgid "Project Detail"
+msgstr "项目详情"
 
 #: crond/templates/crond/crontab_create_update.html:6
 #: crond/templates/interval/interval_create_update.html:6
@@ -754,7 +909,7 @@ msgstr ""
 msgid "Interval Update"
 msgstr ""
 
-#: crond/views/periodic.py:30 templates/_left_side_bar.html:57
+#: crond/views/periodic.py:30 templates/_left_side_bar.html:65
 msgid "Task List"
 msgstr "任务列表"
 
@@ -783,23 +938,6 @@ msgstr "用户名"
 msgid "Password"
 msgstr "密码"
 
-#: deploy/models/saltstack.py:13 deploy/models/saltstack.py:46
-#: deploy/models/saltstack.py:65
-#: deploy/templates/saltstack/saltgroup_create_update.html:50
-#: deploy/templates/saltstack/saltmodule_create_update.html:40
-#: deploy/templates/saltstack/saltmodule_list.html:28
-#: users/models/department.py:11 users/models/group.py:13
-#: users/templates/department/create_department.html:38
-#: users/templates/groups/create_group.html:38
-#: users/templates/groups/update_group.html:38
-#: users/templates/saltapi/saltapi-list.html:31
-#: users/templates/saltapi/saltapi_create_update.html:60
-#: users/templates/users/user_list-table.html:25
-#: users/templates/users/user_list-table.html:60
-#: users/templates/users/user_list.html:109
-msgid "Comment"
-msgstr "备注"
-
 #: deploy/models/saltstack.py:21
 msgid "view salt api"
 msgstr ""
@@ -808,36 +946,47 @@ msgstr ""
 msgid "Edit salt api"
 msgstr ""
 
+#: deploy/models/saltstack.py:27
+msgid "Salt Minion"
+msgstr ""
+
 #: deploy/models/saltstack.py:28
 #: deploy/templates/saltstack/salthost_group_list.html:27
 msgid "Alive Last Time"
 msgstr ""
 
-#: deploy/models/saltstack.py:36
+#: deploy/models/saltstack.py:35
 msgid "view host deploy"
 msgstr ""
 
-#: deploy/models/saltstack.py:37
+#: deploy/models/saltstack.py:36
 msgid "Edit host deploy"
 msgstr ""
 
-#: deploy/models/saltstack.py:38
+#: deploy/models/saltstack.py:37
 msgid "view salt host"
 msgstr ""
 
-#: deploy/models/saltstack.py:43
+#: deploy/models/saltstack.py:42
+#: deploy/templates/saltstack/saltgroup_list.html:27
 #: deploy/templates/saltstack/salthost_group_list.html:58
+#: deploy/templates/saltstack/saltmodule_list.html:27
+#: templates/_left_side_bar.html:56
 msgid "Salt Group"
 msgstr "salt分组"
 
-#: deploy/models/saltstack.py:44
+#: deploy/models/saltstack.py:43
+#: deploy/templates/saltstack/saltgroup_list.html:28
 #: deploy/templates/saltstack/salthost_group_list.html:59
+#: deploy/templates/saltstack/saltmodule_list.html:28
 msgid "Salt Group Abbrname"
 msgstr "salt分组别名"
 
-#: deploy/models/saltstack.py:45
+#: deploy/models/saltstack.py:44
+#: deploy/templates/saltstack/saltgroup_list.html:29
 #: deploy/templates/saltstack/salthost_group_list.html:60
-#: users/templates/saltapi/saltapi-list.html:29
+#: deploy/templates/saltstack/saltmodule_list.html:29
+#: users/templates/saltapi/saltapi-list.html:27
 msgid "Salt Host"
 msgstr "salt主机"
 
@@ -854,7 +1003,7 @@ msgid "View SaltGroup"
 msgstr "创建组"
 
 #: deploy/models/saltstack.py:64
-#: deploy/templates/saltstack/saltmodule_list.html:27
+#: deploy/templates/saltstack/salthost_group_list.html:96
 msgid "Module Name"
 msgstr "模块名"
 
@@ -884,34 +1033,27 @@ msgstr "salt分组"
 msgid "salt minion"
 msgstr ""
 
-#: deploy/templates/saltstack/saltgroup_create_update.html:52
-#: deploy/templates/saltstack/saltmodule_create_update.html:42
-#: users/templates/department/create_department.html:40
-#: users/templates/groups/create_group.html:40
-#: users/templates/groups/update_group.html:40
-#: users/templates/saltapi/saltapi_create_update.html:62
-msgid "Comment ..."
-msgstr "备注"
-
-#: deploy/templates/saltstack/salthost_group_list.html:18
-#, fuzzy
-#| msgid "Salt Host"
-msgid "Refresh SaltHost"
-msgstr "刷新salt主机"
-
+#: deploy/templates/saltstack/saltgroup_list.html:15
 #: deploy/templates/saltstack/salthost_group_list.html:46
+#: deploy/templates/saltstack/saltmodule_list.html:15
 msgid "Salt Group List"
 msgstr "salt分组列表"
 
+#: deploy/templates/saltstack/salthost_group_list.html:84
 #: deploy/templates/saltstack/saltmodule_create_update.html:7
 #: deploy/templates/saltstack/saltmodule_deploy.html:7
-#: deploy/templates/saltstack/saltmodule_list.html:15
-#: deploy/views/saltstack.py:107
+#: deploy/views/saltstack.py:127
 msgid "Salt Module List"
 msgstr "salt模块列表"
 
+#: deploy/templates/saltstack/salthost_group_list.html:86
+#, fuzzy
+#| msgid "Create SaltApi"
+msgid "Create SaltModel"
+msgstr "创建saltapi"
+
 #: deploy/templates/saltstack/saltmodule_create_update.html:20
-#: deploy/views/saltstack.py:121
+#: deploy/views/saltstack.py:141
 msgid "Salt Module Create"
 msgstr "创建salt模块"
 
@@ -919,63 +1061,70 @@ msgstr "创建salt模块"
 msgid "Salt Module Name"
 msgstr "salt模块名称"
 
-#: deploy/templates/saltstack/saltmodule_deploy.html:21
-#: deploy/templates/saltstack/saltmodule_deploy.html:66
-#: deploy/templates/saltstack/saltmodule_deploy.html:115
-#: deploy/views/saltstack.py:171
+#: deploy/templates/saltstack/saltmodule_deploy.html:20
+#: deploy/templates/saltstack/saltmodule_deploy.html:76
+#: deploy/views/saltstack.py:191
 msgid "Salt Module Deploy"
 msgstr "salt模块部署"
 
-#: deploy/templates/saltstack/saltmodule_deploy.html:25
+#: deploy/templates/saltstack/saltmodule_deploy.html:24
 msgid "salt group"
 msgstr "salt分组"
 
-#: deploy/templates/saltstack/saltmodule_deploy.html:37
-#: deploy/templates/saltstack/saltmodule_deploy.html:82
+#: deploy/templates/saltstack/saltmodule_deploy.html:36
+#: deploy/templates/saltstack/saltmodule_deploy.html:92
 msgid "choices node"
 msgstr "已选节点"
 
-#: deploy/templates/saltstack/saltmodule_deploy.html:39
-#: deploy/templates/saltstack/saltmodule_deploy.html:84
+#: deploy/templates/saltstack/saltmodule_deploy.html:38
+#: deploy/templates/saltstack/saltmodule_deploy.html:94
 msgid "choices node ..."
 msgstr ""
 
-#: deploy/templates/saltstack/saltmodule_deploy.html:46
-#: deploy/templates/saltstack/saltmodule_deploy.html:91
+#: deploy/templates/saltstack/saltmodule_deploy.html:45
+#: deploy/templates/saltstack/saltmodule_deploy.html:101
 msgid "salt module"
 msgstr "salt模块"
 
-#: deploy/templates/saltstack/saltmodule_deploy.html:70
-msgid "salt host"
-msgstr "salt主机"
-
-#: deploy/templates/saltstack/saltmodule_deploy.html:119
+#: deploy/templates/saltstack/saltmodule_deploy.html:61
+#: deploy/templates/saltstack/saltmodule_deploy.html:116
 msgid "Result"
 msgstr ""
 
-#: deploy/templates/saltstack/saltmodule_deploy.html:121
+#: deploy/templates/saltstack/saltmodule_deploy.html:63
+#: deploy/templates/saltstack/saltmodule_deploy.html:118
 msgid "please wait ..."
 msgstr ""
 
-#: deploy/views/saltstack.py:35
+#: deploy/templates/saltstack/saltmodule_deploy.html:80
+msgid "salt host"
+msgstr "salt主机"
+
+#: deploy/views/saltstack.py:42
 msgid "Salt Key List"
 msgstr ""
 
-#: deploy/views/saltstack.py:63
+#: deploy/views/saltstack.py:69
 msgid "salt group create"
 msgstr "添加saltgroup"
 
-#: deploy/views/saltstack.py:81
+#: deploy/views/saltstack.py:87
 msgid "salt group update"
 msgstr "更新saltgroup"
 
-#: deploy/views/saltstack.py:98
+#: deploy/views/saltstack.py:103
+#, fuzzy
+#| msgid "Salt Group List"
+msgid "Salt group list"
+msgstr "salt分组列表"
+
+#: deploy/views/saltstack.py:118
 #, fuzzy
 #| msgid "salt group create"
 msgid "Salt group Detail"
 msgstr "添加saltgroup"
 
-#: deploy/views/saltstack.py:150
+#: deploy/views/saltstack.py:170
 msgid "Salt Module Update"
 msgstr "salt模块更新"
 
@@ -1004,43 +1153,47 @@ msgid "Regions"
 msgstr "区域管理"
 
 #: templates/_left_side_bar.html:45
+msgid "Business"
+msgstr "业务管理"
+
+#: templates/_left_side_bar.html:47
+msgid "Projects"
+msgstr "项目管理"
+
+#: templates/_left_side_bar.html:53
 msgid "deploys"
 msgstr "部署管理"
 
-#: templates/_left_side_bar.html:47
+#: templates/_left_side_bar.html:55
 msgid "Salt Auth"
 msgstr "salt管理"
 
-#: templates/_left_side_bar.html:48
-msgid "Salt Module"
-msgstr "salt模块"
-
-#: templates/_left_side_bar.html:49
+#: templates/_left_side_bar.html:57
 msgid "Module deploy"
 msgstr "部署模块"
 
-#: templates/_left_side_bar.html:55
+#: templates/_left_side_bar.html:63
 msgid "Tasks"
 msgstr "任务管理"
 
-#: templates/_left_side_bar.html:58
+#: templates/_left_side_bar.html:66
 msgid "Crond List"
 msgstr "计划列表"
 
-#: templates/_left_side_bar.html:64
+#: templates/_left_side_bar.html:72
 msgid "System Manger"
 msgstr "系统管理"
 
-#: templates/_left_side_bar.html:66 templates/back.html:32
+#: templates/_left_side_bar.html:74 templates/back.html:32
 #: templates/back.html:38 users/views/user.py:31
 msgid "Users"
 msgstr "用户管理"
 
-#: templates/_left_side_bar.html:67
+#: templates/_left_side_bar.html:75
 msgid "Perms"
 msgstr "权限管理"
 
-#: templates/_left_side_bar.html:68
+#: templates/_left_side_bar.html:76
 msgid "SaltApis"
 msgstr "SaltApi管理"
 
@@ -1136,15 +1289,6 @@ msgstr "工号"
 msgid "Create time"
 msgstr "创建时间"
 
-#: users/templates/department/create_department.html:8
-#: users/templates/department/update_department.html:8
-#: users/templates/groups/create_group.html:8
-#: users/templates/groups/update_group.html:8
-#: users/templates/users/create_update_user.html:7
-#: users/templates/users/update_user.html:7 users/views/user.py:32
-msgid "user list"
-msgstr "用户列表"
-
 #: users/templates/department/create_department.html:20
 #: users/views/department.py:46
 msgid "Create Department"
@@ -1168,12 +1312,13 @@ msgstr "修改部门"
 msgid "Group"
 msgstr "组"
 
-#: users/templates/saltapi/saltapi-list.html:16
-#: users/templates/users/user_list.html:22
-msgid "Add User"
-msgstr "添加用户"
+#: users/templates/saltapi/saltapi-list.html:17
+#: users/templates/saltapi/saltapi_create_update.html:20
+#: users/views/saltapi.py:38
+msgid "Create SaltApi"
+msgstr "创建saltapi"
 
-#: users/templates/saltapi/saltapi-list.html:30
+#: users/templates/saltapi/saltapi-list.html:28
 #: users/templates/saltapi/saltapi_create_update.html:38
 #, fuzzy
 #| msgid "Username"
@@ -1183,11 +1328,6 @@ msgstr "用户名"
 #: users/templates/saltapi/saltapi_create_update.html:8
 msgid "Saltapi List"
 msgstr ""
-
-#: users/templates/saltapi/saltapi_create_update.html:20
-#: users/views/saltapi.py:38
-msgid "Create SaltApi"
-msgstr "创建saltapi"
 
 #: users/templates/saltapi/saltapi_create_update.html:27
 msgid "SaltHost"
@@ -1212,11 +1352,6 @@ msgstr "salt密码"
 #: users/templates/saltapi/saltapi_create_update.html:53
 msgid "SaltApi Password"
 msgstr "saltapi密码"
-
-#: users/templates/users/create_update_user.html:20
-#: users/templates/users/update_user.html:20 users/views/user.py:60
-msgid "Create User"
-msgstr "创建用户"
 
 #: users/templates/users/create_update_user.html:32
 msgid "uername"
@@ -1288,6 +1423,10 @@ msgstr "用户"
 msgid "group"
 msgstr "组"
 
+#: users/templates/users/user_list.html:22
+msgid "Add User"
+msgstr "添加用户"
+
 #: users/templates/users/user_list.html:73
 msgid "comment"
 msgstr "备注"
@@ -1339,3 +1478,6 @@ msgstr "删除用户"
 #: users/views/user.py:112
 msgid "User Profile"
 msgstr "用户信息"
+
+#~ msgid "Salt Module"
+#~ msgstr "salt模块"
