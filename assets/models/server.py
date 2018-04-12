@@ -42,7 +42,8 @@ class Server(models.Model):
         )
         pinyin = Pinyin()
         info = instanceName[0].InstanceName
-        innerIP = instanceName[0].InnerIpAddress
+        innerIP = instanceName[0].InnerIpAddress[0]
+        pubIP = instanceName[0].PublicIpAddress[0]
         if not info:
             raise ValueError
 
@@ -57,10 +58,10 @@ class Server(models.Model):
             else:
                 hostname_last_id = '001'
             hostname = pinyin.get_pinyin(info[0], '') + '-' + info[1] + '-' + info[2] + '-' + hostname_last_id + '.' + 'meetyima.com'
-        return hostname,innerIP
+        return hostname,innerIP,pubIP
 
     def save(self, *args,**kwargs):
         if not self.hostname:
-            self.hostname,self.inneripaddress = self.generate_hostname()
+            self.hostname,self.inneripaddress,self.publicipaddress = self.generate_hostname()
         return super().save(*args,**kwargs)
 
