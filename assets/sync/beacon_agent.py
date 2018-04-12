@@ -109,7 +109,7 @@ class BeaconAgent:
             'osrelease': _distname + ' ' + _version
         }
         raw_ret = self.exec_cmd('/usr/sbin/dmidecode -t system')['stdout']
-        for line in str(raw_ret,encoding='utf-8').split('\n'):
+        for line in raw_ret.split('\n'):
             if line.startswith('\tManufacturer:'):
                 ret['manufacturer'] = line.split(':')[1].replace('inc.', '').strip()
             elif line.startswith('\tProduct Name:'):
@@ -212,8 +212,6 @@ class BeaconAgent:
         # 配置Salt Minion
         should_restart_salt_minion = False
         self.log.debug('Setting salt minion......')
-        self.exec_cmd('cd /opt/ && curl -L https://bootstrap.saltstack.com -o install_salt.sh')
-        self.exec_cmd('cd /opt/ && install_salt.sh -P')
         if self.exec_cmd('rpm -q salt-minion-{0}'.format(self.salt_version))['return_code'] != 0:
             # 安装Salt
             self.log.debug('Installing salt minion......')
