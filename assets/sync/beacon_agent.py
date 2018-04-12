@@ -267,7 +267,7 @@ class BeaconAgent:
             # 同步模块
 
             self.log.debug('I will sync salt modules......')
-            sync_salt_modules = self.exec_cmd('salt-call state.sls business.youzijie')
+            sync_salt_modules = self.exec_cmd('salt-call state.sls business.youzibuy')
             if sync_salt_modules['return_code'] != 0:
                 self.log.warn('Sync salt modules failed, because: {0}'.format(sync_salt_modules['stdout']))
                 sys.exit(2)
