@@ -20,7 +20,7 @@ class ServerViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super(ServerViewSet,self).get_queryset()
-        SerialNumber = self.request.query_params.get('SerialNumber',None)
-        if SerialNumber is not None:
-            queryset = queryset.filter(SerialNumber=SerialNumber)
+        serialnumber = self.request.query_params.get('serialnumber',None)
+        if serialnumber is not None:
+            queryset = queryset.filter(SerialNumber=serialnumber)
         return queryset

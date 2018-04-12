@@ -15,12 +15,13 @@ from socket import gethostname
 
 class BeaconAgent:
 
-
-    def __init__(self,search,url,token):
+    token = 'b9e48980e75003e8c9fa0eeeb360e9c1c839638b'
+    def __init__(self,url):
         self.setup_header()
-        self.search_params = search
+        #self.search_params = search
+        self.setup_log()
         self.opnms_url = url
-        self.token = token
+        #self.token = 'b9e48980e75003e8c9fa0eeeb360e9c1c839638b'
 
     def exec_cmd(self,cmd, timeout=-1):
         _p = subprocess.Popen(
@@ -61,7 +62,7 @@ class BeaconAgent:
         file_handler = logging.FileHandler(log_file)
         file_handler.setLevel(logging.DEBUG)
         console_handler = logging.StreamHandler()
-        console_handler.setLevel(logging.WARN)
+        console_handler.setLevel(logging.DEBUG)
         formatter = logging.Formatter('%(asctime)s,%(msecs)03.0f [%(name)-17s][%(levelname)-8s] %(message)s')
         file_handler.setFormatter(formatter)
         self.log.addHandler(file_handler)
@@ -100,16 +101,16 @@ class BeaconAgent:
         _distname, _version, _ = platform.linux_distribution()
         ret = {
             'manufacturer': '',
-            'product_name': '',
+            'productname': '',
             'serialnumber': '',
-            'os': _distname + ' ' + _version
+            'osrelease': _distname + ' ' + _version
         }
         raw_ret = self.exec_cmd('/usr/sbin/dmidecode -t system')['stdout']
-        for line in raw_ret.split('\n'):
+        for line in str(raw_ret,encoding='utf-8').split('\n'):
             if line.startswith('\tManufacturer:'):
                 ret['manufacturer'] = line.split(':')[1].replace('inc.', '').strip()
             elif line.startswith('\tProduct Name:'):
-                ret['product_name'] = line.split(':')[1].strip()
+                ret['productname'] = line.split(':')[1].strip()
             elif line.startswith('\tSerial Number:'):
                 serialnumber = line.split(':')[1].strip()
                 if serialnumber == 'Not Specified':
@@ -120,7 +121,7 @@ class BeaconAgent:
 
     def setup_header(self):
         self.opnms_header = {
-            'Authorization': 'Token %s' % self.token,
+            'Authorization': 'Token {0}'.format(self.token),
             'Content-type': 'application/json',
             'Accept': 'application/json',
         }
@@ -131,7 +132,8 @@ class BeaconAgent:
         """
         ignore_update = True
         self.log.debug('checking device info......')
-        for each_item, each_value in self.device_info.iteritems():
+        #for each_item, each_value in self.device_info.iteritems():
+        for each_item, each_value in self.device_info.items():
             if each_value != raw_info.get(each_item):
                 ignore_update = False
                 self.log.debug(
@@ -144,8 +146,8 @@ class BeaconAgent:
 
     def create_or_update(self):
         search_params = {'serialnumber':self.device_info['serialnumber']}
-        self.log.debug('Searching device({0}) from oms......'.format(self.device_info['serialnumber']))
-        device_search_r = requests.get(self.opnms_url, params=search_params, headers=self.token)
+        self.log.debug('Searching device({0}) from opnms......'.format(self.device_info['serialnumber']))
+        device_search_r = requests.get(self.opnms_url, params=search_params, headers=self.opnms_header)
         if device_search_r.status_code == 200:
             device_info = device_search_r.json()
             # Create Device
@@ -184,37 +186,14 @@ class BeaconAgent:
             self.log.warn('Device search failed, status_code: {0}'.format(device_search_r.status_code))
             sys.exit(1)
 
-    def get_data(self):
-        id = ''
-        data = requests.get(self.opnms_url,params=self.search_params,headers=self.opnms_header)
-        if data.status_code  == 200 and len(data.json()) > 0:
-            id = data.json()[0]['id']
-            return id
-        else:
-            return id
-
-    def post_data(self,data):
-        ret = requests.post(url=self.opnms_url,headers=self.opnms_header,data=json.dumps(data))
-        if ret.status_code == 200:
-
-            return ret.json()
-        else:
-            return ret.status_code
-
-    def put_data(self,id,data):
-        ret = requests.put(url=self.opnms_url + str(id) + '/',headers=self.opnms_header,data=json.dumps(data))
-        if ret.status_code == 200:
-            return True
-        else:
-            return False
-
     def start(self):
         self.device_info = {}
         self.device_info.update(self.system_info)
+        self.device_info['create_by'] = 'beacon Agent'
+        self.create_or_update()
 
 if __name__ == '__main__':
     agent = BeaconAgent(
-        opnms_url='http://127.0.0.1:8000/api/assets/v1/server/',
-        token = '5632741b8367408ac21b54f31d00dcb1968c5aab'
+        url='http://120.27.205.29:80/api/assets/v1/server/'
     )
     agent.start()
