@@ -53,10 +53,8 @@ class Server(models.Model):
             ).order_by('hostname').last()
 
             #如果查到有同名主机名,id加1,否则id为001
-            print(hostname_last.hostname)
             if hostname_last:
-                hostname_last_id = str(hostname_last.hostname.split("-")[3].split(".")[0] + 1).zfill(3)
-                print(hostname_last_id)
+                hostname_last_id = str(int(hostname_last.hostname.split("-")[3].split(".")[0]) + 1).zfill(3)
             else:
                 hostname_last_id = '001'
             hostname = pinyin.get_pinyin(info[0], '') + '-' + info[1] + '-' + info[2] + '-' + hostname_last_id + '.' + 'meetyima.com'
