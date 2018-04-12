@@ -37,10 +37,9 @@ class Server(models.Model):
         ordering = ['hostname']
 
     def generate_hostname(self):
-        instanceName = Instance.objects.filter(
-            SerialNumber=self.serialnumber,
-        )
         pinyin = Pinyin()
+
+        instanceName = Instance.objects.filter(SerialNumber=self.serialnumber)
         info = instanceName[0].InstanceName
         innerIP = instanceName[0].InnerIpAddress[0]
         pubIP = instanceName[0].PublicIpAddress[0]
@@ -56,7 +55,7 @@ class Server(models.Model):
             #如果查到有同名主机名,id加1,否则id为001
             print(hostname_last)
             if hostname_last:
-                hostname_last_id = str(hostname_last[0].hostname.split("-")[3].split(".")[0] + 1).zfill(3)
+                hostname_last_id = str(hostname_last.hostname.split("-")[3].split(".")[0] + 1).zfill(3)
                 print(hostname_last_id)
             else:
                 hostname_last_id = '001'
