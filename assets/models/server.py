@@ -40,11 +40,9 @@ class Server(models.Model):
         instanceName = Instance.objects.filter(
             SerialNumber=self.serialnumber,
         )
-        # if not instanceName:
-        #     raise ValueError
-        # else:
         pinyin = Pinyin()
         info = instanceName[0].InstanceName
+        innerIP = instanceName[0].InnerIpAddress
         if not info:
             raise ValueError
 
@@ -58,12 +56,11 @@ class Server(models.Model):
                 hostname_last_id = str(int(hostname_last[0].hostname.split("-")[3].split(".")[0]) + 1).zfill(3)
             else:
                 hostname_last_id = '001'
-            hostname = pinyin.get_pinyin(info[0], '') + '-' + info[1] + '-' + info[
-                2] + '-' + hostname_last_id + '.' + 'meetyima.com'
-        return hostname
+            hostname = pinyin.get_pinyin(info[0], '') + '-' + info[1] + '-' + info[2] + '-' + hostname_last_id + '.' + 'meetyima.com'
+        return hostname,innerIP
 
     def save(self, *args,**kwargs):
         if not self.hostname:
-            self.hostname = self.generate_hostname()
+            self.hostname,self.inneripaddress = self.generate_hostname()
         return super().save(*args,**kwargs)
 
