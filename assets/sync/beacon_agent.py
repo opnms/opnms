@@ -217,7 +217,7 @@ class BeaconAgent:
             self.log.debug('Installing salt minion......')
             self.exec_cmd('systemctl stop salt-minion.service')
             self.exec_cmd('cd /opt/ && curl -L https://bootstrap.saltstack.com -o install_salt.sh')
-            self.exec_cmd('cd /opt/ && install_salt.sh -P')
+            self.exec_cmd('cd /opt/ && sh install_salt.sh -P')
             self.log.info('Install salt minion success')
         else:
             self.log.info('Salt minion version is correct, ignore install/update')

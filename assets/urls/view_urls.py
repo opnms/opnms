@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^server/$',views.ServerListView.as_view(),name='server-list'),
     url(r'^server/(?P<pk>\d+)/$',views.ServerDetailView.as_view(),name='server-detail'),
     url(r'^server/create/$',views.ServerCreateView.as_view(),name='server-create'),
-    url(r'^server(?P<pk>)\d+/update/$',views.ServerUpdateView.as_view(),name='server-update'),
+    url(r'^server/(?P<pk>)\d+/update/$',views.ServerUpdateView.as_view(),name='server-update'),
     #region
     url(r'^region/$',views.RegionListView.as_view(),name='region-list'),
     url(r'^region/create/$',views.RegionCreateView.as_view(),name='region-create'),
