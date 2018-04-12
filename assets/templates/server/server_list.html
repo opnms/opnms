@@ -36,6 +36,7 @@
                              <td>{{ server.lastupdate }}</td>
                              <td>
                                  <a href="{% url 'assets:server-detail' server.pk %}"><i class="fa fa-envelope-o text-green"></i></a>
+                                 <a href="{% url 'assets:server-update' server.pk %}"><i class="fa fa-edit text-green"></i></a>
                              </td>
                          </tr>
                      {% endfor %}

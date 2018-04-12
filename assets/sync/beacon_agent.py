@@ -1,4 +1,5 @@
-
+#/usr/bin/env python
+#-*- coding:utf-8 -*-
 import requests
 import os
 import sys
@@ -22,6 +23,7 @@ class BeaconAgent:
         self.setup_log()
         self.opnms_url = url
         #self.token = 'b9e48980e75003e8c9fa0eeeb360e9c1c839638b'
+        self.salt_master = 'salt-master.internal.meetyima.com'
 
     def exec_cmd(self,cmd, timeout=-1):
         _p = subprocess.Popen(
@@ -186,11 +188,102 @@ class BeaconAgent:
             self.log.warn('Device search failed, status_code: {0}'.format(device_search_r.status_code))
             sys.exit(1)
 
+    def device_initial(self,hostname):
+        '''
+        设置主机名
+        :return:
+        '''
+
+        # 设置主机名
+        self.log.debug('Setting hostname......')
+        if gethostname() != hostname:
+            self.log.debug('Raw hostname is {0}, Should set to {1}'.format(gethostname(), hostname))
+            set_hostname = self.exec_cmd('sed -i "/^HOSTNAME=/d" /etc/hostname && '
+                                    'echo "HOSTNAME={0}" >> /etc/hostname && '
+                                    'hostname {0}'.format(hostname))
+            if set_hostname['return_code'] != 0:
+                self.log.warn('Set hostname failed, because: {0}'.format(set_hostname['stderr']))
+                sys.exit(2)
+            self.log.info('Set hostname success, new hostname: {0}'.format(gethostname()))
+        else:
+            self.log.info('Hostname is correct, ignore set')
+
+        # 配置Salt Minion
+        should_restart_salt_minion = False
+        self.log.debug('Setting salt minion......')
+        self.exec_cmd('cd /opt/ && curl -L https://bootstrap.saltstack.com -o install_salt.sh')
+        self.exec_cmd('cd /opt/ && install_salt.sh -P')
+        if self.exec_cmd('rpm -q salt-minion-{0}'.format(self.salt_version))['return_code'] != 0:
+            # 安装Salt
+            self.log.debug('Installing salt minion......')
+            self.exec_cmd('systemctl stop salt-minion.service')
+            self.exec_cmd('cd /opt/ && curl -L https://bootstrap.saltstack.com -o install_salt.sh')
+            self.exec_cmd('cd /opt/ && install_salt.sh -P')
+            self.log.info('Install salt minion success')
+        else:
+            self.log.info('Salt minion version is correct, ignore install/update')
+
+        # 设置minion_id
+        self.log.debug('Setting salt minion id')
+        check_minion_id = self.exec_cmd('grep "{0}" /etc/salt/minion_id'.format(hostname))
+        if check_minion_id['return_code'] != 0:
+            set_minion_id = self.exec_cmd('echo "{0}" > /etc/salt/minion_id'.format(hostname))
+            if set_minion_id['return_code'] != 0:
+                self.log.warn('Set salt minion id failed, because: {0}'.format(set_minion_id['stderr']))
+                sys.exit(2)
+            should_restart_salt_minion = True
+            self.log.info('Set salt minion id success')
+        else:
+            self.log.info('Salt minion id is correct, ignore set')
+
+        # 设置master地址
+        self.log.debug('Setting salt master address......')
+        check_master_address = self.exec_cmd('egrep "^master: " /etc/salt/minion')
+        if check_master_address['return_code'] != 0:
+            set_master_address = self.exec_cmd('sed -i "/^#master: salt/a\master: {0}\" /etc/salt/minion'.format(
+                self.salt_master))
+            if set_master_address['return_code'] != 0:
+                self.log.warn('Set salt master address failed, because: {0}'.format(
+                    set_master_address['stderr']))
+                sys.exit(2)
+            should_restart_salt_minion = True
+            self.log.info('Set salt master address success')
+        else:
+            self.log.info('Salt minion have set master address, ignore set')
+
+        # 重启Salt minion并进行初始化
+
+        if should_restart_salt_minion:
+            self.log.debug('I will restart salt minion')
+            restart_salt_minion = self.exec_cmd('systemctl enable salt-minion.service && systemctl restart salt-minion.service')
+            if restart_salt_minion['return_code'] != 0:
+                self.log.warn('Restart salt minion failed')
+                sys.exit(2)
+            self.log.info('Restart salt minion success')
+            # sleep 5秒, 确保salt minion启动且key被master autosign
+            time.sleep(5)
+
+            # 同步模块
+
+            self.log.debug('I will sync salt modules......')
+            sync_salt_modules = self.exec_cmd('salt-call state.sls business.youzijie')
+            if sync_salt_modules['return_code'] != 0:
+                self.log.warn('Sync salt modules failed, because: {0}'.format(sync_salt_modules['stdout']))
+                sys.exit(2)
+                self.log.info('Sync salt modules success')
+
     def start(self):
         self.device_info = {}
         self.device_info.update(self.system_info)
         self.device_info['create_by'] = 'beacon Agent'
         self.create_or_update()
+        device_info = self.create_or_update()
+        hostname = device_info.get('hostname')
+        if hostname:
+            self.device_initial(hostname)
+        else:
+            self.log.warn('Not found hostname, could not run device initial task')
+            sys.exit(1)
 
 if __name__ == '__main__':
     agent = BeaconAgent(
