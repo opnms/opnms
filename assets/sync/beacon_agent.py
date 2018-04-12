@@ -24,6 +24,7 @@ class BeaconAgent:
         self.opnms_url = url
         #self.token = 'b9e48980e75003e8c9fa0eeeb360e9c1c839638b'
         self.salt_master = 'salt-master.internal.meetyima.com'
+        self.salt_version = '2018.3.0-1.el7.noarch'
 
     def exec_cmd(self,cmd, timeout=-1):
         _p = subprocess.Popen(
