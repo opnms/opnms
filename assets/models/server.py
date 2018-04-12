@@ -54,7 +54,7 @@ class Server(models.Model):
             ).order_by('hostname').last()
 
             #如果查到有同名主机名,id加1,否则id为001
-            if len(hostname_last) > 0:
+            if hostname_last:
                 hostname_last_id = str(hostname_last[0].hostname.split("-")[3].split(".")[0] + 1).zfill(3)
             else:
                 hostname_last_id = '001'
