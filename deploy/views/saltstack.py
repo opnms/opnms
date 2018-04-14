@@ -50,7 +50,7 @@ class SaltHostRefreshView(SaltHostListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        salt_host_create_update()
+        salt_host_create_update.delay()
         context['hostlist'] = SaltHost.objects.all()
         context['hostgroups'] = SaltGroup.objects.all()
         return context

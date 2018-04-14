@@ -1,8 +1,9 @@
 from django.db import models
 from users.models import User
 from django.utils.translation import ugettext_lazy as _
+from .service import Service
 
-__all__ = ['Project']
+__all__ = ['Project','ProjectEnv']
 
 class Project(models.Model):
     name = models.CharField(max_length=100,unique=True,verbose_name=_('project name'))
@@ -24,6 +25,18 @@ class Project(models.Model):
         )
 
 
-
 class ProjectEnv(models.Model):
-    name = models.CharField(max_length=100)
+    env_chocies = (
+        ('prod','生产环境'),
+        ('pre', '预发环境')
+    )
+    name = models.CharField(max_length=5,choices=env_chocies,verbose_name=_('env'))
+    project = models.ForeignKey(Project,on_delete=models.CASCADE,verbose_name=_('Project'))
+    service = models.OneToOneField(Service,on_delete=models.CASCADE,verbose_name=_('service'))
+
+    def __unicode__(self):
+        return self.project
+
+    class Meta:
+        ordering = ['project']
+        unique_together = (('name', 'project','service'),)

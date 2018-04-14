@@ -14,6 +14,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from ..tasks import ecs_sync
 from ..models import Instance
+from datetime import datetime, timedelta
 
 __all__ = ['InstanceListView','InstanceDetailView','InstanceRefreshView']
 
@@ -33,7 +34,7 @@ class InstanceRefreshView(LoginRequiredMixin,TemplateView):
     template_name = 'instances/instance_list.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        ecs_sync()
+        ecs_sync.apply_async()
         context['action'] = _('InstanceList')
         context['instances'] = Instance.objects.all()
         return context

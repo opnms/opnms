@@ -55,8 +55,8 @@ INSTALLED_APPS = [
     'perms.apps.PermsConfig',
     'assets.apps.AssetsConfig',
     'crond.apps.CrondtaskConfig',
-    'deploy.apps.DeployConfig',
     'business.apps.BusinessConfig',
+    'deploy.apps.DeployConfig',
 ]
 
 MIDDLEWARE = [
@@ -287,9 +287,16 @@ REST_FRAMEWORK = {
 
 
 # CELERY STUFF
-import djcelery
-djcelery.setup_loader()
-BROKER_URL = 'redis://127.0.0.1:6379'
+# import djcelery
+# djcelery.setup_loader()
+
+# Broker and Backend
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+
+# Timezone
+CELERY_TIMEZONE='Asia/Shanghai'    # 指定时区，不指定默认为 'UTC'
+# CELERY_TIMEZONE='UTC'
 # CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'  # 定时任务
 # CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 CELERY_ACCEPT_CONTENT = ['application/json']

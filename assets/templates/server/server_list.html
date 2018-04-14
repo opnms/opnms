@@ -10,6 +10,14 @@
      <div class="col-md-12">
          <div class="col-md-12">
              <div class="panel panel-default">
+                 <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'Server List' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+                 </div>
                  <div class="panel-body">
                      <table class="table datatable">
                          <thead>
@@ -19,7 +27,7 @@
                              <th>{% trans 'InnerIpAddress' %}</th>
                              <th>{% trans 'Cpu' %}</th>
                              <th>{% trans 'Memory' %}(Mb)</th>
-                             <th>{% trans 'os' %}</th>
+                             <th>{% trans 'osrelease' %}</th>
                              <th>{% trans 'LastUpdat_time' %}</th>
                              <th>{% trans 'Actions' %}</th>
                          </tr>

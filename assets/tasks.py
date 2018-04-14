@@ -1,18 +1,23 @@
 from __future__ import absolute_import, unicode_literals
 from celery import shared_task,task
-from opnms.celery import app
+from crond.celery import app
+from crond import celery_app
 from .sync.ecssync import AliyunToOpnms
 from .sync.ecsToopnms import getinit
 from deploy.saltstack.saltapi import SaltstackAPI
 from assets.models import Cloudprovider,Region
+from celery.schedules import crontab
+import time
 import json
 import requests
 from base.apis import salthost_create_or_update
-
+from base.ews_service import  EwsService
+from datetime import timedelta
 # cloud = Cloudprovider.objects.all()
 # print(cloud)
 opnms_url = 'http://127.0.0.1:8000/api/assets/v1/instance/'
 token = '5632741b8367408ac21b54f31d00dcb1968c5aab'
+
 @shared_task
 def ecs_sync():
     cloud = Cloudprovider.objects.all()
@@ -45,3 +50,8 @@ def salt_host_create_update():
 
         api = salthost_create_or_update(url=url,search=search)
         api.main({'minion':minion})
+
+
+
+
+
