@@ -22,6 +22,11 @@ urlpatterns = [
     url(r'^cloud/create/$',views.CloudProviderCreateView.as_view(),name='cloud-create'),
     url(r'^cloud/(?P<pk>\d+)/update/$',views.CloudProviderUpdateView.as_view(),name='cloud-update'),
     url(r'^cloud/(?P<pk>\d+)/delete/$',views.CloudeProviderDeleteView.as_view(),name='cloud-delete'),
+    #ews service
+    url(r'container/$',views.ContainerListView.as_view(),name='container-list'),
+    url(r'node/$',views.NodeListVew.as_view(),name='node-list'),
+    url(r'image/$',views.ImageListVew.as_view(),name='image-list'),
+    url(r'host/$',views.HostListVew.as_view(),name='host-list'),
 
 
 ]

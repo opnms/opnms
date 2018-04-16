@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 23:17+0800\n"
+"POT-Creation-Date: 2018-04-15 22:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,6 +14,148 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: assets/models/container.py:10
+#: assets/templates/ewsservice/container_list.html:26
+msgid "container id"
+msgstr "容器ID"
+
+#: assets/models/container.py:11
+msgid "node id"
+msgstr "容器所在节点ID"
+
+#: assets/models/container.py:12
+msgid "container status"
+msgstr "开启状态"
+
+#: assets/models/container.py:13 assets/models/node.py:14
+#: assets/templates/ewsservice/container_list.html:28
+#: assets/templates/ewsservice/node_list.html:31
+msgid "createTime"
+msgstr "创建时间"
+
+#: assets/models/container.py:14
+#: assets/templates/ewsservice/container_list.html:29
+msgid "startTime"
+msgstr "开始时间"
+
+#: assets/models/container.py:15
+msgid "stopTime"
+msgstr "停止时间"
+
+#: assets/models/container.py:16
+#: assets/templates/ewsservice/container_list.html:30
+msgid "hostId"
+msgstr "容器所在主机ID"
+
+#: assets/models/container.py:17 assets/models/host.py:19
+#: assets/templates/ewsservice/container_list.html:31
+msgid "cpu"
+msgstr "容器使用CPU核数"
+
+#: assets/models/container.py:18
+#: assets/templates/ewsservice/container_list.html:32
+msgid "mem"
+msgstr "容器使用内存"
+
+#: assets/models/container.py:19
+#: assets/templates/ewsservice/container_list.html:33
+msgid "disk"
+msgstr "容器使用的磁盘"
+
+#: assets/models/container.py:20
+msgid "health"
+msgstr "容器健康状态"
+
+#: assets/models/host.py:9
+msgid "host id"
+msgstr "主机ID"
+
+#: assets/models/host.py:10
+msgid "host name"
+msgstr "主机名"
+
+#: assets/models/host.py:11 assets/templates/ewsservice/host_list.html:27
+msgid "instanceName"
+msgstr "实例名称"
+
+#: assets/models/host.py:12 assets/templates/ewsservice/host_list.html:28
+msgid "instanceId"
+msgstr "主机实例ID"
+
+#: assets/models/host.py:13 assets/templates/ewsservice/host_list.html:29
+msgid "internetIp"
+msgstr "公网IP"
+
+#: assets/models/host.py:14 assets/templates/ewsservice/host_list.html:30
+msgid "intranetIp"
+msgstr "内网IP"
+
+#: assets/models/host.py:15 assets/models/node.py:12
+#: assets/templates/ewsservice/container_list.html:34
+#: assets/templates/ewsservice/host_list.html:33
+#: assets/templates/ewsservice/node_list.html:29
+msgid "status"
+msgstr "状态"
+
+#: assets/models/host.py:16
+msgid "connectivity"
+msgstr "是否受控"
+
+#: assets/models/host.py:17
+msgid "regionId"
+msgstr "区域 ID"
+
+#: assets/models/host.py:18 business/templates/projects/project_detail.html:64
+msgid "regionDisplay"
+msgstr "区域名字"
+
+#: assets/models/host.py:20
+msgid "cpuUsed"
+msgstr "已使用cpu核数"
+
+#: assets/models/host.py:21 assets/templates/ewsservice/host_list.html:32
+msgid "memory"
+msgstr "内存容量"
+
+#: assets/models/host.py:22
+msgid "memUsed"
+msgstr "已使用内存"
+
+#: assets/models/host.py:23
+msgid "diskSize"
+msgstr "磁盘大小"
+
+#: assets/models/host.py:24
+msgid "diskUsed"
+msgstr "已使用磁盘大小"
+
+#: assets/models/host.py:25
+msgid "containerCount"
+msgstr "容器数量"
+
+#: assets/models/image.py:10 assets/templates/ewsservice/image_list.html:26
+msgid "image id"
+msgstr "镜像ID"
+
+#: assets/models/image.py:11 assets/models/node.py:11
+#: assets/templates/ewsservice/image_list.html:27
+#: assets/templates/ewsservice/node_list.html:28
+#: business/templates/projects/project_detail.html:66
+msgid "imageName"
+msgstr "镜像名称"
+
+#: assets/models/image.py:12 assets/templates/ewsservice/image_list.html:28
+msgid "imageTag"
+msgstr "镜像Tag"
+
+#: assets/models/image.py:13 assets/templates/ewsservice/image_list.html:29
+msgid "imageAlias"
+msgstr "镜像别名"
+
+#: assets/models/image.py:14 assets/templates/ewsservice/image_list.html:30
+msgid "ImageModifyTime"
+msgstr "镜像修改时间"
 
 #: assets/models/instances.py:9
 #: assets/templates/instances/instance_detail.html:30
@@ -25,7 +167,7 @@ msgstr "实例类型"
 msgid "InstanceID"
 msgstr "实例ID"
 
-#: assets/models/instances.py:11 assets/models/server.py:11
+#: assets/models/instances.py:11 assets/models/server.py:13
 #: assets/templates/instances/instance_detail.html:38
 #: assets/templates/server/server_detail.html:38
 msgid "SerialNumber"
@@ -49,14 +191,14 @@ msgstr "VLAN"
 
 #: assets/models/instances.py:15
 #: assets/templates/instances/instance_detail.html:158
-#: assets/templates/instances/instance_list.html:94
+#: assets/templates/instances/instance_list.html:95
 #: assets/templates/server/server_create_update.html:24
 #: assets/templates/server/server_detail.html:158
 msgid "InternetMaxBandwidthIn"
 msgstr "最大带宽"
 
 #: assets/models/instances.py:16
-#: assets/templates/instances/instance_list.html:90
+#: assets/templates/instances/instance_list.html:91
 #: assets/templates/server/server_create_update.html:20
 msgid "Zone"
 msgstr "zone区域"
@@ -77,21 +219,21 @@ msgstr ""
 msgid "IoOptimized"
 msgstr ""
 
-#: assets/models/instances.py:21 assets/models/server.py:18
+#: assets/models/instances.py:21 assets/models/server.py:20
 #: assets/templates/instances/instance_detail.html:125
-#: assets/templates/instances/instance_list.html:92
+#: assets/templates/instances/instance_list.html:93
 #: assets/templates/server/server_create_update.html:22
 #: assets/templates/server/server_detail.html:125
-#: assets/templates/server/server_list.html:21
+#: assets/templates/server/server_list.html:29
 msgid "Memory"
 msgstr "内存"
 
 #: assets/models/instances.py:22
 #: assets/templates/instances/instance_detail.html:121
-#: assets/templates/instances/instance_list.html:91
+#: assets/templates/instances/instance_list.html:92
 #: assets/templates/server/server_create_update.html:21
 #: assets/templates/server/server_detail.html:121
-#: assets/templates/server/server_list.html:20
+#: assets/templates/server/server_list.html:28
 msgid "Cpu"
 msgstr "cpu"
 
@@ -117,7 +259,7 @@ msgstr "开始时间"
 
 #: assets/models/instances.py:28
 #: assets/templates/instances/instance_detail.html:22
-#: assets/templates/instances/instance_list.html:87
+#: assets/templates/instances/instance_list.html:88
 #: assets/templates/server/server_create_update.html:17
 #: assets/templates/server/server_detail.html:22
 msgid "InstanceName"
@@ -146,9 +288,10 @@ msgstr "系统名称"
 msgid "InstanceNetworkType"
 msgstr "实例网络类型"
 
-#: assets/models/instances.py:34 assets/models/server.py:8
+#: assets/models/instances.py:34 assets/models/server.py:10
+#: assets/templates/ewsservice/host_list.html:26
 #: assets/templates/instances/instance_detail.html:26
-#: assets/templates/server/server_list.html:17
+#: assets/templates/server/server_list.html:25
 #: deploy/templates/saltstack/salthost_group_list.html:26
 msgid "HostName"
 msgstr "主机名"
@@ -161,7 +304,7 @@ msgstr "创建时间"
 
 #: assets/models/instances.py:36
 #: assets/templates/instances/instance_detail.html:70
-#: assets/templates/instances/instance_list.html:93
+#: assets/templates/instances/instance_list.html:94
 #: assets/templates/server/server_create_update.html:23
 #: assets/templates/server/server_detail.html:70
 msgid "Status"
@@ -175,21 +318,21 @@ msgstr "集群"
 msgid "GPUSpec"
 msgstr ""
 
-#: assets/models/instances.py:39 assets/models/server.py:9
+#: assets/models/instances.py:39 assets/models/server.py:11
 #: assets/templates/instances/instance_detail.html:153
-#: assets/templates/instances/instance_list.html:89
+#: assets/templates/instances/instance_list.html:90
 #: assets/templates/server/server_create_update.html:19
 #: assets/templates/server/server_detail.html:153
-#: assets/templates/server/server_list.html:19
+#: assets/templates/server/server_list.html:27
 msgid "InnerIpAddress"
 msgstr "内网IP地址"
 
-#: assets/models/instances.py:40 assets/models/server.py:10
+#: assets/models/instances.py:40 assets/models/server.py:12
 #: assets/templates/instances/instance_detail.html:149
-#: assets/templates/instances/instance_list.html:88
+#: assets/templates/instances/instance_list.html:89
 #: assets/templates/server/server_create_update.html:18
 #: assets/templates/server/server_detail.html:149
-#: assets/templates/server/server_list.html:18
+#: assets/templates/server/server_list.html:26
 msgid "PublicIpAddress"
 msgstr "公网IP地址"
 
@@ -203,7 +346,7 @@ msgstr "安全组"
 
 #: assets/models/instances.py:42
 #: assets/templates/instances/instance_detail.html:50
-#: assets/templates/instances/instance_list.html:95
+#: assets/templates/instances/instance_list.html:96
 #: assets/templates/server/server_create_update.html:25
 #: assets/templates/server/server_detail.html:50
 msgid "ExpiredTime"
@@ -247,10 +390,27 @@ msgstr ""
 msgid "GPUAmount"
 msgstr ""
 
-#: assets/models/instances.py:51 assets/models/server.py:27
-#: assets/templates/server/server_list.html:23
+#: assets/models/instances.py:51 assets/models/server.py:29
+#: assets/templates/server/server_list.html:31
 msgid "LastUpdat_time"
 msgstr "最后更新时间"
+
+#: assets/models/node.py:9 assets/templates/ewsservice/container_list.html:27
+#: assets/templates/ewsservice/node_list.html:26
+msgid "nodeId"
+msgstr "容器所在节点ID"
+
+#: assets/models/node.py:10 assets/templates/ewsservice/node_list.html:27
+msgid "nodeName"
+msgstr "节点名称"
+
+#: assets/models/node.py:13 assets/templates/ewsservice/node_list.html:30
+msgid "serviceId"
+msgstr "服务ID"
+
+#: assets/models/node.py:15 business/templates/projects/project_detail.html:65
+msgid "containers"
+msgstr "容器管理"
 
 #: assets/models/region.py:12
 #: assets/templates/cloudprovider/cloud_create_update.html:26
@@ -275,18 +435,19 @@ msgstr ""
 #: assets/templates/cloudprovider/cloud_create_update.html:41
 #: assets/templates/region/region_list.html:23
 msgid "Abbr Slug"
-msgstr ""
+msgstr "别名"
 
 #: assets/models/region.py:16
 #: assets/templates/cloudprovider/cloud_create_update.html:70
 #: assets/templates/cloudprovider/cloud_create_update.html:74
 #: assets/templates/region/region_list.html:26
 msgid "Country"
-msgstr ""
+msgstr "城市"
 
 #: assets/models/region.py:17 assets/models/region.py:31
-#: assets/models/server.py:29 assets/templates/region/region_list.html:27
-#: assets/templates/region/region_list.html:68 business/models/project.py:14
+#: assets/models/server.py:31 assets/templates/region/region_list.html:27
+#: assets/templates/region/region_list.html:68 business/models/project.py:15
+#: business/models/service.py:12
 #: business/templates/projects/project_detail.html:46
 #: business/templates/projects/project_list.html:32
 #: deploy/models/saltstack.py:47 deploy/models/saltstack.py:66
@@ -300,8 +461,8 @@ msgid "Create at"
 msgstr "创建时间"
 
 #: assets/models/region.py:18 assets/models/region.py:32
-#: assets/models/server.py:28 assets/templates/region/region_list.html:28
-#: assets/templates/region/region_list.html:69 business/models/project.py:13
+#: assets/models/server.py:30 assets/templates/region/region_list.html:28
+#: assets/templates/region/region_list.html:69 business/models/project.py:14
 #: business/templates/projects/project_detail.html:42
 #: business/templates/projects/project_list.html:31
 #: deploy/models/saltstack.py:46 deploy/models/saltstack.py:67
@@ -316,7 +477,7 @@ msgstr "创建人"
 #: assets/models/region.py:28
 #: assets/templates/cloudprovider/cloud_create_update.html:30
 #: assets/templates/region/create_update.html:26
-#: assets/templates/region/create_update.html:30
+#: assets/templates/region/create_update.html:30 business/models/service.py:13
 msgid "Region"
 msgstr "区域"
 
@@ -331,59 +492,59 @@ msgstr "云服务商"
 msgid "City"
 msgstr "城市"
 
-#: assets/models/server.py:12
+#: assets/models/server.py:14
 msgid "manufacturer"
-msgstr "商场"
+msgstr "厂商"
 
-#: assets/models/server.py:13
+#: assets/models/server.py:15
 msgid "productname"
 msgstr "型号"
 
-#: assets/models/server.py:14 assets/templates/server/server_list.html:22
+#: assets/models/server.py:16
 msgid "os"
-msgstr ""
+msgstr "操作系统"
 
-#: assets/models/server.py:15
+#: assets/models/server.py:17
 msgid "cpu_model"
 msgstr ""
 
-#: assets/models/server.py:16
+#: assets/models/server.py:18
 msgid "cpu_nums"
-msgstr ""
+msgstr "cpu核数"
 
-#: assets/models/server.py:17
+#: assets/models/server.py:19
 msgid "gpu_nums"
 msgstr ""
 
-#: assets/models/server.py:19
+#: assets/models/server.py:21
 msgid "hd"
 msgstr ""
 
-#: assets/models/server.py:20
+#: assets/models/server.py:22
 msgid "nic"
 msgstr ""
 
-#: assets/models/server.py:21
+#: assets/models/server.py:23
 msgid "virtual"
 msgstr ""
 
-#: assets/models/server.py:22
+#: assets/models/server.py:24
 msgid "kernel"
-msgstr ""
+msgstr "内核"
 
-#: assets/models/server.py:23
+#: assets/models/server.py:25
 msgid "shell"
 msgstr ""
 
-#: assets/models/server.py:24
+#: assets/models/server.py:26
 msgid "saltversion"
 msgstr ""
 
-#: assets/models/server.py:25
+#: assets/models/server.py:27
 msgid "locale"
 msgstr ""
 
-#: assets/models/server.py:26
+#: assets/models/server.py:28
 msgid "selinux"
 msgstr ""
 
@@ -402,6 +563,7 @@ msgstr "创建组"
 #: assets/templates/cloudprovider/cloud_create_update.html:22
 #: assets/templates/region/create_update.html:22
 #: business/templates/projects/project_create_update.html:23
+#: business/templates/projects/project_service_create_update.html:22
 #: crond/templates/crond/crontab_create_update.html:22
 #: crond/templates/interval/interval_create_update.html:22
 #: crond/templates/solar/solar_create_update.html:22
@@ -420,6 +582,7 @@ msgstr "注意"
 #: assets/templates/cloudprovider/cloud_create_update.html:22
 #: assets/templates/region/create_update.html:22
 #: business/templates/projects/project_create_update.html:23
+#: business/templates/projects/project_service_create_update.html:22
 #: crond/templates/crond/crontab_create_update.html:22
 #: crond/templates/interval/interval_create_update.html:22
 #: crond/templates/solar/solar_create_update.html:22
@@ -446,6 +609,8 @@ msgstr "请按提示完善表单"
 #: business/templates/projects/project_create_update.html:34
 #: business/templates/projects/project_create_update.html:45
 #: business/templates/projects/project_create_update.html:60
+#: business/templates/projects/project_service_create_update.html:34
+#: business/templates/projects/project_service_create_update.html:47
 #: deploy/templates/saltstack/saltgroup_create_update.html:33
 #: deploy/templates/saltstack/saltgroup_create_update.html:45
 #: deploy/templates/saltstack/saltmodule_create_update.html:34
@@ -473,10 +638,81 @@ msgstr "确认删除"
 msgid "Are you sure delete"
 msgstr ""
 
+#: assets/templates/ewsservice/container_list.html:14
+#: assets/views/ewsservice.py:22
+msgid "containerList"
+msgstr "容器列表"
+
+#: assets/templates/ewsservice/container_list.html:17
+#: assets/templates/ewsservice/host_list.html:17
+#: assets/templates/ewsservice/image_list.html:17
+#: assets/templates/ewsservice/node_list.html:17
+#: assets/templates/instances/instance_list.html:79
+#: assets/templates/server/server_list.html:17
+msgid "Refresh Instances"
+msgstr "刷新实例"
+
+#: assets/templates/ewsservice/container_list.html:35
+#: assets/templates/ewsservice/host_list.html:34
+#: assets/templates/ewsservice/image_list.html:31
+#: assets/templates/ewsservice/node_list.html:32
+#: assets/templates/instances/instance_list.html:97
+#: assets/templates/region/region_list.html:29
+#: assets/templates/region/region_list.html:70
+#: assets/templates/server/server_create_update.html:26
+#: assets/templates/server/server_list.html:32
+#: business/templates/projects/project_list.html:33
+#: business/templates/service/service_list.html:32
+#: crond/templates/periodic/periodictask_list.html:27
+#: deploy/templates/saltstack/saltgroup_list.html:33
+#: deploy/templates/saltstack/salthost_group_list.html:61
+#: deploy/templates/saltstack/salthost_group_list.html:100
+#: deploy/templates/saltstack/saltmodule_list.html:30
+#: users/templates/saltapi/saltapi-list.html:30
+#: users/templates/users/user_list.html:37
+#: users/templates/users/user_list.html:76
+#: users/templates/users/user_list.html:112
+msgid "Actions"
+msgstr "操作"
+
+#: assets/templates/ewsservice/container_list.html:52
+#: assets/templates/ewsservice/host_list.html:50
+#: assets/templates/ewsservice/image_list.html:44
+#: assets/templates/ewsservice/node_list.html:46
+#: assets/templates/instances/instance_list.html:114
+#: business/templates/service/service_list.html:44
+msgid "view"
+msgstr "查看"
+
+#: assets/templates/ewsservice/container_list.html:53
+#: assets/templates/ewsservice/host_list.html:51
+#: assets/templates/ewsservice/image_list.html:45
+#: assets/templates/ewsservice/node_list.html:47
+#: business/templates/service/service_list.html:45
+msgid "update"
+msgstr "更新"
+
+#: assets/templates/ewsservice/host_list.html:14
+msgid "hostList"
+msgstr "Host 列表"
+
+#: assets/templates/ewsservice/host_list.html:31
+msgid "cpus"
+msgstr ""
+
+#: assets/templates/ewsservice/image_list.html:14 assets/views/ewsservice.py:43
+#: assets/views/ewsservice.py:54
+msgid "imageList"
+msgstr "镜像列表"
+
+#: assets/templates/ewsservice/node_list.html:14 assets/views/ewsservice.py:32
+msgid "nodeList"
+msgstr "节点列表"
+
 #: assets/templates/instances/instance_detail.html:6
-#: assets/templates/server/server_detail.html:6 assets/views/instances.py:25
-#: assets/views/instances.py:37
-#: business/templates/projects/project_detail.html:6
+#: assets/templates/instances/instance_list.html:76
+#: assets/templates/server/server_detail.html:6 assets/views/instances.py:26
+#: assets/views/instances.py:38
 msgid "InstanceList"
 msgstr "实例列表"
 
@@ -542,37 +778,6 @@ msgstr "实例新增数"
 msgid "Last update time"
 msgstr "实例最后更新时间"
 
-#: assets/templates/instances/instance_list.html:76
-#: business/templates/projects/project_list.html:15
-#: deploy/templates/saltstack/salthost_group_list.html:15
-#: users/templates/saltapi/saltapi-list.html:15
-msgid "Salt Host List"
-msgstr "Salt主机列表"
-
-#: assets/templates/instances/instance_list.html:79
-#, fuzzy
-#| msgid "Instances"
-msgid "Refresh Instances"
-msgstr "实例刷新"
-
-#: assets/templates/instances/instance_list.html:96
-#: assets/templates/region/region_list.html:29
-#: assets/templates/region/region_list.html:70
-#: assets/templates/server/server_create_update.html:26
-#: assets/templates/server/server_list.html:24
-#: business/templates/projects/project_list.html:33
-#: crond/templates/periodic/periodictask_list.html:27
-#: deploy/templates/saltstack/saltgroup_list.html:33
-#: deploy/templates/saltstack/salthost_group_list.html:61
-#: deploy/templates/saltstack/salthost_group_list.html:100
-#: deploy/templates/saltstack/saltmodule_list.html:30
-#: users/templates/saltapi/saltapi-list.html:30
-#: users/templates/users/user_list.html:37
-#: users/templates/users/user_list.html:76
-#: users/templates/users/user_list.html:112
-msgid "Actions"
-msgstr "操作"
-
 #: assets/templates/region/create_update.html:54
 msgid "Please Choice"
 msgstr ""
@@ -594,6 +799,14 @@ msgstr "名称"
 msgid "Hostname"
 msgstr "主机名"
 
+#: assets/templates/server/server_list.html:14 assets/views/servers.py:22
+msgid "Server List"
+msgstr "主机列表"
+
+#: assets/templates/server/server_list.html:30
+msgid "osrelease"
+msgstr ""
+
 #: assets/views/clouder.py:28
 msgid "Create Cloudprovider"
 msgstr "创建云服务商"
@@ -606,7 +819,7 @@ msgstr "更新云服务商"
 msgid "Delete Provider"
 msgstr "云服务商"
 
-#: assets/views/instances.py:50
+#: assets/views/instances.py:51
 msgid "Instance Detail"
 msgstr "实例ID"
 
@@ -617,10 +830,6 @@ msgstr "创建区域"
 #: assets/views/region.py:58
 msgid "Update Region"
 msgstr "更新组"
-
-#: assets/views/servers.py:22
-msgid "Server List"
-msgstr "主机列表"
 
 #: assets/views/servers.py:32
 msgid "Server Detail"
@@ -634,28 +843,26 @@ msgstr "添加服务器"
 msgid "Server Update"
 msgstr "更新服务器"
 
-#: business/models/project.py:8
-#, fuzzy
-#| msgid "productname"
+#: business/models/project.py:9
 msgid "project name"
 msgstr "项目名称"
 
-#: business/models/project.py:9
-#, fuzzy
-#| msgid "productname"
+#: business/models/project.py:10
 msgid "project abbr name"
 msgstr "项目别名"
 
-#: business/models/project.py:10
+#: business/models/project.py:11
+#: business/templates/projects/project_detail.html:30
 msgid "project owner"
 msgstr "项目负责人"
 
-#: business/models/project.py:11
+#: business/models/project.py:12
 msgid "gitlab url"
 msgstr "代码地址"
 
-#: business/models/project.py:12
+#: business/models/project.py:13
 #: business/templates/projects/project_create_update.html:76
+#: business/templates/projects/project_detail.html:38
 #: deploy/models/saltstack.py:13 deploy/models/saltstack.py:45
 #: deploy/models/saltstack.py:65
 #: deploy/templates/saltstack/saltgroup_create_update.html:50
@@ -674,17 +881,57 @@ msgstr "代码地址"
 msgid "Comment"
 msgstr "备注"
 
-#: business/models/project.py:21
+#: business/models/project.py:22
 msgid "view project"
 msgstr "查看项目"
 
-#: business/models/project.py:22
+#: business/models/project.py:23
 msgid "Edit project"
 msgstr "编辑项目"
 
-#: business/models/project.py:23
+#: business/models/project.py:24
 msgid "deploy project"
 msgstr "发布项目"
+
+#: business/models/project.py:33
+msgid "env"
+msgstr ""
+
+#: business/models/project.py:34
+msgid "Project"
+msgstr "项目管理"
+
+#: business/models/project.py:35
+msgid "service"
+msgstr ""
+
+#: business/models/service.py:9
+#: business/templates/projects/project_detail.html:62
+#: business/templates/service/service_list.html:27
+msgid "Service ID"
+msgstr "服务ID"
+
+#: business/models/service.py:10
+#: business/templates/projects/project_detail.html:63
+#: business/templates/service/service_list.html:28
+msgid "Service Name"
+msgstr "服务名称"
+
+#: business/models/service.py:11
+msgid "Image Name"
+msgstr "镜像名称"
+
+#: business/models/service.py:14
+msgid "Node List"
+msgstr "Node 列表"
+
+#: business/models/service.py:21
+msgid "view service"
+msgstr "查看服务"
+
+#: business/models/service.py:22
+msgid "refresh serice"
+msgstr "实例刷新"
 
 #: business/templates/projects/project_create_update.html:7
 #: users/templates/department/create_department.html:8
@@ -710,10 +957,8 @@ msgid "Project Name"
 msgstr "项目名称"
 
 #: business/templates/projects/project_create_update.html:32
-#, fuzzy
-#| msgid "productname"
 msgid "Project name"
-msgstr "型号"
+msgstr "项目名称"
 
 #: business/templates/projects/project_create_update.html:43
 #: business/templates/projects/project_detail.html:26
@@ -721,10 +966,10 @@ msgid "Project abbr name"
 msgstr "项目别名"
 
 #: business/templates/projects/project_create_update.html:52
-#: business/templates/projects/project_detail.html:30
 #: business/templates/projects/project_list.html:29
+#: business/templates/projects/project_service_create_update.html:39
 msgid "Project owner"
-msgstr ""
+msgstr "项目负责人"
 
 #: business/templates/projects/project_create_update.html:65
 msgid "Project Code address"
@@ -740,21 +985,30 @@ msgstr "代码地址"
 msgid "Comment ..."
 msgstr "备注"
 
+#: business/templates/projects/project_detail.html:6
+#: business/views/projects.py:23
+msgid "Project List"
+msgstr "项目列表"
+
 #: business/templates/projects/project_detail.html:34
 msgid "Project Code URL"
 msgstr "代码URL"
 
-#: business/templates/projects/project_detail.html:38
-msgid "Project Comment"
-msgstr "备注"
-
 #: business/templates/projects/project_detail.html:56
-msgid "PROD"
-msgstr "生产环境"
+#: business/templates/projects/project_service_create_update.html:27
+msgid "Env"
+msgstr "环境"
 
-#: business/templates/projects/project_detail.html:88
-msgid "PRE"
-msgstr "预发环境"
+#: business/templates/projects/project_detail.html:57
+#: business/templates/projects/project_service_create_update.html:19
+msgid "Bind Service"
+msgstr "绑定服务"
+
+#: business/templates/projects/project_list.html:15
+#: deploy/templates/saltstack/salthost_group_list.html:15
+#: users/templates/saltapi/saltapi-list.html:15
+msgid "Salt Host List"
+msgstr "Salt主机列表"
 
 #: business/templates/projects/project_list.html:19
 #: deploy/templates/saltstack/salthost_group_list.html:18
@@ -769,17 +1023,43 @@ msgstr ""
 msgid "Project comment"
 msgstr "备注"
 
-#: business/views/projects.py:23
-msgid "Project List"
-msgstr "项目列表"
+#: business/templates/projects/project_service_create_update.html:6
+#: business/views/projects.py:53
+msgid "Project Detail"
+msgstr "项目详情"
+
+#: business/templates/service/service_list.html:15
+#: business/views/services.py:22
+msgid "Service List"
+msgstr "服务列表"
+
+#: business/templates/service/service_list.html:18
+msgid "Refresh Service"
+msgstr "实例刷新"
+
+#: business/templates/service/service_list.html:29
+msgid "Service imageName"
+msgstr "服务镜像名称"
+
+#: business/templates/service/service_list.html:30
+msgid "Service createTime"
+msgstr "服务创建时间"
+
+#: business/templates/service/service_list.html:31
+msgid "Service regionDisplay"
+msgstr "服务注册区域"
+
+#: business/templates/service/service_list.html:46
+msgid "delete"
+msgstr "删除"
 
 #: business/views/projects.py:34
 msgid "Project Create"
 msgstr "创建项目"
 
-#: business/views/projects.py:53
-msgid "Project Detail"
-msgstr "项目详情"
+#: business/views/projects.py:65
+msgid "project create service"
+msgstr "添加项目服务"
 
 #: crond/templates/crond/crontab_create_update.html:6
 #: crond/templates/interval/interval_create_update.html:6
@@ -823,8 +1103,6 @@ msgstr "月"
 
 #: crond/templates/crond/crontab_list.html:28
 #: crond/templates/crond/crontab_list.html:66
-#, fuzzy
-#| msgid "Actions"
 msgid "actions"
 msgstr "操作"
 
@@ -909,7 +1187,7 @@ msgstr ""
 msgid "Interval Update"
 msgstr ""
 
-#: crond/views/periodic.py:30 templates/_left_side_bar.html:65
+#: crond/views/periodic.py:30 templates/_left_side_bar.html:72
 msgid "Task List"
 msgstr "任务列表"
 
@@ -971,7 +1249,7 @@ msgstr ""
 #: deploy/templates/saltstack/saltgroup_list.html:27
 #: deploy/templates/saltstack/salthost_group_list.html:58
 #: deploy/templates/saltstack/saltmodule_list.html:27
-#: templates/_left_side_bar.html:56
+#: templates/_left_side_bar.html:63
 msgid "Salt Group"
 msgstr "salt分组"
 
@@ -991,16 +1269,12 @@ msgid "Salt Host"
 msgstr "salt主机"
 
 #: deploy/models/saltstack.py:59
-#, fuzzy
-#| msgid "Create Group"
 msgid "Salt Groups"
-msgstr "创建组"
+msgstr "salt 分区"
 
 #: deploy/models/saltstack.py:60
-#, fuzzy
-#| msgid "Create Group"
 msgid "View SaltGroup"
-msgstr "创建组"
+msgstr "查看salt分组"
 
 #: deploy/models/saltstack.py:64
 #: deploy/templates/saltstack/salthost_group_list.html:96
@@ -1013,7 +1287,7 @@ msgstr "编辑模块"
 
 #: deploy/models/saltstack.py:76
 msgid "view module"
-msgstr ""
+msgstr "查看模块"
 
 #: deploy/templates/saltstack/saltgroup_create_update.html:8
 msgid "Salt Host and Group List"
@@ -1047,8 +1321,6 @@ msgid "Salt Module List"
 msgstr "salt模块列表"
 
 #: deploy/templates/saltstack/salthost_group_list.html:86
-#, fuzzy
-#| msgid "Create SaltApi"
 msgid "Create SaltModel"
 msgstr "创建saltapi"
 
@@ -1113,14 +1385,10 @@ msgid "salt group update"
 msgstr "更新saltgroup"
 
 #: deploy/views/saltstack.py:103
-#, fuzzy
-#| msgid "Salt Group List"
 msgid "Salt group list"
 msgstr "salt分组列表"
 
 #: deploy/views/saltstack.py:118
-#, fuzzy
-#| msgid "salt group create"
 msgid "Salt group Detail"
 msgstr "添加saltgroup"
 
@@ -1149,51 +1417,71 @@ msgid "Servers"
 msgstr "服务器管理"
 
 #: templates/_left_side_bar.html:39
+msgid "Nodes"
+msgstr "节点管理"
+
+#: templates/_left_side_bar.html:40
+msgid "Hosts"
+msgstr "主机管理"
+
+#: templates/_left_side_bar.html:41
+msgid "Containers"
+msgstr "容器管理"
+
+#: templates/_left_side_bar.html:42
+msgid "Images"
+msgstr "镜像管理"
+
+#: templates/_left_side_bar.html:43
 msgid "Regions"
 msgstr "区域管理"
 
-#: templates/_left_side_bar.html:45
+#: templates/_left_side_bar.html:51
 msgid "Business"
 msgstr "业务管理"
 
-#: templates/_left_side_bar.html:47
+#: templates/_left_side_bar.html:53
 msgid "Projects"
 msgstr "项目管理"
 
-#: templates/_left_side_bar.html:53
+#: templates/_left_side_bar.html:54
+msgid "Services"
+msgstr "服务器管理"
+
+#: templates/_left_side_bar.html:60
 msgid "deploys"
 msgstr "部署管理"
 
-#: templates/_left_side_bar.html:55
+#: templates/_left_side_bar.html:62
 msgid "Salt Auth"
 msgstr "salt管理"
 
-#: templates/_left_side_bar.html:57
+#: templates/_left_side_bar.html:64
 msgid "Module deploy"
 msgstr "部署模块"
 
-#: templates/_left_side_bar.html:63
+#: templates/_left_side_bar.html:70
 msgid "Tasks"
 msgstr "任务管理"
 
-#: templates/_left_side_bar.html:66
+#: templates/_left_side_bar.html:73
 msgid "Crond List"
 msgstr "计划列表"
 
-#: templates/_left_side_bar.html:72
+#: templates/_left_side_bar.html:79
 msgid "System Manger"
 msgstr "系统管理"
 
-#: templates/_left_side_bar.html:74 templates/back.html:32
+#: templates/_left_side_bar.html:81 templates/back.html:32
 #: templates/back.html:38 users/views/user.py:31
 msgid "Users"
 msgstr "用户管理"
 
-#: templates/_left_side_bar.html:75
+#: templates/_left_side_bar.html:82
 msgid "Perms"
 msgstr "权限管理"
 
-#: templates/_left_side_bar.html:76
+#: templates/_left_side_bar.html:83
 msgid "SaltApis"
 msgstr "SaltApi管理"
 
@@ -1320,8 +1608,6 @@ msgstr "创建saltapi"
 
 #: users/templates/saltapi/saltapi-list.html:28
 #: users/templates/saltapi/saltapi_create_update.html:38
-#, fuzzy
-#| msgid "Username"
 msgid "Salt UserName"
 msgstr "用户名"
 
@@ -1478,6 +1764,3 @@ msgstr "删除用户"
 #: users/views/user.py:112
 msgid "User Profile"
 msgstr "用户信息"
-
-#~ msgid "Salt Module"
-#~ msgstr "salt模块"

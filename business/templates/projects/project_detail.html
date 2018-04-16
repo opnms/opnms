@@ -3,7 +3,7 @@
 {% block content %}
 <ul class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
-    <li><a href="{% url 'business:project-list'%}">{% trans 'InstanceList' %}</a></li>
+    <li><a href="{% url 'business:project-list'%}">{% trans 'Project List' %}</a></li>
     <li><a href="{% url 'business:project-detail' project.pk  %}">{{ action }}</a></li>
 </ul>
 
@@ -59,8 +59,8 @@
           <div class="box-body">
               <table class="table table-bordered">
                   <tr>
-                      <th>{% trans 'Servie ID' %}</th>
-                      <th>{% trans 'Servie Name' %}</th>
+                      <th>{% trans 'Service ID' %}</th>
+                      <th>{% trans 'Service Name' %}</th>
                       <th>{% trans 'regionDisplay' %}</th>
                       <th>{% trans 'containers' %}</th>
                       <th>{% trans 'imageName' %}</th>

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'assets:server-list' %}">{{ action }}</a></li>
+</ul>
+
+ <div class="page-content-wrap pull-right">
+     <div class="col-md-12">
+         <div class="col-md-12">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'hostList' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+                 </div>
+                 <div class="panel-body">
+                     <table class="table datatable">
+                         <thead>
+                         <tr>
+                             <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                             <th>{% trans 'HostName' %}</th>
+                             <th>{% trans 'instanceName' %}</th>
+                             <th>{% trans 'instanceId' %}</th>
+                             <th>{% trans 'internetIp' %}</th>
+                             <th>{% trans 'intranetIp' %}</th>
+                             <th>{% trans 'cpus' %}</th>
+                             <th>{% trans 'memory' %}</th>
+                             <th>{% trans 'status' %}</th>
+                             <th>{% trans 'Actions' %}</th>
+                         </tr>
+                         </thead>
+                     <tbody>
+                     {% for host in hosts %}
+                         <tr id="{{ host.id }}">
+                             <td><input class="icheck" type="checkbox" value="{{ host.id }}" name="id"></td>
+                             <td>{{ host.name }}</td>
+                             <td>{{ host.instanceName }}</td>
+                             <td>{{ host.instanceId }}</td>
+                             <td>{{ host.internetIp }}</td>
+                             <td>{{ host.intranetIp }}</td>
+                             <td>{{ host.cpu }}</td>
+                             <td>{{ host.memory }}</td>
+                             <td>{{ host.status }}</td>
+                             <td>
+                                 <a href="#" class="badge bg-green">{% trans 'view' %}</a>
+                                 <a href="#" class="badge bg-green">{% trans 'update' %}</a>
+                             </td>
+                         </tr>
+                     {% endfor %}
+                     </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock %}

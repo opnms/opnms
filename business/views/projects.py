@@ -64,6 +64,7 @@ class ProjectServiceCreateView(LoginRequiredMixin,CreateView):
         context = super().get_context_data(**kwargs)
         context['action'] = _('project create service')
         context['projects'] = get_object_or_404(Project,pk=self.kwargs['pk'])
+        context['pk'] = self.kwargs['pk']
         context['services'] = Service.objects.all().order_by('name')
         return context
 

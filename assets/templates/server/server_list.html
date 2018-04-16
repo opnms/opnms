@@ -6,16 +6,16 @@
     <li><a href="{% url 'assets:server-list' %}">{{ action }}</a></li>
 </ul>
 
- <div class="page-content-wrap pull-right">
+ <div class="page-content-wrap">
      <div class="col-md-12">
          <div class="col-md-12">
              <div class="panel panel-default">
                  <div class="panel-heading">
-                  <h3 class="panel-title">{% trans 'Server List' %}</h3>
-                  <ul class="panel-controls">
-                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
-                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                     <h3 class="panel-title">{% trans 'Server List' %}</h3>
+                     <ul class="panel-controls">
+                         <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
+                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                   </ul>
                  </div>
                  <div class="panel-body">
@@ -32,8 +32,9 @@
                              <th>{% trans 'Actions' %}</th>
                          </tr>
                          </thead>
+
                      <tbody>
-                     {% for server in servers %}
+                         {% for server in servers %}
                          <tr id="{{ server.id }}">
                              <td>{{ server.hostname }}</td>
                              <td>{{ server.publicipaddress }}</td>
@@ -47,6 +48,8 @@
                                  <a href="{% url 'assets:server-update' server.pk %}"><i class="fa fa-edit text-green"></i></a>
                              </td>
                          </tr>
+
+                        </tbody>
                      {% endfor %}
                      </table>
                  </div>

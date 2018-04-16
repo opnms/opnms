@@ -1,5 +1,5 @@
 from rest_framework import routers,serializers,viewsets
-from .models import Instance,Region,Cloudprovider,Server
+from .models import Instance,Region,Cloudprovider,Server,Container,Node,Image,Host
 from rest_framework_bulk import (BulkListSerializer,BulkSerializerMixin,ListBulkCreateUpdateDestroyAPIView,)
 
 class InstanceSerializer(BulkSerializerMixin,serializers.ModelSerializer):
@@ -29,4 +29,28 @@ class CloudProviderSerializer(serializers.ModelSerializer):
 class ServerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Server
+        fields = '__all__'
+
+
+class ContainerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Container
+        fields = '__all__'
+
+
+class HostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Host
+        fields = '__all__'
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = '__all__'
+
+
+class NodeSerializer(BulkSerializerMixin,serializers.ModelSerializer):
+    containers = serializers.ListField()
+    class Meta:
+        model = Node
         fields = '__all__'

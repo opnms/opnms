@@ -3,9 +3,8 @@
 {% block content %}
 <ul class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
-{#    <li class="active">Dashboard</li>#}
-    <li><a href="{% url 'users:user-list' %}">{% trans 'user list' %}</a></li>
-    <li><a href="{% url 'users:user-add' %}">{{ action }}</a></li>
+    <li><a href="{% url 'business:project-detail' pk %}">{% trans 'Project Detail' %}</a></li>
+    <li><a href="#">{{ action }}</a></li>
 </ul>
 
   <div class="page-content-wrap">
@@ -17,7 +16,7 @@
               {% csrf_token %}
                   <div class="panel panel-default">
                       <div class="panel-heading">
-                          <h3 class="panel-title"><strong>{% trans 'Create User' %}</strong></h3>
+                          <h3 class="panel-title"><strong>{% trans 'Bind Service' %}</strong></h3>
                       </div>
                       <div class="panel-body">
                           <p>{% trans 'note' %} <code>[*] and Required</code>{% trans 'Please follow the prompts to improve the form' %}</p>
@@ -25,7 +24,7 @@
                       <div class="panel-body form-group-separated">
 
                              <div class="form-group">
-                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Project owner' %}</label>
+                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Env' %}</label>
                               <div class="col-md-6 col-xs-12">
                                   <select name="name" class="form-control select">
                                       <option value="prod">生产环境</option>
@@ -34,16 +33,6 @@
                                   </select>
                                   <span class="help-block">{% trans 'Required' %}</span>
                               </div>
-                          </div>
-
-{#                       <div class="form-group">#}
-{#                              <label class="col-md-3 col-xs-12 control-label">{% trans 'Project owner' %}</label>#}
-{#                              <div class="col-md-6 col-xs-12">#}
-{#                                  <select name="project" class="form-control select">#}
-{#                                      <option value="{{ projects.id }}">{{ projects.name }}</option>#}
-{#                                  </select>#}
-{#                                  <span class="help-block">{% trans 'Required' %}</span>#}
-{#                              </div>#}
                           </div>
 
                           <div class="form-group">

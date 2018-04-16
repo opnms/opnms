@@ -1,25 +1,18 @@
 from __future__ import absolute_import, unicode_literals
 from celery import shared_task,task
-from crond.celery import app
-from crond import celery_app
-from .sync.ecssync import AliyunToOpnms
+from base.base import OpnmsCreateUpdate
 from .sync.ecsToopnms import getinit
 from deploy.saltstack.saltapi import SaltstackAPI
 from assets.models import Cloudprovider,Region
-from celery.schedules import crontab
-import time
-import json
-import requests
 from base.apis import salthost_create_or_update
 from base.ews_service import  EwsService
-from datetime import timedelta
 # cloud = Cloudprovider.objects.all()
 # print(cloud)
-opnms_url = 'http://127.0.0.1:8000/api/assets/v1/instance/'
-token = '5632741b8367408ac21b54f31d00dcb1968c5aab'
+
 
 @shared_task
 def ecs_sync():
+    opnms_url = 'http://127.0.0.1:8000/api/assets/v1/instance/'
     cloud = Cloudprovider.objects.all()
     for mes in cloud:
         id = mes.id
@@ -34,7 +27,7 @@ def ecs_sync():
                 'SerialNumber': instance['SerialNumber'],
             }
 
-            a = AliyunToOpnms(url=opnms_url,token=token,search=search)
+            a = OpnmsCreateUpdate(url=opnms_url,search=search)
             a.main(instance)
 
 @shared_task
@@ -52,6 +45,84 @@ def salt_host_create_update():
         api.main({'minion':minion})
 
 
+@shared_task
+def container_create_or_update():
+    opnms_url = 'http://127.0.0.1:8000/api/assets/v1/container/'
+
+    ews = EwsService(
+        accesskey='kqlnim0khfpou45p',
+        secretkey='7226d410ef16427e821e61ebe30e8939',
+        url='http://open-ews.cloud.tmall.com/api/v1/container'
+        )
+    containers = ews.EwsSign()
+
+    print(containers)
+    if containers['code'] == '0':
+        for container in containers['data']:
+            search = {
+                'id': container['id'],
+            }
+            serviceAction = OpnmsCreateUpdate(url=opnms_url,search=search)
+            serviceAction.main(container)
+
+@shared_task
+def image_create_or_update():
+    opnms_url = 'http://127.0.0.1:8000/api/assets/v1/image/'
+
+    ews = EwsService(
+        accesskey='kqlnim0khfpou45p',
+        secretkey='7226d410ef16427e821e61ebe30e8939',
+        url='http://open-ews.cloud.tmall.com/api/v1/image'
+        )
+    images = ews.EwsSign()
+
+    # print(images)
+    if images['code'] == '0':
+        for image in images['data']:
+            search = {
+                'id': image['id'],
+            }
+            imageAction = OpnmsCreateUpdate(url=opnms_url,search=search)
+            imageAction.main(image)
 
 
+@shared_task
+def Host_create_or_update():
+    opnms_url = 'http://127.0.0.1:8000/api/assets/v1/host/'
 
+    ews = EwsService(
+        accesskey='kqlnim0khfpou45p',
+        secretkey='7226d410ef16427e821e61ebe30e8939',
+        url='http://open-ews.cloud.tmall.com/api/v1/host'
+    )
+    hosts = ews.EwsSign()
+
+    # print(images)
+    if hosts['code'] == '0':
+        for host in hosts['data']:
+            search = {
+                'id': host['id'],
+            }
+            hostAction = OpnmsCreateUpdate(url=opnms_url, search=search)
+            hostAction.main(host)
+
+
+@shared_task
+def Node_create_or_update():
+    opnms_url = 'http://127.0.0.1:8000/api/assets/v1/node/'
+
+    ews = EwsService(
+        accesskey='kqlnim0khfpou45p',
+        secretkey='7226d410ef16427e821e61ebe30e8939',
+        url='http://open-ews.cloud.tmall.com/api/v1/node'
+    )
+    nodes = ews.EwsSign()
+
+    # print(images)
+    if nodes['code'] == '0':
+        for node in nodes['data']:
+            search = {
+                'id': node['id'],
+            }
+            nodeAction = OpnmsCreateUpdate(url=opnms_url, search=search)
+            nodeAction.main(node)

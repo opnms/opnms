@@ -23,6 +23,7 @@
                   <table class="table datatable">
                       <thead>
                       <tr>
+                          <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
                           <th>{% trans 'Service ID' %}</th>
                           <th>{% trans 'Service Name' %}</th>
                           <th>{% trans 'Service imageName' %}</th>
@@ -33,15 +34,16 @@
                       </thead>
                       {% for service in services %}
                          <tr id="{{ service.id }}">
+                             <td><input class="icheck" type="checkbox" value="{{ service.id }}" name="id"></td>
                              <td>{{ service.id }}</td>
                              <td>{{ service.name }}</td>
                              <td>{{ service.imageName }}</td>
                              <td>{{ service.createTime }}</td>
                              <td>{{ service.regionDisplay }}</td>
                              <td>
-                                 <a href="#"><i class="fa fa-envelope-o text-blue"></i></a>
-                                 <a href="#"><i class="fa fa-edit text-blue"></i></a>
-                                 <a onclick=""><i class="fa fa-recycle text-red"></i></a>
+                                 <a href="#" class="badge bg-green">{% trans 'view' %}</a>
+                                 <a href="#" class="badge bg-blue">{% trans 'update' %}</a>
+                                 <a onclick=""class="badge bg-red">{% trans 'delete' %}</a>
                              </td>
                          </tr>
                      {% endfor %}

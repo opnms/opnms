@@ -22,7 +22,7 @@ enc_res = hmac.new(SecretKey.encode(encoding="utf-8"), tempsign.encode(encoding=
 print("hmacmd5: " + enc_res)
 
 # url = 'http://open-ews.cloud.tmall.com/api/v1/service/?accesskey=kqlnim0khfpou45p&timestamp='
-url = 'http://open-ews.cloud.tmall.com/api/v1/service/24059/?accesskey=kqlnim0khfpou45p&timestamp='
+url = 'http://open-ews.cloud.tmall.com/api/v1/container/?accesskey=kqlnim0khfpou45p&timestamp='
 url = url + str(timestamp)
 print("url: " + url)
 headers = {"Authorization": enc_res.upper()}

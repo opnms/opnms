@@ -84,6 +84,7 @@
                      <table class="table datatable">
                          <thead>
                          <tr>
+                             <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
                              <th>{% trans 'InstanceName' %}</th>
                              <th>{% trans 'PublicIpAddress' %}</th>
                              <th>{% trans 'InnerIpAddress' %}</th>
@@ -99,6 +100,7 @@
                      <tbody>
                      {% for instance in instances %}
                          <tr id="{{ instance.id }}">
+                             <td><input class="icheck" type="checkbox" value="{{ instance.id }}" name="id"></td>
                              <td>{{ instance.InstanceName }}</td>
                              <td>{{ instance.PublicIpAddress|first }}</td>
                              <td>{{ instance.InnerIpAddress|first }}</td>
@@ -109,10 +111,11 @@
                              <td>{{ instance.InternetMaxBandwidthIn }}</td>
                              <td>{{ instance.ExpiredTime }}</td>
                              <td>
-                                 <a href="{% url 'assets:instance-detail' instance.pk %}"><i class="fa fa-envelope-o text-green"></i></a>
+                                 <a href="{% url 'assets:instance-detail' instance.pk %}" class="badge bg-green">{% trans 'view' %}</a>
                              </td>
                          </tr>
                      {% endfor %}
+                     </tbody>
                      </table>
                  </div>
              </div>

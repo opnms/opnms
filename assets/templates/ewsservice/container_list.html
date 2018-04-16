@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'assets:server-list' %}">{{ action }}</a></li>
+</ul>
+
+ <div class="page-content-wrap pull-right">
+     <div class="col-md-12">
+         <div class="col-md-12">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'containerList' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+                 </div>
+                 <div class="panel-body">
+                     <table class="table datatable">
+                         <thead>
+                         <tr>
+                             <th>
+                                 <input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选">
+                             </th>
+                             <th>{% trans 'container id' %}</th>
+                             <th>{% trans 'nodeId' %}</th>
+                             <th>{% trans 'createTime' %}</th>
+                             <th>{% trans 'startTime' %}(Mb)</th>
+                             <th>{% trans 'hostId' %}</th>
+                             <th>{% trans 'cpu' %}</th>
+                             <th>{% trans 'mem' %}</th>
+                             <th>{% trans 'disk' %}</th>
+                             <th>{% trans 'status' %}</th>
+                             <th>{% trans 'Actions' %}</th>
+                         </tr>
+                         </thead>
+                     <tbody>
+                     {% for container in containers %}
+                         <tr id="{{ container.id }}">
+                             <td>
+                                 <input class="icheck" type="checkbox" value="{{ container.id }}" name="id">
+                             </td>
+                             <td>{{ container.id }}</td>
+                             <td>{{ container.nodeId }}</td>
+                             <td>{{ container.createTime }}</td>
+                             <td>{{ container.startTime }}</td>
+                             <td>{{ container.hostId }}</td>
+                             <td>{{ container.cpu }}</td>
+                             <td>{{ container.mem }}</td>
+                             <td>{{ container.disk }}</td>
+                             <td>{{ container.status }}</td>
+                             <td>
+                                 <a href="#" class="badge bg-green">{% trans 'view' %}</a>
+                                 <a href="#" class="badge bg-blue">{% trans 'update' %}</a>
+                             </td>
+                         </tr>
+                     {% endfor %}
+                     </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock %}

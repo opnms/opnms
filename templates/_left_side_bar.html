@@ -27,33 +27,38 @@
 
         <!-- dashboard -->
         <li class="xn-profile">
-            <a href="{% url 'index' %}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+            <a href="{% url 'index' %}"><span class="fa fa-desktop text-light"></span> <span class="xn-text">Dashboard</span></a>
         </li>
 
         <!-- assets -->
         <li class="xn-openable" id="assets" >
-            <a href=""><span class="fa fa-indent"></span> <span class="xn-text">{% trans 'Assets' %}</span></a>
+            <a href=""><span class="fa fa-bar-chart-o text-light-blue"></span> <span class="xn-text">{% trans 'Assets' %}</span></a>
             <ul>
-                <li><a href="{% url 'assets:instance-list' %}"><span class="fa fa-image text-green"></span> {% trans 'InsTances' %}</a></li>
-                <li><a href="{% url 'assets:server-list' %}"><span class="fa fa-home text-green"></span> {% trans 'Servers' %}</a></li>
-                <li><a href="{% url 'assets:region-list' %}"><span class="fa fa-inbox text-green"></span> {% trans 'Regions' %}</a></li>
+                <li><a href="{% url 'assets:instance-list' %}"><span class="fa fa-list text-green"></span> {% trans 'InsTances' %}</a></li>
+                <li><a href="{% url 'assets:server-list' %}"><span class="fa fa-cogs text-green"></span> {% trans 'Servers' %}</a></li>
+                <li><a href="{% url 'assets:node-list' %}"><span class="fa fa-inbox text-green"></span> {% trans 'Nodes' %}</a></li>
+                <li><a href="{% url 'assets:host-list' %}"><span class="fa fa-hdd-o text-green"></span> {% trans 'Hosts' %}</a></li>
+                <li><a href="{% url 'assets:container-list' %}"><span class="fa fa-edit text-green"></span> {% trans 'Containers' %}</a></li>
+                <li><a href="{% url 'assets:image-list' %}"><span class="fa fa-image text-green"></span> {% trans 'Images' %}</a></li>
+                <li><a href="{% url 'assets:region-list' %}"><span class="fa fa-compass text-green"></span>{% trans 'Regions' %}</a></li>
+
             </ul>
         </li>
 
         <!-- business -->
-        <li class="xn-openable" id="business" >
-            <a href=""><span class="fa fa-indent"></span> <span class="xn-text">{% trans 'Business' %}</span></a>
+        <li class="xn-openable" id="business">
+            <a href=""><span class="fa fa-briefcase text-light-blue"></span> <span class="xn-text">{% trans 'Business' %}</span></a>
             <ul>
-                <li><a href="{% url 'business:project-list' %}"><span class="fa fa-image text-green"></span> {% trans 'Projects' %}</a></li>
+                <li><a href="{% url 'business:project-list' %}"><span class="fa fa-archive text-green"></span> {% trans 'Projects' %}</a></li>
                 <li><a href="{% url 'business:service-list' %}"><span class="fa fa-image text-green"></span> {% trans 'Services' %}</a></li>
             </ul>
         </li>
 
          <!-- deploy -->
          <li class="xn-openable" id="deploys">
-            <a href=""><span class="fa fa-tasks"></span> <span class="xn-text">{% trans 'deploys' %}</span></a>
+            <a href=""><span class="fa  fa-tachometer text-light-blue"></span> <span class="xn-text">{% trans 'deploys' %}</span></a>
             <ul>
-                <li><a href="{% url 'deploys:salthost-list' %}"><span class="fa fa-gears text-green"></span> {% trans 'Salt Auth' %}</a></li>
+                <li><a href="{% url 'deploys:salthost-list' %}"><span class="fa fa-sitemap text-green"></span> {% trans 'Salt Auth' %}</a></li>
                 <li><a href="{% url 'deploys:saltgroup-list' %}"><span class="fa fa-codepen text-green"></span> {% trans 'Salt Group' %}</a></li>
                 <li><a href="{% url 'deploys:saltmodule-deploy' %}"><span class="fa fa-dedent text-green"></span> {% trans 'Module deploy' %}</a></li>
             </ul>
@@ -61,7 +66,7 @@
 
         <!-- task -->
          <li class="xn-openable" id="crond">
-            <a href=""><span class="fa fa-tasks"></span> <span class="xn-text">{% trans 'Tasks' %}</span></a>
+            <a href=""><span class="fa fa-tasks text-light-blue"></span> <span class="xn-text">{% trans 'Tasks' %}</span></a>
             <ul>
                 <li><a href="{% url 'crondtasks:periodic-list' %}"><span class="fa fa-cubes text-green"></span> {% trans 'Task List' %}</a></li>
                 <li><a href="{% url 'crondtasks:crontab-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Crond List' %}</a></li>
@@ -70,7 +75,7 @@
 
          <!-- system manager -->
         <li class="xn-openable" id="users">
-            <a href=""><span class="fa fa-share-alt-square"></span> <span class="xn-text">{% trans 'System Manger' %}</span></a>
+            <a href=""><span class="fa fa-share-alt-square text-light-blue"></span> <span class="xn-text">{% trans 'System Manger' %}</span></a>
             <ul>
                 <li><a href="{% url 'users:user-list' %}"><span class="fa fa-user text-green"></span> {% trans 'Users' %}</a></li>
                 <li><a href="#"><span class="fa fa-edit"></span> {% trans 'Perms' %}</a></li>

@@ -9,6 +9,10 @@ router.register(r'v1/instance',api.InstanceViewSet,'instance')
 router.register(r'v1/region',api.RegionViewSet,'region')
 router.register(r'v1/cloud',api.CloudProviderViewSet,'cloud')
 router.register(r'v1/server',api.ServerViewSet,'server')
+router.register(r'v1/host',api.HostViewSet,'host')
+router.register(r'v1/container',api.ContainerViewSet,'container')
+router.register(r'v1/image',api.ImageViewSet,'image')
+router.register(r'v1/node',api.NodeViewSet,'image')
 app_name = 'assets'
 
 urlpatterns = [
