@@ -576,4 +576,3 @@ Object.size = function(obj) {
     }
     return size;
 };
-/* EOF NEW OBJECT(GET SIZE OF ARRAY) */

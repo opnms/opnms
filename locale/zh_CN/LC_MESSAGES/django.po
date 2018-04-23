@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-15 22:59+0800\n"
+"POT-Creation-Date: 2018-04-18 08:53+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: assets/models/container.py:10
-#: assets/templates/ewsservice/container_list.html:26
+#: assets/templates/ewsservice/container_list.html:28
 msgid "container id"
 msgstr "容器ID"
 
@@ -29,13 +29,14 @@ msgid "container status"
 msgstr "开启状态"
 
 #: assets/models/container.py:13 assets/models/node.py:14
-#: assets/templates/ewsservice/container_list.html:28
+#: assets/templates/ewsservice/container_list.html:30
 #: assets/templates/ewsservice/node_list.html:31
+#: assets/templates/ewsservice/test.html:31
 msgid "createTime"
 msgstr "创建时间"
 
 #: assets/models/container.py:14
-#: assets/templates/ewsservice/container_list.html:29
+#: assets/templates/ewsservice/container_list.html:31
 msgid "startTime"
 msgstr "开始时间"
 
@@ -44,22 +45,22 @@ msgid "stopTime"
 msgstr "停止时间"
 
 #: assets/models/container.py:16
-#: assets/templates/ewsservice/container_list.html:30
+#: assets/templates/ewsservice/container_list.html:32
 msgid "hostId"
 msgstr "容器所在主机ID"
 
 #: assets/models/container.py:17 assets/models/host.py:19
-#: assets/templates/ewsservice/container_list.html:31
+#: assets/templates/ewsservice/container_list.html:33
 msgid "cpu"
 msgstr "容器使用CPU核数"
 
 #: assets/models/container.py:18
-#: assets/templates/ewsservice/container_list.html:32
+#: assets/templates/ewsservice/container_list.html:34
 msgid "mem"
 msgstr "容器使用内存"
 
 #: assets/models/container.py:19
-#: assets/templates/ewsservice/container_list.html:33
+#: assets/templates/ewsservice/container_list.html:35
 msgid "disk"
 msgstr "容器使用的磁盘"
 
@@ -92,9 +93,10 @@ msgid "intranetIp"
 msgstr "内网IP"
 
 #: assets/models/host.py:15 assets/models/node.py:12
-#: assets/templates/ewsservice/container_list.html:34
+#: assets/templates/ewsservice/container_list.html:36
 #: assets/templates/ewsservice/host_list.html:33
 #: assets/templates/ewsservice/node_list.html:29
+#: assets/templates/ewsservice/test.html:29 monitor/models/http.py:58
 msgid "status"
 msgstr "状态"
 
@@ -141,6 +143,7 @@ msgstr "镜像ID"
 #: assets/models/image.py:11 assets/models/node.py:11
 #: assets/templates/ewsservice/image_list.html:27
 #: assets/templates/ewsservice/node_list.html:28
+#: assets/templates/ewsservice/test.html:28
 #: business/templates/projects/project_detail.html:66
 msgid "imageName"
 msgstr "镜像名称"
@@ -395,16 +398,19 @@ msgstr ""
 msgid "LastUpdat_time"
 msgstr "最后更新时间"
 
-#: assets/models/node.py:9 assets/templates/ewsservice/container_list.html:27
+#: assets/models/node.py:9 assets/templates/ewsservice/container_list.html:29
 #: assets/templates/ewsservice/node_list.html:26
+#: assets/templates/ewsservice/test.html:26
 msgid "nodeId"
 msgstr "容器所在节点ID"
 
 #: assets/models/node.py:10 assets/templates/ewsservice/node_list.html:27
+#: assets/templates/ewsservice/test.html:27
 msgid "nodeName"
 msgstr "节点名称"
 
 #: assets/models/node.py:13 assets/templates/ewsservice/node_list.html:30
+#: assets/templates/ewsservice/test.html:30
 msgid "serviceId"
 msgstr "服务ID"
 
@@ -414,7 +420,7 @@ msgstr "容器管理"
 
 #: assets/models/region.py:12
 #: assets/templates/cloudprovider/cloud_create_update.html:26
-#: assets/templates/region/region_list.html:22
+#: assets/templates/region/region_list.html:27
 msgid "IDC Name"
 msgstr ""
 
@@ -433,26 +439,27 @@ msgstr ""
 #: assets/models/region.py:15
 #: assets/templates/cloudprovider/cloud_create_update.html:37
 #: assets/templates/cloudprovider/cloud_create_update.html:41
-#: assets/templates/region/region_list.html:23
+#: assets/templates/region/region_list.html:28
 msgid "Abbr Slug"
 msgstr "别名"
 
 #: assets/models/region.py:16
 #: assets/templates/cloudprovider/cloud_create_update.html:70
 #: assets/templates/cloudprovider/cloud_create_update.html:74
-#: assets/templates/region/region_list.html:26
+#: assets/templates/region/region_list.html:31
 msgid "Country"
 msgstr "城市"
 
 #: assets/models/region.py:17 assets/models/region.py:31
-#: assets/models/server.py:31 assets/templates/region/region_list.html:27
-#: assets/templates/region/region_list.html:68 business/models/project.py:15
-#: business/models/service.py:12
+#: assets/models/server.py:31 assets/templates/region/region_list.html:32
+#: business/models/project.py:15 business/models/service.py:12
 #: business/templates/projects/project_detail.html:46
 #: business/templates/projects/project_list.html:32
 #: deploy/models/saltstack.py:47 deploy/models/saltstack.py:66
 #: deploy/templates/saltstack/saltgroup_list.html:31
 #: deploy/templates/saltstack/salthost_group_list.html:98
+#: monitor/models/http.py:16 monitor/models/http.py:29
+#: monitor/models/http.py:46 monitor/templates/httpmonitor/http_list.html:34
 #: perms/models/perm.py:10 users/models/department.py:12
 #: users/models/group.py:14 users/templates/users/user_list-table.html:26
 #: users/templates/users/user_list.html:74
@@ -461,13 +468,15 @@ msgid "Create at"
 msgstr "创建时间"
 
 #: assets/models/region.py:18 assets/models/region.py:32
-#: assets/models/server.py:30 assets/templates/region/region_list.html:28
-#: assets/templates/region/region_list.html:69 business/models/project.py:14
+#: assets/models/server.py:30 assets/templates/region/region_list.html:33
+#: business/models/project.py:14
 #: business/templates/projects/project_detail.html:42
 #: business/templates/projects/project_list.html:31
 #: deploy/models/saltstack.py:46 deploy/models/saltstack.py:67
 #: deploy/templates/saltstack/saltgroup_list.html:32
 #: deploy/templates/saltstack/salthost_group_list.html:99
+#: monitor/models/http.py:15 monitor/models/http.py:28
+#: monitor/models/http.py:45 monitor/templates/httpmonitor/http_list.html:33
 #: perms/models/perm.py:9 users/models/user.py:28
 #: users/templates/users/user_list-table.html:62
 #: users/templates/users/user_list.html:75
@@ -483,12 +492,10 @@ msgstr "区域"
 
 #: assets/models/region.py:29 assets/templates/region/create_update.html:41
 #: assets/templates/region/create_update.html:48
-#: assets/templates/region/region_list.html:66
 msgid "Cloud Provider"
 msgstr "云服务商"
 
 #: assets/models/region.py:30 assets/templates/region/create_update.html:37
-#: assets/templates/region/region_list.html:67
 msgid "City"
 msgstr "城市"
 
@@ -569,6 +576,7 @@ msgstr "创建组"
 #: crond/templates/solar/solar_create_update.html:22
 #: deploy/templates/saltstack/saltgroup_create_update.html:22
 #: deploy/templates/saltstack/saltmodule_create_update.html:23
+#: monitor/templates/httpmonitor/http_create_update.html:22
 #: users/templates/department/create_department.html:23
 #: users/templates/department/update_department.html:23
 #: users/templates/groups/create_group.html:23
@@ -588,6 +596,7 @@ msgstr "注意"
 #: crond/templates/solar/solar_create_update.html:22
 #: deploy/templates/saltstack/saltgroup_create_update.html:22
 #: deploy/templates/saltstack/saltmodule_create_update.html:23
+#: monitor/templates/httpmonitor/http_create_update.html:22
 #: users/templates/department/create_department.html:23
 #: users/templates/department/update_department.html:23
 #: users/templates/groups/create_group.html:23
@@ -614,6 +623,9 @@ msgstr "请按提示完善表单"
 #: deploy/templates/saltstack/saltgroup_create_update.html:33
 #: deploy/templates/saltstack/saltgroup_create_update.html:45
 #: deploy/templates/saltstack/saltmodule_create_update.html:34
+#: monitor/templates/httpmonitor/http_create_update.html:33
+#: monitor/templates/httpmonitor/http_create_update.html:57
+#: monitor/templates/httpmonitor/http_create_update.html:70
 #: users/templates/department/create_department.html:33
 #: users/templates/groups/create_group.html:33
 #: users/templates/groups/update_group.html:33
@@ -647,18 +659,20 @@ msgstr "容器列表"
 #: assets/templates/ewsservice/host_list.html:17
 #: assets/templates/ewsservice/image_list.html:17
 #: assets/templates/ewsservice/node_list.html:17
+#: assets/templates/ewsservice/test.html:17
 #: assets/templates/instances/instance_list.html:79
+#: assets/templates/region/region_list.html:18
 #: assets/templates/server/server_list.html:17
 msgid "Refresh Instances"
 msgstr "刷新实例"
 
-#: assets/templates/ewsservice/container_list.html:35
+#: assets/templates/ewsservice/container_list.html:37
 #: assets/templates/ewsservice/host_list.html:34
 #: assets/templates/ewsservice/image_list.html:31
 #: assets/templates/ewsservice/node_list.html:32
+#: assets/templates/ewsservice/test.html:32
 #: assets/templates/instances/instance_list.html:97
-#: assets/templates/region/region_list.html:29
-#: assets/templates/region/region_list.html:70
+#: assets/templates/region/region_list.html:34
 #: assets/templates/server/server_create_update.html:26
 #: assets/templates/server/server_list.html:32
 #: business/templates/projects/project_list.html:33
@@ -668,6 +682,7 @@ msgstr "刷新实例"
 #: deploy/templates/saltstack/salthost_group_list.html:61
 #: deploy/templates/saltstack/salthost_group_list.html:100
 #: deploy/templates/saltstack/saltmodule_list.html:30
+#: monitor/templates/httpmonitor/http_list.html:35
 #: users/templates/saltapi/saltapi-list.html:30
 #: users/templates/users/user_list.html:37
 #: users/templates/users/user_list.html:76
@@ -675,20 +690,24 @@ msgstr "刷新实例"
 msgid "Actions"
 msgstr "操作"
 
-#: assets/templates/ewsservice/container_list.html:52
+#: assets/templates/ewsservice/container_list.html:56
 #: assets/templates/ewsservice/host_list.html:50
 #: assets/templates/ewsservice/image_list.html:44
 #: assets/templates/ewsservice/node_list.html:46
+#: assets/templates/ewsservice/test.html:46
 #: assets/templates/instances/instance_list.html:114
 #: business/templates/service/service_list.html:44
+#: monitor/templates/httpmonitor/http_list.html:49
 msgid "view"
 msgstr "查看"
 
-#: assets/templates/ewsservice/container_list.html:53
+#: assets/templates/ewsservice/container_list.html:57
 #: assets/templates/ewsservice/host_list.html:51
 #: assets/templates/ewsservice/image_list.html:45
 #: assets/templates/ewsservice/node_list.html:47
+#: assets/templates/ewsservice/test.html:47
 #: business/templates/service/service_list.html:45
+#: monitor/templates/httpmonitor/http_list.html:50
 msgid "update"
 msgstr "更新"
 
@@ -705,12 +724,14 @@ msgstr ""
 msgid "imageList"
 msgstr "镜像列表"
 
-#: assets/templates/ewsservice/node_list.html:14 assets/views/ewsservice.py:32
+#: assets/templates/ewsservice/node_list.html:14
+#: assets/templates/ewsservice/test.html:14 assets/views/ewsservice.py:32
 msgid "nodeList"
 msgstr "节点列表"
 
 #: assets/templates/instances/instance_detail.html:6
 #: assets/templates/instances/instance_list.html:76
+#: assets/templates/region/region_list.html:15
 #: assets/templates/server/server_detail.html:6 assets/views/instances.py:26
 #: assets/views/instances.py:38
 msgid "InstanceList"
@@ -782,18 +803,13 @@ msgstr "实例最后更新时间"
 msgid "Please Choice"
 msgstr ""
 
-#: assets/templates/region/region_list.html:24
+#: assets/templates/region/region_list.html:29
 msgid "Key Id"
 msgstr ""
 
-#: assets/templates/region/region_list.html:25
+#: assets/templates/region/region_list.html:30
 msgid "secret"
 msgstr ""
-
-#: assets/templates/region/region_list.html:65
-#: crond/templates/periodic/periodictask_list.html:17
-msgid "Name"
-msgstr "名称"
 
 #: assets/templates/server/server_detail.html:26
 msgid "Hostname"
@@ -869,6 +885,8 @@ msgstr "代码地址"
 #: deploy/templates/saltstack/saltgroup_list.html:30
 #: deploy/templates/saltstack/salthost_group_list.html:97
 #: deploy/templates/saltstack/saltmodule_create_update.html:40
+#: monitor/templates/httpmonitor/http_create_update.html:75
+#: monitor/templates/httpmonitor/http_list.html:30
 #: users/models/department.py:11 users/models/group.py:13
 #: users/templates/department/create_department.html:38
 #: users/templates/groups/create_group.html:38
@@ -978,6 +996,7 @@ msgstr "代码地址"
 #: business/templates/projects/project_create_update.html:78
 #: deploy/templates/saltstack/saltgroup_create_update.html:52
 #: deploy/templates/saltstack/saltmodule_create_update.html:42
+#: monitor/templates/httpmonitor/http_create_update.html:77
 #: users/templates/department/create_department.html:40
 #: users/templates/groups/create_group.html:40
 #: users/templates/groups/update_group.html:40
@@ -1001,6 +1020,7 @@ msgstr "环境"
 
 #: business/templates/projects/project_detail.html:57
 #: business/templates/projects/project_service_create_update.html:19
+#: monitor/templates/httpmonitor/http_create_update.html:19
 msgid "Bind Service"
 msgstr "绑定服务"
 
@@ -1034,6 +1054,7 @@ msgid "Service List"
 msgstr "服务列表"
 
 #: business/templates/service/service_list.html:18
+#: monitor/templates/httpmonitor/http_list.html:19
 msgid "Refresh Service"
 msgstr "实例刷新"
 
@@ -1050,6 +1071,7 @@ msgid "Service regionDisplay"
 msgstr "服务注册区域"
 
 #: business/templates/service/service_list.html:46
+#: monitor/templates/httpmonitor/http_list.html:51
 msgid "delete"
 msgstr "删除"
 
@@ -1121,6 +1143,10 @@ msgstr ""
 msgid "Create or Update interval"
 msgstr ""
 
+#: crond/templates/periodic/periodictask_list.html:17
+msgid "Name"
+msgstr "名称"
+
 #: crond/templates/periodic/periodictask_list.html:18
 msgid "task"
 msgstr "任务"
@@ -1187,7 +1213,7 @@ msgstr ""
 msgid "Interval Update"
 msgstr ""
 
-#: crond/views/periodic.py:30 templates/_left_side_bar.html:72
+#: crond/views/periodic.py:30 templates/_left_side_bar.html:71
 msgid "Task List"
 msgstr "任务列表"
 
@@ -1249,7 +1275,7 @@ msgstr ""
 #: deploy/templates/saltstack/saltgroup_list.html:27
 #: deploy/templates/saltstack/salthost_group_list.html:58
 #: deploy/templates/saltstack/saltmodule_list.html:27
-#: templates/_left_side_bar.html:63
+#: templates/_left_side_bar.html:62
 msgid "Salt Group"
 msgstr "salt分组"
 
@@ -1396,6 +1422,137 @@ msgstr "添加saltgroup"
 msgid "Salt Module Update"
 msgstr "salt模块更新"
 
+#: monitor/models/http.py:9
+msgid "alarm policy"
+msgstr "告警规则"
+
+#: monitor/models/http.py:10
+msgid "status code"
+msgstr "状态码"
+
+#: monitor/models/http.py:11
+msgid "timeout"
+msgstr "超时时间"
+
+#: monitor/models/http.py:12
+msgid "max_step"
+msgstr "最大次数"
+
+#: monitor/models/http.py:13
+msgid "times"
+msgstr "次数"
+
+#: monitor/models/http.py:14
+msgid "keywords"
+msgstr "关键字"
+
+#: monitor/models/http.py:26 monitor/models/http.py:43
+#: monitor/templates/httpmonitor/http_list.html:31
+msgid "http group"
+msgstr "http 分组"
+
+#: monitor/models/http.py:27 monitor/models/http.py:44
+#: users/templates/users/user_list.html:73
+msgid "comment"
+msgstr "备注"
+
+#: monitor/models/http.py:39
+msgid "http url"
+msgstr "HTTP URL"
+
+#: monitor/models/http.py:40
+msgid "desc"
+msgstr "描述"
+
+#: monitor/models/http.py:42 monitor/templates/httpmonitor/http_list.html:32
+msgid "http alarm policy"
+msgstr "http 告警规则"
+
+#: monitor/models/http.py:57
+msgid "env url"
+msgstr "事件URL"
+
+#: monitor/models/http.py:59
+msgid "IPAddress"
+msgstr "地址"
+
+#: monitor/models/http.py:60
+msgid "event time"
+msgstr "故障时间"
+
+#: monitor/models/http.py:61
+msgid "response time"
+msgstr "响应时间"
+
+#: monitor/models/http.py:62
+msgid "code"
+msgstr "返回状态"
+
+#: monitor/models/http.py:63
+msgid "result"
+msgstr "结果"
+
+#: monitor/models/http.py:64
+msgid "current step"
+msgstr "当前次数"
+
+#: monitor/models/http.py:65
+msgid "max step"
+msgstr "最大次数"
+
+#: monitor/templates/httpmonitor/http_create_update.html:6
+msgid "http list"
+msgstr "HTTP 列表"
+
+#: monitor/templates/httpmonitor/http_create_update.html:27
+msgid "monitor name"
+msgstr "监控名称"
+
+#: monitor/templates/httpmonitor/http_create_update.html:31
+msgid "monitor url"
+msgstr "监控连接"
+
+#: monitor/templates/httpmonitor/http_create_update.html:38
+#: monitor/templates/httpmonitor/http_create_update.html:42
+msgid "monitor service"
+msgstr "监控项目"
+
+#: monitor/templates/httpmonitor/http_create_update.html:44
+msgid "*"
+msgstr ""
+
+#: monitor/templates/httpmonitor/http_create_update.html:49
+msgid "monitor group"
+msgstr "监控分组"
+
+#: monitor/templates/httpmonitor/http_create_update.html:62
+msgid "monitor alarmploicy"
+msgstr "告警规则"
+
+#: monitor/templates/httpmonitor/http_list.html:15
+msgid "http monitor list"
+msgstr "HTTP 监控列表"
+
+#: monitor/templates/httpmonitor/http_list.html:28
+msgid "http name"
+msgstr "监控地址"
+
+#: monitor/templates/httpmonitor/http_list.html:29
+msgid "http service"
+msgstr "HTTP项目名称"
+
+#: monitor/views/http.py:22
+msgid "httpmonitor list"
+msgstr "HTTP监控列表"
+
+#: monitor/views/http.py:34
+msgid "httpmonitor create"
+msgstr "创建HTTP监控"
+
+#: monitor/views/http.py:57
+msgid "httpmonitor update"
+msgstr "更新HTTP"
+
 #: templates/_head_logout.html:7
 msgid "Are you sure you want to log out?"
 msgstr ""
@@ -1436,52 +1593,60 @@ msgstr "镜像管理"
 msgid "Regions"
 msgstr "区域管理"
 
-#: templates/_left_side_bar.html:51
+#: templates/_left_side_bar.html:50
 msgid "Business"
 msgstr "业务管理"
 
-#: templates/_left_side_bar.html:53
+#: templates/_left_side_bar.html:52
 msgid "Projects"
 msgstr "项目管理"
 
-#: templates/_left_side_bar.html:54
+#: templates/_left_side_bar.html:53
 msgid "Services"
-msgstr "服务器管理"
+msgstr "服务管理"
 
-#: templates/_left_side_bar.html:60
+#: templates/_left_side_bar.html:59
 msgid "deploys"
 msgstr "部署管理"
 
-#: templates/_left_side_bar.html:62
+#: templates/_left_side_bar.html:61
 msgid "Salt Auth"
 msgstr "salt管理"
 
-#: templates/_left_side_bar.html:64
+#: templates/_left_side_bar.html:63
 msgid "Module deploy"
 msgstr "部署模块"
 
-#: templates/_left_side_bar.html:70
+#: templates/_left_side_bar.html:69
 msgid "Tasks"
 msgstr "任务管理"
 
-#: templates/_left_side_bar.html:73
+#: templates/_left_side_bar.html:72
 msgid "Crond List"
 msgstr "计划列表"
 
-#: templates/_left_side_bar.html:79
+#: templates/_left_side_bar.html:78
+msgid "Monitor"
+msgstr "监控管理"
+
+#: templates/_left_side_bar.html:80
+msgid "http monitor"
+msgstr "HTTP监控"
+
+#: templates/_left_side_bar.html:86
 msgid "System Manger"
 msgstr "系统管理"
 
-#: templates/_left_side_bar.html:81 templates/back.html:32
+#: templates/_left_side_bar.html:88 templates/back.html:32
 #: templates/back.html:38 users/views/user.py:31
 msgid "Users"
 msgstr "用户管理"
 
-#: templates/_left_side_bar.html:82
+#: templates/_left_side_bar.html:89
 msgid "Perms"
 msgstr "权限管理"
 
-#: templates/_left_side_bar.html:83
+#: templates/_left_side_bar.html:90
 msgid "SaltApis"
 msgstr "SaltApi管理"
 
@@ -1713,10 +1878,6 @@ msgstr "组"
 msgid "Add User"
 msgstr "添加用户"
 
-#: users/templates/users/user_list.html:73
-msgid "comment"
-msgstr "备注"
-
 #: users/templates/users/user_profile.html:18
 msgid "user"
 msgstr "用户"
@@ -1764,3 +1925,12 @@ msgstr "删除用户"
 #: users/views/user.py:112
 msgid "User Profile"
 msgstr "用户信息"
+
+#~ msgid "http comment"
+#~ msgstr "Http备注"
+
+#~ msgid "http create_by"
+#~ msgstr "创建人"
+
+#~ msgid "http create_at"
+#~ msgstr "创建时间"

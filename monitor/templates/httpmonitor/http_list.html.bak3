@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+{% load static %}
+
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'monitor:monitor-http-list'  %}">{% trans 'http list' %}</a></li>
+    <li><a href="#">{{ action }}</a></li>
+</ul>
+
+<link href="{% static 'indexcss/bootstrap/bootstrap.min.css' %}" rel="stylesheet" />
+
+<div class="modal-body pull-right" ng-app="app">
+    <div ng-controller="ModalDemoCtrl">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">{% trans 'http monitor create' %}</h3>
+            </div>
+
+            <div class="modal-body">
+                <form name="form.userForm" ng-submit="submitForm()" novalidate>
+                    <div class="modal-body">
+                        <!-- NAME -->
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control" ng-model="name" required>
+                            <p ng-show="form.userForm.name.$invalid && !form.userForm.name.$pristine" class="help-block">You name is required.</p>
+                        </div>
+
+                        <!-- USERNAME -->
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8" required>
+                            <p ng-show="form.userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+                            <p ng-show="form.userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" ng-model="email" required>
+                            <p ng-show="form.userForm.email.$invalid && !form.userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" ng-disabled="form.r.$invalid">OK</button>
+                        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </script>
+        <div class="page-content-wrap">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{% trans 'http monitor list' %}</h3>
+                        <ul class="panel-controls">
+                            <li><a ng-click="showForm()" data-toggle="tooltip" data-placement="top" title="{% trans 'create http' %}"><span class="fa fa-plus-square"></span></a></li>
+                            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Service' %}" ><span class="fa fa-refresh"></span></a></li>
+                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table datatable">
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                                <th>{% trans 'http service' %}</th>
+                                <th>{% trans 'http name' %}</th>
+                                <th>{% trans 'Comment' %}</th>
+                                <th>{% trans 'http group' %}</th>
+                                <th>{% trans 'http alarm policy' %}</th>
+                                <th>{% trans 'Create by' %}</th>
+                                <th>{% trans 'Create at' %}</th>
+                                <th>{% trans 'Actions' %}</th>
+                            </tr>
+                            </thead>
+                            <p ng-repeat="name in names">{[ name ]}</p>
+                            {% for httpd in httpmonitors %}
+
+                                <tr id="{{ httpd.id }}">
+                                    <td><input class="icheck" type="checkbox" value="{{ service.id }}" name="id"></td>
+                                    <td>{{ httpd.service }}</td>
+                                    <td>{{ httpd.name }}</td>
+                                    <td>{{ httpd.comment }}</td>
+                                    <td>{{ httpd.group }}</td>
+                                    <td>{{ httpd.alarmploicy }}</td>
+                                    <td>{{ httpd.create_by }}</td>
+                                    <td>{{ httpd.create_at }}</td>
+                                    <td>
+                                        <a href="#" class="badge bg-green">{% trans 'view' %}</a>
+                                        <a href="{% url 'monitor:monitor-http-update' httpd.pk %}" class="badge bg-blue">{% trans 'update' %}</a>
+                                        <a onclick="delete_monitorhttp({{ httpd.id }})" class="badge bg-red">{% trans 'delete' %}</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# <script src="http://code.angularjs.org/1.2.6/angular.js"></script>#}
+{#<script src="{% static 'indexjs/angularjs/angular.js' %}"></script>#}
+{#<script src="https://cdn.bootcss.com/angular-ui-bootstrap/1.3.2/ui-bootstrap-tpls.js"></script>#}
+{#<script src="https://cdn.bootcss.com/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>#}
+{#<script src="{% static 'indexjs/angular.min.js' %}"></script>#}
+<script src="{% static 'indexjs/angular.min.js' %}"></script>
+<script src="https://cdn.bootcss.com/angular-ui-bootstrap/0.13.2/ui-bootstrap-tpls.js"></script>
+{#<script src="https://cdn.bootcss.com/angular-ui-bootstrap/1.3.2/ui-bootstrap-tpls.js"></script>#}
+
+<script>
+
+var app = angular.module('app',['ui.bootstrap']);
+{#app.config(#}
+{#    function($interpolateProvider) {#}
+{#      $interpolateProvider.startSymbol('{[');#}
+{#      $interpolateProvider.endSymbol(']}');#}
+{#    });#}
+
+app.controller("ModalDemoCtrl", ['$scope', '$modal','$log',
+
+    function ($scope, $modal, $log) {
+
+        $scope.showForm = function () {
+            $scope.message = "Show Form Button Clicked";
+            console.log($scope.message);
+
+            var modalInstance = $modal.open({
+                {#animation: $scope.animationsEnabled,#}
+                templateUrl: 'myModalContent.html',
+                controller: ModalDemoCtrl,
+                backdrop: "static",
+                {#size: size,#}
+                resolve: {
+                    userForm: function () {
+                        return $scope.userForm;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+            }]);
+
+var ModalDemoCtrl = function ($scope, $uibModalInstance, userForm) {
+    $scope.form = {}
+    $scope.submitForm = function () {
+        if ($scope.form.userForm.$valid) {
+            console.log('user form is in scope');
+            $uibModalInstance.close('closed');
+        } else {
+            console.log('userform is not in scope');
+        }
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+};
+
+
+
+
+</script>
+{% endblock %}

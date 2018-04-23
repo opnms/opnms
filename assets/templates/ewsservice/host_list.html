@@ -3,12 +3,11 @@
 {% block content %}
 <ul class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
-    <li><a href="{% url 'assets:server-list' %}">{{ action }}</a></li>
+    <li><a href="{% url 'assets:host-list' %}">{{ action }}</a></li>
 </ul>
 
  <div class="page-content-wrap pull-right">
      <div class="col-md-12">
-         <div class="col-md-12">
              <div class="panel panel-default">
                  <div class="panel-heading">
                   <h3 class="panel-title">{% trans 'hostList' %}</h3>
@@ -56,7 +55,6 @@
                      </table>
                  </div>
              </div>
-         </div>
      </div>
  </div>
 {% endblock %}

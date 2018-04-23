@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^crond/',include('crond.urls.view_urls',namespace='crondtasks')),
     url(r'^deploys/',include('deploy.urls.view_urls',namespace='deploys')),
     url(r'^business/',include('business.urls.view_urls',namespace='business')),
+    url(r'^monitor/',include('monitor.urls.view_urls',namespace='monitor')),
 
     #api
     url(r'api/assets/',include('assets.urls.api_urls',namespace='api-assets')),
@@ -39,6 +40,7 @@ urlpatterns = [
     url(r'api/crond/',include('crond.urls.api_urls',namespace='api-tasks')),
     url(r'api/deploys/',include('deploy.urls.api_urls',namespace='api-deploys')),
     url(r'api/business/',include('business.urls.api_urls',namespace='api-business')),
+    url(r'api/monitor/',include('monitor.urls.api_urls',namespace='api-monitor')),
 ]
 
 

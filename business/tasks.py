@@ -17,10 +17,9 @@ def services_create_or_update():
 
     ews = EwsService(
         accesskey='kqlnim0khfpou45p',
-        secretkey='7226d410ef16427e821e61ebe30e8939',
-        url='http://open-ews.cloud.tmall.com/api/v1/service/'
+        secretkey='7226d410ef16427e821e61ebe30e8939'
         )
-    services = ews.EwsSign()
+    services = ews.get(geturl='http://open-ews.cloud.tmall.com/api/v1/service/')
 
     # print(services)
     if services['code'] == '0':

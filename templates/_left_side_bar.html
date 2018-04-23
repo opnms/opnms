@@ -34,14 +34,13 @@
         <li class="xn-openable" id="assets" >
             <a href=""><span class="fa fa-bar-chart-o text-light-blue"></span> <span class="xn-text">{% trans 'Assets' %}</span></a>
             <ul>
-                <li><a href="{% url 'assets:instance-list' %}"><span class="fa fa-list text-green"></span> {% trans 'InsTances' %}</a></li>
+{#                <li><a href="{% url 'assets:instance-list' %}"><span class="fa fa-list text-green"></span> {% trans 'InsTances' %}</a></li>#}
                 <li><a href="{% url 'assets:server-list' %}"><span class="fa fa-cogs text-green"></span> {% trans 'Servers' %}</a></li>
                 <li><a href="{% url 'assets:node-list' %}"><span class="fa fa-inbox text-green"></span> {% trans 'Nodes' %}</a></li>
-                <li><a href="{% url 'assets:host-list' %}"><span class="fa fa-hdd-o text-green"></span> {% trans 'Hosts' %}</a></li>
+{#                <li><a href="{% url 'assets:host-list' %}"><span class="fa fa-hdd-o text-green"></span> {% trans 'Hosts' %}</a></li>#}
                 <li><a href="{% url 'assets:container-list' %}"><span class="fa fa-edit text-green"></span> {% trans 'Containers' %}</a></li>
                 <li><a href="{% url 'assets:image-list' %}"><span class="fa fa-image text-green"></span> {% trans 'Images' %}</a></li>
                 <li><a href="{% url 'assets:region-list' %}"><span class="fa fa-compass text-green"></span>{% trans 'Regions' %}</a></li>
-
             </ul>
         </li>
 
@@ -70,6 +69,14 @@
             <ul>
                 <li><a href="{% url 'crondtasks:periodic-list' %}"><span class="fa fa-cubes text-green"></span> {% trans 'Task List' %}</a></li>
                 <li><a href="{% url 'crondtasks:crontab-list' %}"><span class="fa fa-clock-o text-green"></span> {% trans 'Crond List' %}</a></li>
+            </ul>
+        </li>
+
+         <!-- monitor -->
+         <li class="xn-openable" id="monitor">
+            <a href=""><span class="fa fa-eye-slash text-light-blue"></span> <span class="xn-text">{% trans 'Monitor' %}</span></a>
+            <ul>
+                <li><a href="{% url 'monitor:monitor-http-list' %}"><span class="fa fa-cubes text-green"></span> {% trans 'http monitor' %}</a></li>
             </ul>
         </li>
 

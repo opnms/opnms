@@ -51,10 +51,9 @@ def container_create_or_update():
 
     ews = EwsService(
         accesskey='kqlnim0khfpou45p',
-        secretkey='7226d410ef16427e821e61ebe30e8939',
-        url='http://open-ews.cloud.tmall.com/api/v1/container'
+        secretkey='7226d410ef16427e821e61ebe30e8939'
         )
-    containers = ews.EwsSign()
+    containers = ews.get(geturl='http://open-ews.cloud.tmall.com/api/v1/container')
 
     print(containers)
     if containers['code'] == '0':
@@ -71,10 +70,9 @@ def image_create_or_update():
 
     ews = EwsService(
         accesskey='kqlnim0khfpou45p',
-        secretkey='7226d410ef16427e821e61ebe30e8939',
-        url='http://open-ews.cloud.tmall.com/api/v1/image'
-        )
-    images = ews.EwsSign()
+        secretkey='7226d410ef16427e821e61ebe30e8939'
+    )
+    images = ews.ews.get(geturl='http://open-ews.cloud.tmall.com/api/v1/image')
 
     # print(images)
     if images['code'] == '0':
@@ -93,9 +91,8 @@ def Host_create_or_update():
     ews = EwsService(
         accesskey='kqlnim0khfpou45p',
         secretkey='7226d410ef16427e821e61ebe30e8939',
-        url='http://open-ews.cloud.tmall.com/api/v1/host'
     )
-    hosts = ews.EwsSign()
+    hosts = ews.get(geturl='http://open-ews.cloud.tmall.com/api/v1/host')
 
     # print(images)
     if hosts['code'] == '0':
@@ -113,10 +110,9 @@ def Node_create_or_update():
 
     ews = EwsService(
         accesskey='kqlnim0khfpou45p',
-        secretkey='7226d410ef16427e821e61ebe30e8939',
-        url='http://open-ews.cloud.tmall.com/api/v1/node'
+        secretkey='7226d410ef16427e821e61ebe30e8939'
     )
-    nodes = ews.EwsSign()
+    nodes = ews.get(geturl='http://open-ews.cloud.tmall.com/api/v1/node')
 
     # print(images)
     if nodes['code'] == '0':

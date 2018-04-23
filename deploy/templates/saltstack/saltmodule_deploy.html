@@ -3,220 +3,194 @@
 {% block content %}
 {% load static %}
 <ul class="breadcrumb">
-    <li><a href="{% url 'index' %}">Home</a></li>
-    <li><a href="{% url 'deploys:saltmodule-list' %}">{% trans 'Salt Module List' %}</a></li>
-    <li><a href="#">{{ action }}</a></li>
+  <li><a href="{% url 'index' %}">Home</a></li>
+  <li><a href="{% url 'deploys:saltmodule-list' %}">{% trans 'Salt Module List' %}</a></li>
+  <li><a href="#">{{ action }}</a></li>
 </ul>
 <link rel="stylesheet" type="text/css" href="{% static 'login/css/main.css' %}">
 <div ng-app="SaltGroup" class="page-content-wrap">
-    <div class="col-md-12">
-        <div class="col-md-12" >
-            <section class="deploy-switch">
-                <div class="login-box">
-                    <form id="module_deploy" class="login-form" role="form" method="post" action="">
-                     {% csrf_token %}
-                        <div ng-controller="SaltgroupCtrl" class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
-                            </div>
-                            <div class="panel-body form-group-separated">
-                                <div class="form-group">
-                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'salt group' %}</label>
-                                    <div class="col-md-6 col-xs-12">
-                                        <select ng-model="choice_hosts" class="form-control selected">
-                                            <option ng-repeat="group in names" value="{[group.minions ]}">{[group.name]}</option>
-                                        </select>
-                                        <button ><a href="#" data-toggle="flip">使用salt节点</a></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        <div class="panel-body form-group-separated">
-                                <div class="form-group">
-                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'choices node' %}</label>
-                                    <div class="col-md-6 col-xs-12">
-                                        <textarea name="saltnodes" placeholder="{% trans 'choices node ...' %}" class="form-control" rows="5">{[ node_list ]}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel-body form-group-separated">
-                                <div class="form-group">
-                                    <label class="col-md-2 col-xs-12 control-label">{% trans 'salt module' %}</label>
-                                    <div class="col-md-6 col-xs-12">
-                                        <select name="minions" class="form-control select">
-                                            {% for module in modules %}
-                                                <option value="{{ module.pk }}">{{ module.name }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel-footer">
-                                 <button type="button" ng-click="toggle()"  class="btn btn-primary pull-right">Submit</button>
-                            </div>
-                         <div class="panel-body form-group-separated">
-                        <div class="form-group">
-                            <label class="col-md-2 col-xs-12 control-label">{% trans 'Result' %}</label>
-                            <div class="col-md-6 col-xs-12">
-                                <textarea name="comment" placeholder="{% trans 'please wait ...' %}" class="form-control" style="margin: 0px -169.5px 0px 0px; width: 165%; height: 259px;" rows="10">{[ hosts ]}</textarea>
-                                <span class="help-block">Default textarea field</span>
-                            </div>
-                        </div>
-
-                    </div>
-                        </div>
-                    </form>
-
-                    <form class="forget-form" role="form" method="post" action="">
-                     {% csrf_token %}
-                      <div ng-controller="SaltHostCtrl" class="panel panel-default">
-                          <div class="panel-heading">
-                              <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
-                          </div>
-                          <div class="panel-body form-group-separated">
-                              <div class="form-group">
-                                  <label class="col-md-2 col-xs-12 control-label">{% trans 'salt host' %}</label>
-                                  <div class="col-md-6 col-xs-12">
-                                      <select ng-model="choice_host"  name="minions" class="form-control selected">
-                                          <option ng-repeat="host in hosts" value="{[ host.minion ]}">{[ host.minion ]}</option>
-                                      </select>
-                                      <p class="semibold-text mb-2"><a href="#" data-toggle="flip">使用salt分组</a></p>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="panel-body form-group-separated">
-                              <div class="form-group">
-                                  <label class="col-md-2 col-xs-12 control-label">{% trans 'choices node' %}</label>
-                                  <div class="col-md-6 col-xs-12">
-                                      <textarea id="saltnode" name="choicesaltnodes" placeholder="{% trans 'choices node ...' %}" class="form-control" rows="5">{[ nodes ]}</textarea>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="panel-body form-group-separated">
-                              <div class="form-group">
-                                  <label class="col-md-2 col-xs-12 control-label">{% trans 'salt module' %}</label>
-                                  <div class="col-md-6 col-xs-12">
-                                      <select name="minions" class="form-control select">
-                                          {% for module in modules %}
-                                              <option value="{{ module.pk }}">{{ module.name }}</option>
-                                          {% endfor %}
-                                      </select>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="panel-footer">
-                                <button type="button" id="exec_submit" class="btn btn-primary pull-right">Submit</button>
-                            </div>
-                       <div class="panel-body form-group-separated">
-                        <div class="form-group">
-                            <label class="col-md-2 col-xs-12 control-label">{% trans 'Result' %}</label>
-                            <div class="col-md-6 col-xs-12">
-                                <textarea name="comment" placeholder="{% trans 'please wait ...' %}" class="form-control"  rows="18">{[ count ]}</textarea>
-                                <span class="help-block">Default textarea field</span>
-                            </div>
-                        </div>
-
-                    </div>
-                      </div>
-                    </form>
+  <div class="col-md-12">
+    <div class="col-md-12" >
+      <section class="deploy-switch">
+        <div class="login-box">
+          <form id="module_deploy" class="login-form" role="form" method="post" action="">
+            {% csrf_token %}
+            <div ng-controller="SaltgroupCtrl" class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
+              </div>
+              <div class="panel-body form-group-separated">
+                <div class="form-group">
+                  <label class="col-md-2 col-xs-12 control-label">{% trans 'salt group' %}</label>
+                  <div class="col-md-6 col-xs-12">
+                    <select ng-model="choice_hosts" class="form-control selected">
+                      <option ng-repeat="group in names track by $index" ng-model="groups" value="{[group.minions ]}">{[group.name]}</option>
+                    </select>
+                    <button ><a href="#" data-toggle="flip">使用salt节点</a></button>
+                  </div>
                 </div>
-            </section>
+              </div>
+
+              <div class="panel-body form-group-separated">
+                <div class="form-group">
+                  <label class="col-md-2 col-xs-12 control-label">{% trans 'choices node' %}</label>
+                  <div class="col-md-6 col-xs-12">
+                    <textarea name="saltnodes"  placeholder="{% trans 'choices node ...' %}" class="form-control" rows="5">{[ node_list ]}</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-body form-group-separated">
+                <div class="form-group">
+                  <label class="col-md-2 col-xs-12 control-label">{% trans 'salt module' %}</label>
+                  <div class="col-md-6 col-xs-12">
+                    <select name="minions" ng-model="saltmodule" class="form-control select">
+                      {% for module in modules %}
+                      <option value="{{ module.pk }}">{{ module.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-footer">
+                <button type="button" ng-click="toggle()"  class="btn btn-primary pull-right">Submit</button>
+              </div>
+              <div class="panel-body form-group-separated">
+                <div class="form-group">
+                  <label class="col-md-2 col-xs-12 control-label">{% trans 'Result' %}</label>
+                  <div class="col-md-6 col-xs-12">
+                    <textarea name="comment" placeholder="{% trans 'please wait ...' %}" class="form-control" style="margin: 0px -169.5px 0px 0px; width: 165%; height: 259px;" rows="10">{[ jinids ]}</textarea>
+                    <span class="help-block">Default textarea field</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </form>
+
+          <form class="forget-form" role="form" method="post" action="">
+            {% csrf_token %}
+            <div ng-controller="SaltHostCtrl" class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><strong>{% trans 'Salt Module Deploy' %}</strong></h3>
+              </div>
+              <div class="panel-body form-group-separated">
+                <div class="form-group">
+                  <label class="col-md-2 col-xs-12 control-label">{% trans 'salt host' %}</label>
+                  <div class="col-md-6 col-xs-12">
+                    <select ng-model="choice_host"  name="minions" class="form-control selected">
+                      <option ng-repeat="host in hosts" value="{[ host.minion ]}">{[ host.minion ]}</option>
+                    </select>
+                    <p class="semibold-text mb-2"><a href="#" data-toggle="flip">使用salt分组</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-body form-group-separated">
+                <div class="form-group">
+                  <label class="col-md-2 col-xs-12 control-label">{% trans 'choices node' %}</label>
+                  <div class="col-md-6 col-xs-12">
+                    <textarea id="saltnode" name="choicesaltnodes" placeholder="{% trans 'choices node ...' %}" class="form-control" rows="5">{[ nodes ]}</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-body form-group-separated">
+                <div class="form-group">
+                  <label class="col-md-2 col-xs-12 control-label">{% trans 'salt module' %}</label>
+                  <div class="col-md-6 col-xs-12">
+                    <select name="minions" class="form-control select">
+                      {% for module in modules %}
+                      <option value="{{ module.pk }}">{{ module.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <button type="button" id="exec_submit" class="btn btn-primary pull-right">Submit</button>
+              </div>
+              <div class="panel-body form-group-separated">
+                <div class="form-group">
+                  <label class="col-md-2 col-xs-12 control-label">{% trans 'Result' %}</label>
+                  <div class="col-md-6 col-xs-12">
+                    <textarea name="comment" placeholder="{% trans 'please wait ...' %}" class="form-control"  rows="18">{[ count ]}</textarea>
+                    <span class="help-block">Default textarea field</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </form>
         </div>
+      </section>
     </div>
+  </div>
 </div>
 
 <script type="text/javascript">
   $('.deploy-switch [data-toggle="flip"]').click(function() {
-  	$('.login-box').toggleClass('flipped');
-  	return false;
+    $('.login-box').toggleClass('flipped');
+    return false;
   });
 
-  var my_app = angular.module('myApp', [/* dependencies */]).config(function($httpProvider) {
-    $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token }}';
-    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-  });
   //处理angular 与django 冲突
   var app = angular.module('SaltGroup', []);
   app.config(
-      function($interpolateProvider) {
-          $interpolateProvider.startSymbol('{[');
-          $interpolateProvider.endSymbol(']}');
-      });
+    function($interpolateProvider) {
+      $interpolateProvider.startSymbol('{[');
+      $interpolateProvider.endSymbol(']}');
+    });
 
-  function run($http) {
-    $http.defaults.xsrfHeaderName = 'X-CSRFToken';
-    $http.defaults.xsrfCookieName = 'csrftoken';
-};
 
   var app = angular.module('SaltGroup').config(function($httpProvider) {
-    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    {#$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';#}
     $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token }}';
   });
 
   //通过接口获取到已选择group中的minions
   app.controller('SaltgroupCtrl', function($scope, $http) {
-      $http({
-          method: 'GET',
-          url: '{% url 'api-deploys:saltgroup-list' %}'
-      }).then(function successCallback(response) {
-          $scope.names = response.data;
-          }, function errorCallback(response) {
-          //request fail.
-      });
-      $scope.$watch('choice_hosts',function (new_val) {
-          $scope.node_list = JSON.parse(new_val).join("\n");
-      });
+    $http({
+      method: 'GET',
+      url: '{% url 'api-deploys:saltgroup-list' %}'
+  }).then(function successCallback(response) {
+      $scope.names = response.data;
+    }, function errorCallback(response) {
+      //request fail.
+    });
+    $scope.$watch('choice_hosts',function (new_val) {
+      $scope.node_list = JSON.parse(new_val).join("\n");
+    });
 
-      $scope.toggle = function () {
-        $http({
-            method:'POST',
-            url:"{% url 'deploys:salt-module-deploy' %}",
-            headers: {},
-            data: {saltgroup:'dd'}
-        }).then(
-            function successCallback(response) {
-                $scope.hosts = response;
-            },
-            function errorCallback(response) {
 
-            }
-        );
-      };
+  $scope.toggle = function ($scope,$http) {
+    var data = {'saltmodule':11111};
+    var config = {'Content-Type': 'application/x-www-form-urlencoded'};
+    $http.post('{% url 'deploys:salt-module-deploy' %}',data,config).then(function successCallback(response) {
+      $scope.jinids = response.data;
+    },function errorCallback(respone) {
+      //error
+    });
+  };
+
   });
 
   app.controller('SaltHostCtrl',function ($scope,$http) {
-      $http({
-          method:'GET',
-          url:'{% url 'deploys:salthost-list' %}'
-      }).then(function successCallback(response) {
-          $scope.hosts = response.data;
-      },function errorCallback(response) {
-          /// request fail.
-      });
+    $http({
+      method:'GET',
+      url:'{% url 'deploys:salthost-list' %}'
+    }).then(function successCallback(response) {
+      $scope.hosts = response.data;
+    },function errorCallback(response) {
+      /// request fail.
+    });
 
-      $scope.$watch('choice_host',function (new_value) {
-          $scope.nodes = new_value;
-      });
+    $scope.$watch('choice_host',function (new_value) {
+      $scope.nodes = new_value;
+    });
   });
 
-
-  $(".name_submit").click(function(){
-    var nickname = $("input[name='nickname']").val();
-    $.ajax({
-      url:"{% url 'deploys:salt-module-deploy' %}",
-      type:"post",
-      data:{"nickname":nickname},
-      dataType:"json",
-      success:function(data){
-        $(".name_value").text("")
-       $(".name_value").append("名字为:"+data)
-      }
-    }); // Ajax End
-  });
 </script>
 
 

@@ -3,7 +3,7 @@
 {% block content %}
 <ul class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
-    <li><a href="{% url 'assets:server-list' %}">{{ action }}</a></li>
+    <li><a href="{% url 'assets:container-list' %}">{{ action }}</a></li>
 </ul>
 
  <div class="page-content-wrap pull-right">
@@ -11,18 +11,18 @@
          <div class="col-md-12">
              <div class="panel panel-default">
                  <div class="panel-heading">
-                  <h3 class="panel-title">{% trans 'imageList' %}</h3>
+                  <h3 class="panel-title">{% trans 'containerList' %}</h3>
                   <ul class="panel-controls">
                       <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
                       <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
                       <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                   </ul>
                  </div>
-                 <div class="panel-body">
+                  <div class="panel-body">
                      <table class="table datatable">
                          <thead>
                          <tr>
-                             <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                             <th><input type="checkbox" name="alls" onClick="" title="全选/反选"></th>
                              <th>{% trans 'image id' %}</th>
                              <th>{% trans 'imageName' %}</th>
                              <th>{% trans 'imageTag' %}</th>
@@ -31,22 +31,22 @@
                              <th>{% trans 'Actions' %}</th>
                          </tr>
                          </thead>
-                     <tbody>
-                     {% for image in images %}
-                         <tr id="{{ image.id }}">
-                             <td><input class="icheck" type="checkbox" value="{{ image.id }}" name="id"></td>
-                             <td>{{ image.id }}</td>
-                             <td>{{ image.imageName }}</td>
-                             <td>{{ image.imageTag }}</td>
-                             <td>{{ image.imageAlias }}</td>
-                             <td>{{ image.ImageModifyTime }}</td>
-                             <td>
-                                 <a href="#" class="badge bg-green">{% trans 'view' %}</a>
-                                 <a href="#" class="badge bg-green">{% trans 'update' %}</a>
-                             </td>
-                         </tr>
-                     {% endfor %}
-                     </tbody>
+                         <tbody>
+                         {% for image in images %}
+                            <tr id="{{ image.id }}">
+                                 <td><input class="icheck" type="checkbox" value="{{ image.id }}" name="id"></td>
+                                 <td>{{ image.id }}</td>
+                                 <td>{{ image.imageName }}</td>
+                                 <td>{{ image.imageTag }}</td>
+                                 <td>{{ image.imageAlias }}</td>
+                                 <td>{{ image.ImageModifyTime }}</td>
+                                 <td>
+                                     <a href="#" class="badge bg-green">{% trans 'view' %}</a>
+                                     <a href="#" class="badge bg-green">{% trans 'update' %}</a>
+                                 </td>
+                            </tr>
+                            {% endfor %}
+                         </tbody>
                      </table>
                  </div>
              </div>

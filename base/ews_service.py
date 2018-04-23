@@ -6,16 +6,17 @@ import hashlib
 import time
 import requests
 import json
+import urllib
+import top
 
 class EwsService:
     '''
     Aliyun EWS service api
     '''
 
-    def __init__(self,accesskey,secretkey,url):
+    def __init__(self,accesskey,secretkey):
         self.accesskey = accesskey
         self.secrekey = secretkey
-        self.url = url
         self.tempstamp = int(1000 * time.time())
         self.SetupHeaders()
 
@@ -33,26 +34,28 @@ class EwsService:
 
     def SetupHeaders(self):
         self.headers = {
-            "Authorization": self.SingKey().upper()
+            'Authorization': self.SingKey().upper()
         }
 
-    def EwsSign(self):
+    def get(self,geturl):
 
         parames = {
             'accesskey':self.accesskey,
             'timestamp':self.tempstamp,
         }
-        httpurl = self.url
+        httpurl = geturl
 
         req = requests.get(httpurl,params=parames,headers=self.headers)
         context = json.loads(req.text)
         return context
+        # print(context)
+
+
 
 if __name__ == '__main__':
     a = EwsService(
         accesskey='kqlnim0khfpou45p',
         secretkey='7226d410ef16427e821e61ebe30e8939',
-        url='http://open-ews.cloud.tmall.com/api/v1/service/'
+        # url='http://open-ews.cloud.tmall.com/api/v1/service/'
     )
-
-    a.EwsSign()
+    a.get(geturl='http://open-ews.cloud.tmall.com/api/v1/service/')

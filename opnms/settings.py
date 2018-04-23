@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'crond.apps.CrondtaskConfig',
     'business.apps.BusinessConfig',
     'deploy.apps.DeployConfig',
+    'monitor.apps.MonitorConfig',
 ]
 
 MIDDLEWARE = [

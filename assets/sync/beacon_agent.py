@@ -16,7 +16,7 @@ from socket import gethostname
 
 class BeaconAgent:
 
-    token = 'b9e48980e75003e8c9fa0eeeb360e9c1c839638b'
+    token = '666b42aa52ed10e95e33e7abeee2faf37db6901e'
     def __init__(self,url):
         self.setup_header()
         #self.search_params = search
@@ -87,7 +87,7 @@ class BeaconAgent:
         '''
         Install deps packages
         '''
-        packages = ['python-requests', 'dmidecode', 'lshw', 'ipmitool', 'OpenIPMI', 'm2crypto']
+        packages = ['dmidecode', 'lshw', 'ipmitool', 'OpenIPMI', 'm2crypto']
         self.log.debug('Installing deps packages......')
 
         for each in packages:
@@ -161,7 +161,7 @@ class BeaconAgent:
                     self.opnms_url,
                     data=json.dumps(self.device_info),
                     headers=self.opnms_header)
-                if device_info_r.status_code == 200:
+                if device_info_r.status_code == 201:
                     self.log.info('Device create success')
                 else:
                     self.log.warn('Device create failed, status_code: {0}'.format(device_info_r.status_code))
@@ -268,8 +268,10 @@ class BeaconAgent:
             sync_salt_modules = self.exec_cmd('salt-call state.sls business.youzibuy')
             if sync_salt_modules['return_code'] != 0:
                 self.log.warn('Sync salt modules failed, because: {0}'.format(sync_salt_modules['stdout']))
-                sys.exit(2)
                 self.log.info('Sync salt modules success')
+
+            #修复requests
+            self.exec_cmd('pip install requests urllib3 pyOpenSSL --force --upgrade')
 
     def start(self):
         self.device_info = {}
