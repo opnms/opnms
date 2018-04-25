@@ -105,16 +105,18 @@
     };
     $('.captcha').click(refresh_captcha);
 
-if ($("#remember").attr("checked")) {
-　　　　$.cookie("rmbUser", "true", { expires: 7 }); //存储一个带7天期限的cookie
-　　　　$.cookie("username", account, { expires: 7 });
-　　　　$.cookie("password", password, { expires: 7 });
-}
-else {
-　　　　$.cookie("rmbUser", "false", { expire: -1 });
-　　　　$.cookie("username", "", { expires: -1 });
-　　　　$.cookie("password", "", { expires: -1 });
-};
+$().ready(function() {
+    //获取cookie的值
+    var username = $.cookie('username');
+    var password = $.cookie('password');
 
+    //将获取的值填充入输入框中
+    $('#username').val(username);
+    $('#password').val(password);
+    if (username != null && username != '' && password != null && password != '') {
+        //选中保存秘密的复选框
+        $("#remember").attr('checked', true);
+    }
+});
 
 </script>

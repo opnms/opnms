@@ -1,75 +1,202 @@
-<!DOCTYPE html>
-<html ng-app="app" ng-controller="modalController">
-<head>
-    <title>ng-model模态框</title>
-</head>
-<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<body>
-<button ng-click="openModal()">打开模态框</button>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+{% load static %}
 
-<script type="text/ng-template" id="modal.html">
-    <div>
+<ul class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'monitor:monitor-http-list'  %}">{% trans 'http list' %}</a></li>
+    <li><a href="#">{{ action }}</a></li>
+</ul>
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<div class="modal-body pull-right" ng-app="app" ng-controller="modalController">
+    <script type="text/ng-template" id="modal.html">
         <div class="modal-header">
-            <h3 class="modal-title" align="center">
-                标题信息
-            </h3>
+            <h3 class="modal-title">{% trans 'http monitor create' %}</h3>
         </div>
-        <div class="modal-body">
-            <div align="center">
-                模态框内容 <br>
-                {{data}}
+
+        <form name="form.userForm" class="form-horizontal" >
+            <div class="panel-body form-group-separated">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-12 control-label">{% trans 'monitor name' %}</label>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-unlink"></span></span>
+                                <input type="text" name="name"  value="{{ contexts.name }}" placeholder="{% trans 'monitor url' %}" class="form-control"/>
+                            </div>
+                            <span class="help-block">{% trans 'Required' %}</span>
+                        </div></div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-12 control-label">{% trans 'monitor service' %}</label>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-xing-square"></span></span>
+                                <input type="text" name="service"  value="{{ contexts.service }}" placeholder="{% trans 'monitor service' %}" class="form-control"/>
+                            </div>
+                            <span class="help-block">{% trans '*' %}</span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-12 control-label">{% trans 'monitor group' %}</label>
+                        <div class="col-md-6 col-xs-12">
+                            <select ng-model="choice_hosts" class="form-control selected">
+                                <option ng-repeat="group in httpgroup" ng-model="groups" value="{[ group.id ]}">{[ group.name ]}</option>
+                            </select>
+                            <span class="help-block">{% trans 'Required' %}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-12 control-label">{% trans 'monitor alarmploicy' %}</label><div class="col-md-6 col-xs-12">
+                        <select ng-model="choice_alarm" class="form-control selected">
+                                <option ng-repeat="alarm in alarmpolicy" ng-model="alarm" value="{[ alarm.id ]}">{[ alarm.name ]}</option>
+                            </select>
+                        <span class="help-block">{% trans 'Required' %}</span>
+                    </div></div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 col-xs-12 control-label">{% trans 'Comment' %}</label>
+                        <div class="col-md-6 col-xs-12">
+                            <textarea name="comment" placeholder="{% trans 'Comment ...' %}" class="form-control" rows="5">{{ contexts.comment }}</textarea>
+                            <span class="help-block">Default textarea field</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">{% trans 'Cancel' %}</button>
+            <button class="btn btn-primary" ng-click="submitForm()">{% trans 'Submit' %}</button>
+        </div>
+    </script>
+
+    <div class="page-content-wrap">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{% trans 'http monitor list' %}</h3>
+                    <ul class="panel-controls">
+                        <li><a ng-click="openModal()" data-toggle="tooltip" data-placement="top" title="{% trans 'create http' %}"><span class="fa fa-plus-square"></span></a></li>
+                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Service' %}" ><span class="fa fa-refresh"></span></a></li>
+                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <table class="table datatable">
+                        <thead>
+                        <tr>
+                            <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                            <th>{% trans 'http service' %}</th>
+                            <th>{% trans 'http name' %}</th>
+                            <th>{% trans 'Comment' %}</th>
+                            <th>{% trans 'http group' %}</th>
+                            <th>{% trans 'http alarm policy' %}</th>
+                            <th>{% trans 'Create by' %}</th>
+                            <th>{% trans 'Create at' %}</th>
+                            <th>{% trans 'Actions' %}</th>
+                        </tr>
+                        </thead>
+                        <p ng-repeat="name in names">{[ name ]}</p>
+                        {% for httpd in httpmonitors %}
+                            <tr id="{{ httpd.id }}">
+                                <td><input class="icheck" type="checkbox" value="{{ service.id }}" name="id"></td>
+                                <td>{{ httpd.service }}</td>
+                                <td>{{ httpd.name }}</td>
+                                <td>{{ httpd.comment }}</td>
+                                <td>{{ httpd.group }}</td>
+                                <td>{{ httpd.alarmploicy }}</td>
+                                <td>{{ httpd.create_by }}</td>
+                                <td>{{ httpd.create_at }}</td>
+                                <td>
+                                    <a href="#" class="badge bg-green">{% trans 'view' %}</a>
+                                    <a href="{% url 'monitor:monitor-http-update' httpd.pk %}" class="badge bg-blue">{% trans 'update' %}</a>
+                                    <a onclick="delete_monitorhttp({{ httpd.id }})" class="badge bg-red">{% trans 'delete' %}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">
-                确认
-            </button>
-            <button class="btn btn-warning" ng-click="cancel()">
-                退出
-            </button>
-        </div>
     </div>
-</script>
-
+</div>
 <script src="https://cdn.bootcss.com/angular.js/1.5.5/angular.min.js"></script>
 <script src="https://cdn.bootcss.com/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
-
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
 <script type="text/javascript">
- var app = angular.module('app', ['ui.bootstrap']);
-
- app.config(
-    function($interpolateProvider,$httpProvider) {
+var app = angular.module('app', ['ngAnimate','ui.bootstrap']);
+app.config(
+    function($interpolateProvider) {
       $interpolateProvider.startSymbol('{[');
       $interpolateProvider.endSymbol(']}');
-      $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-      $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token }}';
+    },
+    function ($httpProvider){
+        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+        $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token }}';
     });
 
-    app.controller('modalController', function($scope, $rootScope, $modal,$http) {
+    app.controller('modalController', function($scope, $rootScope, $modal) {
+        $scope.animationsEnabled = true;
+
         $scope.openModal = function() {
-            $http({
-            method:'GET',
-            url:'{% url 'api-monitor:http-group-list' %}'
-        }).then(function successCallback(respone) {
                 var modalInstance = $modal.open({
-                    templateUrl : 'modal.html',//script标签中定义的id
-                    controller : 'modalController',//modal对应的Controller
-                    resolve : {
-                        data : function() {//data作为modal的controller传入的参数
-                             return respone.data;//用于传递数据
-                        }
-                    }
-                })
-            },function errorCallback(respone) {
-                alert(respone.data);
-            });
-    };
+                    animation: $scope.animationsEnabled,
+                    templateUrl : 'modal.html',
+                    controller : 'modalCtrl',
+                });
+
+                modalInstance.result.then(function () {
+                     console.log('modal is opened');
+                    },
+                    function () {
+                    $log.info('Modal dismissed at: ' + new Date());
+                });
+        };
+        $scope.toggleAnimation = function () {
+            $scope.animationsEnabled = !$scope.animationsEnabled;//动画效果
+  };
+
     });
-     //模态框对应的Controller
-     app.controller('modalController', function($scope, $modalInstance, data) {
-          $scope.data= data;
-          //在这里处理要进行的操作
-          $scope.ok = function() {
+
+     app.controller('modalCtrl',function($scope, $modalInstance,$http) {
+         $http({
+             method: 'GET',
+             url: '{% url 'api-monitor:http-group-list' %}'
+         }).then(
+             function successCallback(response) {
+             $scope.httpgroup = response.data;
+             },
+             function errorCallback(response) {
+             $scope.httpgroup = response.data;
+             console.log($scope.response);
+             }
+         );
+
+          $http({
+             method: 'GET',
+             url: '{% url 'api-monitor:http-alarmpolicy-list' %}'
+         }).then(
+             function successCallback(response) {
+             $scope.alarmpolicy = response.data;
+             },
+             function errorCallback(response) {
+             $scope.alarmpolicy = response.data;
+             console.log($scope.response);
+             }
+         );
+
+         $scope.create_select = {
+             httpgroup:$scope.httpgroup,
+             alarmpolicy:$scope.alarmpolicy
+         };
+
+          $scope.submitForm = function() {
               $modalInstance.close();
           };
           $scope.cancel = function() {
@@ -77,7 +204,4 @@
           }
     });
 </script>
-</body>
-</html>
-
-
+{% endblock %}
