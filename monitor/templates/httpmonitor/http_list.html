@@ -141,67 +141,65 @@ app.config(
         $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token }}';
     });
 
-    app.controller('modalController', function($scope, $rootScope, $modal) {
-        $scope.animationsEnabled = true;
+app.controller('modalController', function($scope, $rootScope, $modal) {
+    $scope.animationsEnabled = true;
 
-        $scope.openModal = function() {
-                var modalInstance = $modal.open({
-                    animation: $scope.animationsEnabled,
-                    templateUrl : 'modal.html',
-                    controller : 'modalCtrl',
-                });
+    $scope.openModal = function() {
+        var modalInstance = $modal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl : 'modal.html',
+            controller : 'modalCtrl',
+        });
 
-                modalInstance.result.then(function () {
-                     console.log('modal is opened');
-                    },
-                    function () {
-                    $log.info('Modal dismissed at: ' + new Date());
-                });
-        };
-        $scope.toggleAnimation = function () {
-            $scope.animationsEnabled = !$scope.animationsEnabled;//动画效果
+        modalInstance.result.then(function () {
+                console.log('modal is opened');
+            },
+            function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+    };
+    $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;//动画效果
   };
 
-    });
+});
 
-     app.controller('modalCtrl',function($scope, $modalInstance,$http) {
-         $http({
-             method: 'GET',
-             url: '{% url 'api-monitor:http-group-list' %}'
-         }).then(
-             function successCallback(response) {
-             $scope.httpgroup = response.data;
-             },
-             function errorCallback(response) {
-             $scope.httpgroup = response.data;
-             console.log($scope.response);
-             }
-         );
+app.controller('modalCtrl',function($scope, $modalInstance,$http) {
+    $http({
+        method: 'GET',
+        url: '{% url 'api-monitor:http-group-list' %}'
+    }).then(
+        function successCallback(response) {
+            $scope.httpgroup = response.data;
+        },
+        function errorCallback(response) {
+            $scope.httpgroup = response.data;
+        }
+    );
 
-          $http({
-             method: 'GET',
-             url: '{% url 'api-monitor:http-alarmpolicy-list' %}'
-         }).then(
-             function successCallback(response) {
-             $scope.alarmpolicy = response.data;
-             },
-             function errorCallback(response) {
-             $scope.alarmpolicy = response.data;
-             console.log($scope.response);
-             }
-         );
+    $http({
+        method: 'GET',
+        url: '{% url 'api-monitor:http-alarmpolicy-list' %}'
+    }).then(
+        function successCallback(response) {
+            $scope.alarmpolicy = response.data;
+        },
+        function errorCallback(response) {
+            $scope.alarmpolicy = response.data;
+        }
+    );
 
-         $scope.create_select = {
-             httpgroup:$scope.httpgroup,
-             alarmpolicy:$scope.alarmpolicy
-         };
+    $scope.create_select = {
+        httpgroup:$scope.httpgroup,
+        alarmpolicy:$scope.alarmpolicy
+    };
 
-          $scope.submitForm = function() {
-              $modalInstance.close();
-          };
-          $scope.cancel = function() {
-              $modalInstance.dismiss('cancel');
-          }
-    });
+    $scope.submitForm = function() {
+        $modalInstance.close($scope.create_select);
+    };
+    $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+    }
+});
 </script>
 {% endblock %}
