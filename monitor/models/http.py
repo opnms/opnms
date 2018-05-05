@@ -12,7 +12,7 @@ class HttpAlarmPolicy(models.Model):
     step = models.CharField(max_length=5, verbose_name=_('max_step'))
     times = models.CharField(max_length=5, blank=True, null=True, verbose_name=_('times'))
     keywords = models.CharField(max_length=50, blank=True, null=True, verbose_name=_('keywords'))
-    create_by = models.CharField(max_length=50, blank=False, verbose_name=_('Create by'))
+    create_by = models.CharField(max_length=50, blank=True,null=True, verbose_name=_('Create by'))
     create_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Create at'))
 
     def __unicode__(self):

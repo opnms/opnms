@@ -1,12 +1,13 @@
 from __future__ import unicode_literals
 
+import json
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect,get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView,DeleteView
+from django.views.generic.edit import CreateView, UpdateView,DeleteView,FormView
 from django.views.generic.detail import DetailView
 from ..models import HttpMonitor,HttpMonitorGroup,HttpAlarmPolicy,HttpEnv
 from ..forms import HttpAlarmPolicyForm,HttpMonitorForm,HttpMonitorGroupForm
@@ -68,3 +69,8 @@ class HttpMonitorUpdateView(LoginRequiredMixin,UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('monitor:monitor-http-list')
+
+class MonitorCreateView(LoginRequiredMixin,FormView):
+    def post(self, request, *args, **kwargs):
+        assert self.request.is_ajax()
+        request_data = json.loads(self.request.body)
