@@ -8,7 +8,6 @@ from django.conf import settings
 from captcha.fields import CaptchaField
 from captcha.models import captcha_settings
 
-
 __all__ = ['CreateUserForm','UpdateUserForm']
 
 

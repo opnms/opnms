@@ -42,11 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_celery_beat',
-    'django_celery_results',
+    # 'django_celery_results',
     'bootstrap_toolkit',
     'rest_framework',
+    'django-angular',
     'rest_framework.authtoken',
-    'quickstart',
     'bootstrap3',
     'statici18n',
     'django_filters',
@@ -287,9 +287,6 @@ REST_FRAMEWORK = {
 
 
 
-# CELERY STUFF
-# import djcelery
-# djcelery.setup_loader()
 
 # Broker and Backend
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
@@ -303,7 +300,6 @@ CELERY_TIMEZONE='Asia/Shanghai'    # 指定时区，不指定默认为 'UTC'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Shanghai'
 CELERY_ENABLE_UTC = False
 CELERYD_CONCURRENCY = 10
 CELERYD_MAX_TASKS_PER_CHILD = 1
