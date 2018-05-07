@@ -6,22 +6,24 @@
     <li><a href="{% url 'assets:server-list' %}">{{ action }}</a></li>
 </ul>
 
- <div class="page-content-wrap pull-right">
+
+<div class="page-content-wrap pull-right">
      <div class="col-md-12">
          <div class="col-md-12">
              <div class="panel panel-default">
-                 <div class="panel-heading">
-                     <h3 class="panel-title">{% trans 'Server List' %}</h3>
-                     <ul class="panel-controls">
-                         <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
-                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+               <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'Server List' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                   </ul>
-                 </div>
+               </div>
                  <div class="panel-body">
                      <table class="table datatable">
                          <thead>
                          <tr>
+                             <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
                              <th>{% trans 'HostName' %}</th>
                              <th>{% trans 'PublicIpAddress' %}</th>
                              <th>{% trans 'InnerIpAddress' %}</th>
@@ -32,10 +34,10 @@
                              <th>{% trans 'Actions' %}</th>
                          </tr>
                          </thead>
-
                      <tbody>
-                         {% for server in servers %}
+                      {% for server in servers %}
                          <tr id="{{ server.id }}">
+                             <td><input class="icheck" type="checkbox" value="{{ server.id }}" name="id"></td>
                              <td>{{ server.hostname }}</td>
                              <td>{{ server.publicipaddress }}</td>
                              <td>{{ server.inneripaddress }}</td>
@@ -44,12 +46,12 @@
                              <td>{{ server.os }}</td>
                              <td>{{ server.lastupdate }}</td>
                              <td>
-                                 <a href="{% url 'assets:server-detail' server.pk %}"><i class="fa fa-envelope-o text-green"></i></a>
-                                 <a href="{% url 'assets:server-update' server.pk %}"><i class="fa fa-edit text-green"></i></a>
+                                 <a href="{% url 'assets:server-detail' server.pk %}" class="badge bg-green">{% trans 'view' %}</a>
+                                 <a href="{% url 'assets:server-update' server.pk %}" class="badge bg-blue">{% trans 'view' %}</a>
                              </td>
                          </tr>
-                        </tbody>
                      {% endfor %}
+                     </tbody>
                      </table>
                  </div>
              </div>
