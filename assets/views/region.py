@@ -34,7 +34,7 @@ class RegionCreateView(LoginRequiredMixin,CreateView):
         context['Cloudproviders'] = Cloudprovider.objects.all()
         return context
 
-    def form_valid(self, form):
+    def form_valid(self,form):
         region = form.save(commit=False)
         region.create_by = self.request.user.username
         form.save()

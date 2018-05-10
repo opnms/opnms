@@ -7,7 +7,7 @@
     <li><a href="{% url 'assets:server-detail' server.pk  %}">{{ action }}</a></li>
 </ul>
 
-<div class="col-xs-7">
+<div class="col-xs-12">
       <div class="box">
           <div class="box-header">
               <h3 class="box-title">{% trans 'Base Info' %}</h3>
@@ -18,89 +18,57 @@
                       <th>key</th>
                       <th>value</th>
                   </tr>
-                    <tr>
-                      <td>{% trans 'InstanceName' %}</td>
-                      <td>{{ instances.InstanceName }}</td>
-                  </tr>
                   <tr>
                       <td>{% trans 'Hostname' %}</td>
-                      <td>{{ instances.HostName }}</td>
+                      <td>{{ serverinfo.hostname }}</td>
+                  </tr>
+                   <tr>
+                      <td>{% trans 'InstanceName' %}</td>
+                      <td>{{ hosts.instanceName }}</td>
                   </tr>
                   <tr>
-                      <td>{% trans 'InstanceType' %}</td>
-                      <td>{{ instances.InstanceType }}</td>
+                      <td>{% trans 'InstanceId' %}</td>
+                      <td>{{ serverinfo.instanceid }}</td>
                   </tr>
                   <tr>
-                      <td>{% trans 'InstanceTypeFamily' %}</td>
-                      <td>{{ instances.InstanceTypeFamily }}</td>
+                      <td>{% trans 'IPAddress' %}</td>
+                      <td>{{ serverinfo.publicipaddress }}(公网) / {{ serverinfo.inneripaddress }}(内网)</td>
                   </tr>
                   <tr>
                       <td>{% trans 'SerialNumber' %}</td>
-                      <td>{{ instances.SerialNumber }}</td>
+                      <td>{{ serverinfo.serialnumber }}</td>
                   </tr>
                   <tr>
-                      <td>{% trans 'OSName' %}</td>
-                      <td>{{ instances.OSName }}</td>
-                  </tr>
-{#                  <tr>#}
-{#                      <td>{% trans 'OSType' %}</td>#}
-{#                      <td>{{ instances.OSType }}</td>#}
-{#                  </tr>#}
-                  <tr>
-                      <td>{% trans 'CreationTime' %}/{% trans 'ExpiredTime' %}</td>
-                      <td>{{ instances.CreationTime }}&nbsp--&nbsp;{{ instances.ExpiredTime }}</td>
+                      <td>{% trans 'manufacturer' %}</td>
+                      <td>{{ serverinfo.manufacturer }}</td>
                   </tr>
                   <tr>
-                      <td>{% trans 'RegionId' %}</td>
-                      <td>{{ instances.RegionId }}</td>
+                      <td>{% trans 'productname' %}</td>
+                      <td>{{ serverinfo.productname }}</td>
                   </tr>
                    <tr>
-                      <td>{% trans 'ZoneId' %}</td>
-                      <td>{{ instances.ZoneId }}</td>
-                  </tr>
-                  <tr>
-                      <td>{% trans 'ImageId' %}</td>
-                      <td>{{ instances.ImageId }}</td>
+                      <td>{% trans 'osrelease' %}</td>
+                      <td>{{ serverinfo.osrelease }}</td>
                   </tr>
                    <tr>
                       <td>{% trans 'LastUpdate' %}</td>
-                      <td>{{ instances.LastUpdate }}</td>
+                      <td>{{ serverinfo.lastupdate }}</td>
                   </tr>
                   <tr>
                       <td>{% trans 'Status' %}</td>
-                      <td>{{ instances.Status }}</td>
+                      <td>{{ hosts.status }}</td>
+                  </tr>
+                  <tr>
+                      <td>{% trans 'regionDisplay' %}</td>
+                      <td>{{ hosts.regionDisplay }}</td>
                   </tr>
               </table>
           </div>
       </div>
   </div>
 
-<div class="col-xs-5">
-    <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">{% trans 'VpcAttributes' %}</h3>
-        </div>
-        <div class="box-body box-padding">
-            <table class="table table-bordered">
-                <tr>
-                    <th>NatIpAddress</th>
-                    <th>PrivateIpAddress</th>
-                    <th>VSwitchId</th>
-                    <th>VpcId</th>
-                </tr>
-                {% for vpca in instances.VpcAttributes %}
-                <tr>
-                    <td>{{ vpca.NatIpAddress }}</td>
-                    <td>{{ vpca.PrivateIpAddress.IpAddress|first }}</td>
-                    <td>{{ vpca.VSwitchId }}</td>
-                    <td>{{ vpca.VpcId }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-    </div>
-</div>
-    <!-- Device Info -->
+
+<!-- Device Info -->
 <div class="col-xs-12 col-lg-6">
     <div class="box">
         <div class="box-header">
@@ -118,16 +86,16 @@
 
                 </tr>
                 <tr>
-                    <td>{% trans 'Cpu' %}</td>
-                    <td>{{ instances.Cpu }}核</td>
+                    <td>{% trans 'Cpu Total' %}/{% trans 'Cpu Used' %}</td>
+                    <td>{{ hosts.cpu }}核/{{ hosts.cpuUsed }}核</td>
                 </tr>
                 <tr>
-                    <td>{% trans 'Memory' %}</td>
-                    <td>{{ instances.Memory }}Mb</td>
+                    <td>{% trans 'Memory' %}/{% trans 'Memory Used' %}</td>
+                    <td>{{ hosts.memory }}MB/{{ hosts.memUsed }}MB</td>
                 </tr>
                 <tr>
-                    <td>{% trans 'Disk' %}</td>
-                    <td></td>
+                    <td>{% trans 'Disk' %}/{% trans 'Disk Used' %}</td>
+                    <td>{{ hosts.diskSize }}/{{ hosts.diskUsed }}</td>
                 </tr>
 
             </table>
@@ -166,6 +134,7 @@
         </div>
     </div>
 </div>
+
 <div class="col-xs-12 col-lg-6">
     <div class="box">
         <div class="box-header">
@@ -201,14 +170,59 @@
                 </tr>
                 <tr>
                     <td>{% trans 'VlanId' %}</td>
-                    <td>{{ instances.VlanId }}</td>
+                    <td>{{ services.diskUsed }}</td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
 
-
+<div class="page-content-wrap pull-right">
+     <div class="col-md-12">
+         <div class="col-md-12">
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'Container List' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+               </div>
+                 <div class="panel-body">
+                     <table class="table datatable">
+                         <thead>
+                         <tr>
+                             <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                             <th>{% trans 'Container ID' %}</th>
+                             <th>{% trans 'Cpu' %}</th>
+                             <th>{% trans 'Memory' %}(Mb)</th>
+                             <th>{% trans 'Disk' %}</th>
+                             <th>{% trans 'Create Time' %}</th>
+                             <th>{% trans 'Start Time' %}</th>
+                             <th>{% trans 'Status' %}</th>
+                         </tr>
+                         </thead>
+                     <tbody>
+                      {% for container in containers %}
+                         <tr id="{{ container.id }}">
+                             <td><input class="icheck" type="checkbox" value="{{ container.id }}" name="id"></td>
+                             <td>{{ container.id }}</td>
+                             <td>{{ container.cpu }}</td>
+                             <td>{{ container.mem }}</td>
+                             <td>{{ container.disk }}</td>
+                             <td>{{ container.createTime }}</td>
+                             <td>{{ container.startTime }}</td>
+                             <td>{{ container.status }}</td>
+                         </tr>
+                     {% endfor %}
+                     </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
 
 {% endblock %}
 

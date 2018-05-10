@@ -72,7 +72,7 @@ def image_create_or_update():
         accesskey='kqlnim0khfpou45p',
         secretkey='7226d410ef16427e821e61ebe30e8939'
     )
-    images = ews.ews.get(geturl='http://open-ews.cloud.tmall.com/api/v1/image')
+    images = ews.get(geturl='http://open-ews.cloud.tmall.com/api/v1/image')
 
     # print(images)
     if images['code'] == '0':

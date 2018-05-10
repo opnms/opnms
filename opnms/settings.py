@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     # 'django_celery_results',
     'bootstrap_toolkit',
     'rest_framework',
-    'django-angular',
+    # 'django-angular',
     'rest_framework.authtoken',
     'bootstrap3',
     'statici18n',

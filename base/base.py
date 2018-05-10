@@ -35,7 +35,7 @@ class OpnmsCreateUpdate:
 
     def post_data(self, data):
         ret = requests.post(url=self.opnms_url, headers=self.opnms_header, data=json.dumps(data))
-        print(ret.json())
+
         if ret.status_code == 200:
 
             return ret.json()
@@ -44,7 +44,7 @@ class OpnmsCreateUpdate:
 
     def put_data(self, id, data):
         ret = requests.put(url=self.opnms_url + str(id) + '/', headers=self.opnms_header, data=json.dumps(data))
-        print(ret.json())
+
         if ret.status_code == 200:
             return True
         else:

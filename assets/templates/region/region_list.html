@@ -14,6 +14,7 @@
                <div class="panel-heading">
                   <h3 class="panel-title">{% trans 'InstanceList' %}</h3>
                   <ul class="panel-controls">
+                      <li><a href="{% url 'assets:cloud-create' %}" data-toggle="tooltip" data-placement="top" title="{% trans 'Create SaltApi' %}"><span class="fa fa-plus-square"></span></a></li>
                       <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
                       <li><a href="{% url 'assets:instance-refresh' %}" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
                       <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
@@ -48,6 +49,51 @@
                             <td>
                                 <a href="{% url 'assets:cloud-update' cloud.pk %}"><i class="fa fa-edit text-green"></i></a>
                                 <a onclick="delete_cloud({{ cloud.id }})"><i class="fa fa-recycle text-red"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                     </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-12">
+             <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h3 class="panel-title">{% trans 'InstanceList' %}</h3>
+                  <ul class="panel-controls">
+                      <li><a href="{% url 'assets:region-create' %}" data-toggle="tooltip" data-placement="top" title="{% trans 'Create SaltApi' %}"><span class="fa fa-plus-square"></span></a></li>
+                      <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                  </ul>
+               </div>
+                 <div class="panel-body">
+                     <table class="table datatable">
+                         <thead>
+                        <tr>
+                        <th><input type="checkbox" name="alls" onClick="selectAll('formName','id')" title="全选/反选"></th>
+                        <th>{% trans 'Name' %}</th>
+                        <th>{% trans 'Cloud Provider' %}</th>
+                        <th>{% trans 'City' %}</th>
+                        <th>{% trans 'Create at' %}</th>
+                        <th>{% trans 'Create by' %}</th>
+                        <th>{% trans 'Actions' %}</th>
+                    </tr>
+                    </tr>
+                         </thead>
+                         <tbody>
+                         {% for region in regions %}
+                         <tr id="{{ region.id }}">
+                            <td><input class="icheck" type="checkbox" value="{{ user.pk }}" name="id"></td>
+                            <td>{{ region.name }}</td>
+                            <td>{{ region.provider.name }}</td>
+                            <td>{{ region.city}}</td>
+                            <td>{{ region.create_at }}</td>
+                            <td>{{ region.create_by }}</td>
+                            <td>
+                                <a href="{% url 'assets:region-update' region.pk %}"><i class="fa fa-edit text-green"></i></a>
+                                <a onclick="delete_region({{ region.id }})" ><i class="fa fa-recycle text-red"></i></a>
                             </td>
                         </tr>
                     {% endfor %}

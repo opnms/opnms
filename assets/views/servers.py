@@ -8,7 +8,7 @@ from django.utils.translation import ugettext as _
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.views.generic.detail import DetailView
-from ..models import Region,Cloudprovider,Instance,Server
+from ..models import Region,Cloudprovider,Instance,Server,Host,Container
 from ..forms import ServerForm
 
 __all__ = ['ServerListView','ServerDetailView','ServerCreateView','ServerUpdateView']
@@ -30,7 +30,13 @@ class ServerDetailView(LoginRequiredMixin,DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['action'] = _('Server Detail')
-        context['server_detail'] = get_object_or_404(Server,pk=self.kwargs['pk'])
+        context['serverinfo'] = get_object_or_404(Server,pk=self.kwargs['pk'])
+        instance = Server.objects.get(pk=self.kwargs['pk'])
+
+        context['hosts'] = get_object_or_404(Host,instanceId = instance.instanceid)
+        host = get_object_or_404(Host,instanceId = instance.instanceid)
+        print(host.id)
+        context['containers'] = Container.objects.all().filter(hostId=host.id)
         return context
 
 class ServerCreateView(LoginRequiredMixin,CreateView):

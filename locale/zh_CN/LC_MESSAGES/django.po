@@ -821,7 +821,7 @@ msgstr "主机列表"
 
 #: assets/templates/server/server_list.html:30
 msgid "osrelease"
-msgstr ""
+msgstr "系统版本"
 
 #: assets/views/clouder.py:28
 msgid "Create Cloudprovider"

@@ -46,7 +46,7 @@
                              <td>{{ server.os }}</td>
                              <td>{{ server.lastupdate }}</td>
                              <td>
-                                 <a href="{% url 'assets:server-detail' server.pk %}" class="badge bg-green">{% trans 'view' %}</a>
+                                 <a href="{% url 'assets:server-detail' server.pk  %}" class="badge bg-green">{% trans 'view' %}</a>
                                  <a href="{% url 'assets:server-update' server.pk %}" class="badge bg-blue">{% trans 'view' %}</a>
                              </td>
                          </tr>
