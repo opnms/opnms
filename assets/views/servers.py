@@ -32,10 +32,11 @@ class ServerDetailView(LoginRequiredMixin,DetailView):
         context['action'] = _('Server Detail')
         context['serverinfo'] = get_object_or_404(Server,pk=self.kwargs['pk'])
         instance = Server.objects.get(pk=self.kwargs['pk'])
+        if Host.objects.all().filter(instanceId = instance.instanceid):
+            context['hosts'] = get_object_or_404(Host,instanceId = instance.instanceid)
+            host = get_object_or_404(Host,instanceId = instance.instanceid)
+            context['containers'] = Container.objects.all().filter(hostId=host.id)
 
-        context['hosts'] = get_object_or_404(Host,instanceId = instance.instanceid)
-        host = get_object_or_404(Host,instanceId = instance.instanceid)
-        context['containers'] = Container.objects.all().filter(hostId=host.id)
         return context
 
 class ServerCreateView(LoginRequiredMixin,CreateView):

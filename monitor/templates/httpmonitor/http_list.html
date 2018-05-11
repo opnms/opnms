@@ -25,7 +25,7 @@
                         <div class="col-md-6 col-xs-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-unlink"></span></span>
-                                <input type="text" name="name" ng-model="formData.name" placeholder="{% trans 'monitor url' %}" class="form-control"/>
+                                <input type="text"  ng-model="formData.name" placeholder="{% trans 'monitor url' %}" class="form-control"/>
                             </div>
                             <span class="help-block">{% trans 'Required' %}</span>
                         </div></div>
@@ -35,7 +35,7 @@
                         <div class="col-md-6 col-xs-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-xing-square"></span></span>
-                                <input type="text" name="service"  ng-model="formData.service" placeholder="{% trans 'monitor service' %}" class="form-control"/>
+                                <input type="text"  ng-model="formData.service" placeholder="{% trans 'monitor service' %}" class="form-control"/>
                             </div>
                             <span class="help-block">{% trans '*' %}</span>
                         </div>
@@ -66,7 +66,7 @@
                         <div class="col-md-6 col-xs-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-xing-square"></span></span>
-                                <input type="text" name="create_by"  ng-bind="formData.create_by"  placeholder="{% trans 'monitor service' %}" class="form-control"/>
+                                <input type="text"   ng-bind="formData.create_by"  placeholder="{% trans 'monitor service' %}" class="form-control"/>
                             </div>
                             <span class="help-block">{% trans '*' %}</span>
                         </div>
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label class="col-md-3 col-xs-12 control-label">{% trans 'Comment' %}</label>
                         <div class="col-md-6 col-xs-12">
-                            <textarea name="comment" ng-model="formData.comment" placeholder="{% trans 'Comment ...' %}" class="form-control" rows="5"></textarea>
+                            <textarea  ng-model="formData.comment" placeholder="{% trans 'Comment ...' %}" class="form-control" rows="5"></textarea>
                             <span class="help-block">Default textarea field</span>
                         </div>
                     </div>

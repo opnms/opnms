@@ -4,7 +4,7 @@
 {% load humanize %}
 <ul class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
-    <li><a href="{% url 'assets:instance-list'%}">{% trans 'InstanceList' %}</a></li>
+    <li><a href="{% url 'assets:server-list'%}">{% trans 'Server List' %}</a></li>
     <li><a href="{% url 'assets:server-detail' server.pk  %}">{{ action }}</a></li>
 </ul>
 
@@ -185,7 +185,7 @@
                   <h3 class="panel-title">{% trans 'Container List' %}</h3>
                   <ul class="panel-controls">
                       <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh Instances' %}"><span class="fa fa-refresh"></span></a></li>
+                      <li><a href="#" data-toggle="tooltip" data-placement="top" title="{% trans 'Refresh container' %}"><span class="fa fa-refresh"></span></a></li>
                       <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                   </ul>
                </div>
