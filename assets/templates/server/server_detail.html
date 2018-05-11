@@ -8,8 +8,8 @@
     <li><a href="{% url 'assets:server-detail' server.pk  %}">{{ action }}</a></li>
 </ul>
 
-<div class="col-xs-12">
-      <div class="box">
+<div class="col-xs-12" ng-app="assets_server">
+      <div class="box" ng-controller="baseInfo">
           <div class="box-header">
               <h3 class="box-title">{% trans 'Base Info' %}</h3>
           </div>
@@ -57,7 +57,7 @@
                   </tr>
                   <tr>
                       <td>{% trans 'Status' %}</td>
-                      <td>{{ hosts.status }}</td>
+                      <td ng-model="status">{{ hosts.status }}</td>
                   </tr>
                   <tr>
                       <td>{% trans 'regionDisplay' %}</td>
@@ -70,8 +70,8 @@
 
 
 <!-- Device Info -->
-<div class="col-xs-12 col-lg-6">
-    <div class="box">
+<div class="col-xs-12 col-lg-6" ng-app="servers_baseinfo">
+    <div class="box" ng-controller="server_baseinfo">
         <div class="box-header">
             <h3 class="box-title">{% trans 'Configure' %}</h3>
         </div>
@@ -116,11 +116,11 @@
                 </tr>
                 <tr>
                     <td>{% trans 'PublicIpAddress' %}</td>
-                    <td>{{ instances.PublicIpAddress|first }}</td>
+                    <td>{{ serverinfo.publicipaddress }}</td>
                 </tr>
                 <tr>
                     <td>{% trans 'InnerIpAddress' %}</td>
-                    <td>{{ instances.InnerIpAddress|first }}</td>
+                    <td>{{ serverinfo.inneripaddress }}</td>
                 </tr>
                 <tr>
                     <td>{% trans 'InternetBandwidth' %}</td>
@@ -223,6 +223,27 @@
          </div>
      </div>
 
+
+<script>
+var app = angular.module('assets_server',[]);
+app.config(
+    function($interpolateProvider,$httpProvider) {
+      $interpolateProvider.startSymbol('{[');
+      $interpolateProvider.endSymbol(']}');
+      $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+      $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token }}';
+      $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      $httpProvider.defaults.headers.post['X-CSRFToken'] = '{{ csrf_token }}';
+      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+      $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+      $httpProvider.defaults.withCredentials = true;
+    }).run(function($http) {
+        $http.defaults.xsrfHeaderName = 'X-CSRFToken';
+        $http.defaults.xsrfCookieName = 'csrftoken';
+    });
+
+
+</script>
 {% endblock %}
 
 
