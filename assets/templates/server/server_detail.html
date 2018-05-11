@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 {% block content %}
+{% load humanize %}
 <ul class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
     <li><a href="{% url 'assets:instance-list'%}">{% trans 'InstanceList' %}</a></li>
@@ -95,7 +96,7 @@
                 </tr>
                 <tr>
                     <td>{% trans 'Disk' %}/{% trans 'Disk Used' %}</td>
-                    <td>{{ hosts.diskSize }}/{{ hosts.diskUsed }}</td>
+                    <td>{{ hosts.diskSize }}MB/{{ hosts.diskUsed }}MB</td>
                 </tr>
 
             </table>

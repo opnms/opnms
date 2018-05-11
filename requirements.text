@@ -1,5 +1,6 @@
 aliyun-python-sdk-core-v3==2.5.5
 aliyun-python-sdk-ecs==4.6.1
+aliyunsdkcore==1.0.2
 amqp==2.2.2
 ansible==2.2.2.0
 anyjson==0.3.3
@@ -14,6 +15,7 @@ blessed==1.14.2
 bootstrap-admin==0.3.9
 bs4==0.0.1
 cachetools==2.0.1
+captcha==0.2.4
 celery==4.1.0
 celery-with-redis==3.0
 certifi==2017.7.27.1
@@ -28,6 +30,7 @@ coreschema==0.0.4
 cryptography==2.1.2
 decorator==4.1.2
 Django==2.0
+django-angular==2.0.3
 django-appconf==1.0.2
 django-auth-ldap==1.2.16
 django-bootstrap-toolkit==2.15.0
@@ -38,10 +41,14 @@ django-celery-results==1.0.1
 django-core==1.4.1
 django-crispy-forms==1.7.0
 django-filter==1.1.0
+django-filters==0.2.1
 django-formtools==2.1
 django-picklefield==1.0.0
 django-q==0.9.1
+django-ranged-response==0.2.0
+django-redis==4.9.0
 django-redis-cache==1.7.1
+django-rest-framework==0.1.0
 django-rest-swagger==2.1.2
 django-simple-captcha==0.5.5
 django-statici18n==1.4.0
@@ -62,6 +69,7 @@ greenlet==0.4.12
 gssapi==1.2.0
 icalendar==4.0.0
 idna==2.6
+importlib==1.0.4
 ipaddr==2.2.0
 ipython==6.2.1
 ipython-genutils==0.2.0
@@ -94,6 +102,7 @@ ptyprocess==0.5.2
 pyasn1==0.3.7
 pycparser==2.18
 pycrypto==2.6.1
+pycryptodome==3.6.1
 Pygments==2.2.0
 PyJSONConfigParser==0.0.1.2
 pyldap==2.4.37
@@ -101,11 +110,14 @@ pypinyin==0.27.0
 pyte==0.7.0
 python-dateutil==2.6.1
 python-gssapi==0.6.4
+python-redis-lock==3.2.0
 pytz==2017.3
 PyYAML==3.12
 pyzmq==16.0.4
 Quickstart==0.4
 redis==2.10.6
+redis-cache==0.1.5
+redis-structures==0.1.7
 requests==2.18.4
 salt==2017.7.3
 SimpleConfigParser==0.1.0
@@ -113,12 +125,14 @@ simplegeneric==0.8.1
 simplejson==3.11.1
 six==1.11.0
 sshpubkeys==2.2.0
+Top==1.0.0
 tornado==4.5.3
 traitlets==4.3.2
 tzlocal==1.5.1
 uritemplate==3.0.0
 urllib3==1.22
 vine==1.1.4
+vital-tools==0.1.11
 vobject==0.9.5
 wcwidth==0.1.7
 Werkzeug==0.12.2

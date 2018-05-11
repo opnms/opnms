@@ -35,7 +35,6 @@ class ServerDetailView(LoginRequiredMixin,DetailView):
 
         context['hosts'] = get_object_or_404(Host,instanceId = instance.instanceid)
         host = get_object_or_404(Host,instanceId = instance.instanceid)
-        print(host.id)
         context['containers'] = Container.objects.all().filter(hostId=host.id)
         return context
 

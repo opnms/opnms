@@ -29,13 +29,6 @@
       <div class="login-box">
         <form class="login-form" role="form" method="post" action="">
             {% csrf_token %}
-            {% if form.errors %}
-                {% if 'captcha' in form.errors %}
-                    <p class="red-fonts">{% trans 'Captcha invalid' %}</p>
-                {% else %}
-                    <p class="red-fonts">{{ form.non_field_errors.as_text }}</p>
-                {% endif %}
-            {% endif %}
           <h3 class="login-head"><i class=""></i>登录</h3>
           <div class="form-group">
             <input class="form-control" name="username"  id="username" type="text" placeholder="{% trans 'Username' %}" autofocus required="">
@@ -45,7 +38,15 @@
           </div>
           <div class="form-group" id="loginForm">
                 {{ form.captcha }}
+              {% if form.errors %}
+                {% if 'captcha' in form.errors %}
+                    <p class="red-fonts">{% trans 'Captcha invalid' %}</p>
+                {% else %}
+                    <p class="red-fonts">{{ form.non_field_errors.as_text }}</p>
+                {% endif %}
+            {% endif %}
           </div>
+
           <div class="form-group">
             <div class="utility">
               <div class="animated-checkbox">

@@ -53,7 +53,7 @@ class Server(models.Model):
         else:
             info = instanceName[0].InstanceName.split("-")
             hostname_last = Server.objects.filter(
-                hostname__regex= r'^%s[0-9]{3}.meetyima.com$' %(pinyin.get_pinyin(info[0],'') + '-' + info[1] + '-' + info[2]  + '-')
+                hostname__regex = r'^%s[0-9]{3}.meetyima.com$' %(pinyin.get_pinyin(info[0],'') + '-' + info[1] + '-' + info[2]  + '-')
             ).order_by('hostname').last()
 
             #如果查到有同名主机名,id加1,否则id为001

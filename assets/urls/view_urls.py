@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'node/$',views.NodeListVew.as_view(),name='node-list'),
     url(r'image/$',views.ImageListVew.as_view(),name='image-list'),
     url(r'host/$',views.HostListVew.as_view(),name='host-list'),
+    url(r'^host/refresh/$',views.HostRefreshView.as_view(),name='host-refresh'),
 
 
 ]

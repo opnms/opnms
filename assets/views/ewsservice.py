@@ -10,8 +10,9 @@ from django.views.generic.edit import CreateView, UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from ..models import Host,Container,Node,Image
 from ..forms import ServerForm
+from ..tasks import Host_create_or_update
 
-__all__ = ['ContainerListView','NodeListVew','ImageListVew','HostListVew']
+__all__ = ['ContainerListView','NodeListVew','ImageListVew','HostListVew','HostRefreshView']
 
 class ContainerListView(LoginRequiredMixin,TemplateView):
     model = Container
@@ -54,3 +55,14 @@ class HostListVew(LoginRequiredMixin,TemplateView):
         context['action'] = _('imageList')
         context['hosts'] = Host.objects.all()
         return context
+
+class HostRefreshView(LoginRequiredMixin,TemplateView):
+    template_name = 'ewsservice/host_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        Host_create_or_update.apply_async()
+        context['action'] = _('InstanceList')
+        context['hosts'] = Host.objects.all()
+        return context
+

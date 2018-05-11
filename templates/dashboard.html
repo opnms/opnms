@@ -7,16 +7,14 @@
 <!-- END BREADCRUMB -->
 
 <!-- PAGE CONTENT WRAPPER -->
-<div class="page-content-wrap">
-
+<div class="row" >
     <!-- START WIDGETS -->
     <div class="col-md-12">
         <div class="col-md-3">
-
             <!-- START WIDGET SLIDER -->
              <div class="widget widget-default widget-item-icon" onclick="location.href='{% url 'assets:instance-list' %}';">
                 <div class="widget-item-left">
-                    <span class="fa fa-bars"></span>
+                    <span class="fa fa-list text-green"></span>
                 </div>
                 <div class="widget-data">
                     <div class="widget-int num-count">{{ instances.count }}</div>
@@ -32,13 +30,13 @@
         <div class="col-md-3">
 
             <!-- START WIDGET MESSAGES -->
-            <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
+            <div class="widget widget-default widget-item-icon" onclick="location.href='{% url 'assets:server-list' %}';">
                 <div class="widget-item-left">
-                    <span class="fa fa-envelope "></span>
+                    <span class="fa fa-bar-chart-o text-green"></span>
                 </div>
                 <div class="widget-data">
-                    <div class="widget-int num-count">{{ groups.count }}</div>
-                    <div class="widget-title">New messages</div>
+                    <div class="widget-int num-count">{{ servers.count }}</div>
+                    <div class="widget-title">{% trans 'Servers' %}</div>
                 </div>
                 <div class="widget-controls">
                     <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
@@ -47,17 +45,16 @@
             <!-- END WIDGET MESSAGES -->
 
         </div>
-
         <div class="col-md-3">
 
             <!-- START WIDGET REGISTRED -->
-            <div class="widget widget-default widget-item-icon" onclick="location.href='{% url 'users:user-list' %}';">
+            <div class="widget widget-default widget-item-icon" onclick="location.href='{% url 'business:service-list' %}';">
                 <div class="widget-item-left">
-                    <span class="fa fa-user"></span>
+                    <span class="fa fa-th-large text-green"></span>
                 </div>
                 <div class="widget-data">
-                    <div class="widget-int num-count">{{ users.count}}</div>
-                    <div class="widget-title">{% trans 'Registred users' %}</div>
+                    <div class="widget-int num-count">{{ service.count }}</div>
+                    <div class="widget-title">{% trans 'Applications' %}</div>
                 </div>
                 <div class="widget-controls">
                     <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
@@ -92,15 +89,7 @@
         </div>
     </div>
     <!-- END WIDGETS -->
-
-    <div class="row">
-
-    </div>
-
-    <!-- START DASHBOARD CHART -->
-	<div class="chart-holder" id="dashboard-area-1" style="height: 200px;"></div>
-    <div class="block-full-width">
-
-    </div>
     <!-- END DASHBOARD CHART -->
+
+
 </div>
