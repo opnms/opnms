@@ -242,6 +242,11 @@ app.config(
         $http.defaults.xsrfCookieName = 'csrftoken';
     });
 
+app.controller('baseInfo',function ($scope) {
+    if ($scope.status == 'OK' ){
+        $scope.status = Running;
+    }
+})
 
 </script>
 {% endblock %}
