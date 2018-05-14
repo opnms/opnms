@@ -17,7 +17,7 @@
             <h3 class="modal-title">{% trans 'http monitor create' %}</h3>
         </div>
 
-        <form name="formData" class="form-horizontal" >
+        <form name="formData" class="form-horizontal" id="form">
             <div class="panel-body form-group-separated">
                 <div class="modal-body">
                     <div class="form-group">
@@ -213,21 +213,19 @@ app.controller('modalController', function($scope, $rootScope, $modal) {
         $modalInstance.dismiss('cancel');
     };
 
-    $scope.processForm = function () {
+   $scope.processForm = function () {
 
-        var data = $.param(
-            $scope.formData
-        );
-        alert('111111')
-        $http.post({
-            url: "{% url 'api-monitor:http-group-list' %}",
-            data:111111,
-        }).success(function (data) {
-            console.log(data);
-
-        },error(function (reponse) {
-            console.log(reponse);
-        }));
+        var data = $("#form").serialize();
+        var url = "{% url 'api-monitor:http-list' %}"
+        $http({
+            method: 'POST',
+            url: url,
+            data: data
+        }).then(function successCallback(data) {
+                alert(data);
+        },function errorCallback(response) {
+                alert(response);
+        });
     }
 });
 
